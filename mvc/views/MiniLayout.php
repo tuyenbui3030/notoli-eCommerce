@@ -19,6 +19,7 @@
 
     <!-- style css -->
     <link rel="stylesheet" href="./public/assets/css/main.css">
+    <link rel="stylesheet" href="./public/assets/css/dev.css">
 
 </head>
 
@@ -253,11 +254,12 @@
     <!-- ************************* JS Files ************************* -->
 
     <!-- jQuery JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./public/assets/js/vendor.js"></script>
 
     <!-- Main JS -->
     <script src="./public/assets/js/main.js"></script>
-
+    <script src="./public/assets/js/plugin.js"></script>
 </body>
 
 </html>

@@ -8,5 +8,16 @@ class UserModel extends DB {
         }
         return json_encode($result);
     }
+    public function checkUsername($username) {
+        $qr = "SELECT id FROM users
+        WHERE username = '$username'";
+        $rows = mysqli_query($this->con, $qr);
+
+        $result = false;
+        if(mysqli_num_rows($rows) > 0) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
 }
 ?>

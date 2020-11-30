@@ -5,7 +5,9 @@
             <div class="form__group mb--20">
                 <label class="form__label form__label--2" for="register_username">Username <span
                         class="required">*</span></label>
+                <span class="message" id="message_username"></span>
                 <input type="text" class="form__input form__input--2" id="register_username" name="register_username">
+
             </div>
 
             <div class="form__group mb--20">
@@ -17,7 +19,9 @@
             <div class="form__group mb--20">
                 <label class="form__label form__label--2" for="register_email">Email address <span
                         class="required">*</span></label>
+                <span class="message" id="message_email"></span>
                 <input type="email" class="form__input form__input--2" id="register_email" name="register_email">
+                <div id="message_email"></div>
             </div>
             <!-- <p class="privacy-text mb--20">Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our privacy policy.</p> -->
             <div class="form__group">
