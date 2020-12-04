@@ -42,38 +42,16 @@
         <!-- Header End -->
 
         <!-- Breadcrumb area Start -->
-        <div class="breadcrumb-area bg-color ptb--90" data-bg-color="#f6f6f6">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="d-flex justify-content-between align-items-center flex-sm-row flex-column">
-                            <h1 class="page-title">Register</h1>
-                            <ul class="breadcrumb">
-                                <li><a href="index.html">Home</a></li>
-                                <li class="current"><span>Register</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <!-- Breadcrumb area End -->
 
         <!-- Main Content Wrapper Start -->
-        <div class="main-content-wrapper">
-            <div class="page-content-inner pt--75 pb--80">
-                <div class="container">
-                    <div class="row">
-                        <!-- login -->
-                        <!-- register -->
-                        <?php require_once "./mvc/views/pages/". $data["page"] . ".php" ?>
+
+        <!-- register -->
+        <?php require_once "./mvc/views/pages/". $data["page"] . ".php" ?>
 
 
-                    </div>
 
-                </div>
-            </div>
-        </div>
         <!-- Main Content Wrapper Start -->
 
         <!-- Footer Start-->

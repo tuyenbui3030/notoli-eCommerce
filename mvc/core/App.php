@@ -5,7 +5,7 @@ class App {
     protected $params = [];
     
     function __construct() {
-        $arr = $this->UrlProcess();
+        $arr = $this->UrlProcess(); 
         if(empty($arr)){
             $arr[0] = "Home";
         }

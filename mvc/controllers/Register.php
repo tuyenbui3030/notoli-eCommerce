@@ -10,7 +10,19 @@ class Register extends Controller {
             "page"=>"Register"
         ]);
     }
-
+    public function Verify($token) {
+        $result = $this->UserModel->VerifyNewUser($token);
+        if($result == 'true') {
+            $this->view("MiniLayout", [
+                "page"=>"Verify",
+                "result"=>$result
+            ]);
+        } else {
+            $this->view("MiniLayout", [
+                "page"=>"404"
+            ]);
+        }
+    }
     public function UserRegister() {
         if(isset($_POST["btnRegister"])) {
             //Step 1: Lấy dữ liệu người dùng nhập vào;
@@ -19,13 +31,23 @@ class Register extends Controller {
             $register_password = password_hash($register_password, PASSWORD_DEFAULT);
             $register_email = $_POST["register_email"];
             $token = bin2hex(random_bytes(50));
-            $verified = 0;
             //Step 2: Insert database vào bảng users
-            $kq = $this->UserModel->InsertNewUser($register_username, $register_password, $register_email, $token, $verified);
-            //Báo cáo kết quả đăng kí
+
+            $kq = $this->UserModel->InsertNewUser($register_username, $register_password, $register_email, $token);
+            
+            $verify = verification($register_email, $token);
+            $notification = json_encode(false);
+            if($kq && $verify) {
+                $notification = json_encode(true);
+            }
+            //Thông báo kết quả đăng kí
             $this->view("MiniLayout", [
                 "page"=>"Register",
-                "result" => $kq
+                "result" => $notification
+            ]);
+        } else {
+            $this->view("MiniLayout", [
+                "page"=>"404"
             ]);
         }
     }
