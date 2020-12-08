@@ -1,14 +1,15 @@
 <?php
+require_once "config.php";
 class DB {
     public $con;
-    protected $serverName = "localhost";
-    protected $userName = "root";
-    protected $password = "";
-    protected $dbName = "notoli";
+    protected $serverName = SERVER;
+    protected $userName = USERNAME;
+    protected $password = PASSWORD;
+    protected $dbName = DBNAME;
 
 
-    protected $emailUsername = "notolistore@gmail.com";
-    protected $emailPassword = "gauden123";
+    protected $emailUsername = EMAIL_USER;
+    protected $emailPassword = EMAIL_PASSWORD;
     
     
     function __construct() {

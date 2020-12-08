@@ -1,7 +1,25 @@
 $(document).ready(function () {
+  $("form#registration-form").on("submit", function (e) {
+    let username = $(this).find("input#register_username").val();
+    let password = $(this).find("input#register_password").val();
+    let email = $(this).find("input#register_email").val();
+    var loadingElement = $("div.zakas-preloader");
+    loadingElement.addClass("active");
+    $.ajax({
+      url: "./Ajax/insertAccount",
+      cache: false,
+      type: "POST", // method: 'POST'
+      success: function (res) {
+        loadingElement.removeClass("active");
+      },
+    });
+    //return false;
+  });
+
   $("#register_username").keyup(function () {
     var user = $(this).val();
     $.post("./Ajax/checkUsername", { username: user }, function (data) {
+      console.log(user);
       if (user.length >= 8) {
         if (data == "true") {
           $("#message_username").html(

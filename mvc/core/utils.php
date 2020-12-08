@@ -2,14 +2,15 @@
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
+    require_once 'config.php';
     require './vendor/autoload.php';
     function verification($register_email, $token){
         $mail = new PHPMailer(true);
         $mail->isSMTP();                                            // Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-        $mail->Username = 'notolistore@gmail.com';
-        $mail->Password = 'gauden123';                               // SMTP password
+        $mail->Username = EMAIL_USER;
+        $mail->Password = EMAIL_PASSWORD;                               // SMTP password
 
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
         $mail->Port       = 587;      
@@ -34,7 +35,7 @@
                 NOTOLI.COM. Vui lòng truy cập vào link bên dưới để xác
                 nhận tài khoản!
               </p>
-              <a href="http://localhost/notoli/Register/verify/' . $token . '">Xác nhận tài khoản</a>
+              <a href="http://'. SERVER .'/notoli/Register/verify/' . $token . '">Xác nhận tài khoản</a>
             </div>
           </body>
         </html>';

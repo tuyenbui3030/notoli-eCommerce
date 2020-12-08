@@ -21,7 +21,8 @@
                 <div class="col-md-6">
                     <div class="register-box">
                         <h4 class="heading__tertiary mb--30">Register</h4>
-                        <form class="form form--login" action="./Register/UserRegister" method="POST">
+                        <form class="form form--login" id="registration-form" action="./Register/UserRegister"
+                            method="POST">
                             <div class="form__group mb--20">
                                 <label class="form__label form__label--2" for="register_username">Username <span
                                         class="required">*</span></label>
