@@ -1,5 +1,5 @@
 <?php
-class Home extends Controller {
+class Index extends Controller {
     public $prod;
     public function __construct() {
         $this->prod = $this->model("productModel");
@@ -10,9 +10,6 @@ class Home extends Controller {
             "page"=>"Home",
             "itemProduct"=>$this->prod->Product()  
         ]);
-    }
-    public function Show() {
-       $this->view("MasterLayout");
     }
 }
 ?>

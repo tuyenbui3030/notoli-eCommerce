@@ -13,8 +13,8 @@ class DB {
     
     
     function __construct() {
-        $this->con = mysqli_connect($this->serverName, $this->userName, $this->password);
-        mysqli_select_db($this->con, $this->dbName);
+        $this->con = mysqli_connect(SERVER, USERNAME, PASSWORD);
+        mysqli_select_db($this->con, DBNAME);
         mysqli_query($this->con, "SET NAMES 'utf8'");
     }
 }

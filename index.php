@@ -1,6 +1,7 @@
 <?php
 session_start();
-
-require_once "./mvc/Bridge.php";
-$notoli = new App();
+define('APPLICATION_PATH', getcwd());
+require_once APPLICATION_PATH . '/mvc/Bridge.php';
+//require_once "./mvc/Bridge.php";
+$notoli = new Route();
 ?>

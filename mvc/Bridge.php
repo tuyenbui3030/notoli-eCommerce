@@ -1,6 +1,6 @@
 <?php 
-require_once "./mvc/core/App.php";
-require_once "./mvc/core/Controller.php";
-require_once "./mvc/core/DB.php";
-require_once "./mvc/core/utils.php";
+require_once APPLICATION_PATH . '/mvc/core/Route.php';
+require_once APPLICATION_PATH . '/mvc/core/Controller.php';
+require_once APPLICATION_PATH . '/mvc/core/DB.php';
+require_once APPLICATION_PATH . '/mvc/core/utils.php';
 ?>

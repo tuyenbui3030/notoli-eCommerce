@@ -232,7 +232,8 @@
     <!-- ************************* JS Files ************************* -->
 
     <!-- jQuery JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
     <script src="./public/assets/js/vendor.js"></script>
 
     <!-- Main JS -->
