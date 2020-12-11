@@ -4,10 +4,10 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center flex-sm-row flex-column">
-                    <h1 class="page-title">Verifycation</h1>
+                    <h1 class="page-title">Xác minh</h1>
                     <ul class="breadcrumb">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="current"><span>Verifycation</span></li>
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li class="current"><span>Xác minh</span></li>
                     </ul>
                 </div>
             </div>

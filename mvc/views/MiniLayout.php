@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <base href="http://localhost/notoli/" target="_blank">
-    <title>Zakas - Fashion eCommerce Bootstrap 4 Template</title>
+    <title>Notoli Store</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
@@ -21,9 +21,22 @@
     <link rel="stylesheet" href="./public/assets/css/main.css">
     <link rel="stylesheet" href="./public/assets/css/dev.css">
 
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"> -->
 </head>
 
 <body>
+    <!-- Custom alert Start -->
+    <div class="popup_box">
+        <i class="fa fa-exclamation"></i>
+        <h1>Vui lòng nhập thông tin chính đầy đủ và chính xác</h1>
+        <label>Bạn muốn tiếp tục?</label>
+        <div class="btns">
+            <!-- <a class="btn1">Đóng</a> -->
+            <input type="button" value="Đóng" class="btn btn-submit btn-style-1" id="btn-close" />
+        </div>
+    </div>
+    <!-- Custom alert End -->
+
 
     <!-- Preloader Start -->
     <div class="zakas-preloader active">
@@ -239,6 +252,7 @@
     <!-- Main JS -->
     <script src="./public/assets/js/main.js"></script>
     <script src="./public/assets/js/plugin.js"></script>
+    <div id="screen_lock"></div>
 </body>
 
 </html>

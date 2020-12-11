@@ -5,7 +5,7 @@
                 <div class="col-xl-10 col-lg-9 col-3">
                     <nav class="main-navigation">
                         <div class="site-branding">
-                            <a href="index.html" class="logo">
+                            <a href="./home" class="logo">
                                 <figure class="logo--transparent">
                                     <img src="./public/assets/img/logo/logo-white.png" alt="Logo">
                                 </figure>

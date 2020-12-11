@@ -1,3 +1,4 @@
+//Register Validation
 $(document).ready(function () {
   var rule_email = false;
   var rule_username = false;
@@ -13,39 +14,72 @@ $(document).ready(function () {
       type: "POST",
       success: function (res) {
         if (jQuery.trim(res) == "success") {
+          messageResult.removeClass("text-danger");
           messageResult.addClass("text-success");
           messageResult
             .last()
             .html("Đăng ký tài khoản thành công, vui lòng xác nhận email");
+          $("#register_username").val("");
+          $("#register_password").val("");
+          $("#register_email").val("");
+          $("#message_username").html("");
+          $("#message_password").html("");
+          $("#message_email").html("");
         } else {
+          messageResult.removeClass("text-success");
           messageResult.addClass("text-danger");
           messageResult.last().html("Đăng ký tài khoản thất bại");
         }
-        loadingElement.removeClass("active");
+        setTimeout(function () {
+          loadingElement.removeClass("active");
+        }, 500);
+        // loadingElement.removeClass("active");
       },
     });
     return false;
   });
   //Check username
   $("#register_username").keyup(function () {
-    var user = $(this).val();
+    ruleUsername();
+  });
+  function ruleUsername() {
+    var user = $("#register_username").val();
+    var messageUsername = $("#message_username");
     $.post("./Ajax/checkUsername", { username: user }, function (data) {
       if (data == "true") {
-        $("#message_username").html(
-          "<i class='text-danger'>Tài khoản đã tồn tại trong hệ thống</i>"
-        );
+        messageUsername.html("Tài khoản đã tồn tại trong hệ thống");
+        messageUsername.addClass("text-danger");
+        messageUsername.removeClass("text-success");
+        messageUsername.removeClass("text-warning");
         rule_username = false;
+      } else {
+        var regex = /^([a-zA-Z0-9_.+-])(?=.{5,})/;
+        if (regex.test(user)) {
+          messageUsername.html("Tài khoản hợp lệ");
+          messageUsername.addClass("text-success");
+          messageUsername.removeClass("text-warning");
+          messageUsername.removeClass("text-danger");
+          rule_username = true;
+        } else {
+          messageUsername.html(
+            "Tài khoản tối thiểu 6 (yêu cầu không có khoảng cách và kí tự đặc biệt)"
+          );
+          messageUsername.addClass("text-warning");
+          messageUsername.removeClass("text-success");
+          messageUsername.removeClass("text-danger");
+          rule_username = false;
+        }
       }
     });
-  });
+  }
   $("#register_password").keyup(function () {
+    rulePassword();
+  });
+
+  function rulePassword() {
     var val = $("#register_password").val();
-    console.log(val);
     var messagePassword = $("#message_password");
-    //var regex = /^([a-zA-Z0-9_.+-])+$/;
-    var regex = new RegExp(
-      "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
-    );
+    var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
     if (regex.test(val)) {
       messagePassword.html("Password hợp lệ");
       messagePassword.addClass("text-success");
@@ -59,7 +93,8 @@ $(document).ready(function () {
       messagePassword.removeClass("text-success");
       rule_password = false;
     }
-  });
+  }
+
   $("#register_email").keyup(function () {
     ruleEmail();
   });
@@ -67,9 +102,6 @@ $(document).ready(function () {
   function ruleEmail() {
     var val = $("#register_email").val();
     var messageEmail = $("#message_email");
-    // var regex = new RegExp(
-    //   "^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})"
-    // );
     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     if (regex.test(val)) {
       messageEmail.html("Email hợp lệ");
@@ -83,10 +115,28 @@ $(document).ready(function () {
       rule_email = false;
     }
   }
+  function disableScreen() {
+    var screenLock = $("#screen_lock");
+    screenLock.addClass("overlay");
+  }
+  function enableScreen() {
+    var screenLock = $("#screen_lock");
+    screenLock.removeClass("overlay");
+  }
   $("#btnRegister").click(function () {
-    if (rule_email && rule_password && rule_username) {
+    ruleUsername();
+    rulePassword();
+    ruleEmail();
+
+    if (rule_username && rule_password && rule_email) {
       return true;
     }
+    $(".popup_box").css("display", "block");
+    disableScreen();
+    $("#btn-close").click(function () {
+      $(".popup_box").css("display", "none");
+      enableScreen();
+    });
     return false;
   });
 });
