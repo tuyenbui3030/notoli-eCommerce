@@ -1,5 +1,6 @@
 <?php
 class UserModel extends DB {
+    //Insert User
     public function InsertNewUser($register_username, $register_password, $register_email, $token) {
         $qr = "INSERT INTO users VALUES(null, '$register_username', '$register_password', '$register_email', '$token', 0)";
         $result = false;
@@ -8,6 +9,7 @@ class UserModel extends DB {
         }
         return json_encode($result);
     }
+    //Xác minh User
     public function VerifyNewUser($token) {
         $qr = "UPDATE users SET verified = b'1' WHERE token = '$token'";
         mysqli_query($this->con, $qr);
@@ -18,6 +20,7 @@ class UserModel extends DB {
         }
         return json_encode($result);
     }
+    //Kiểm tra User đã tồn tại
     public function checkUsername($username) {
         $qr = "SELECT id FROM users
         WHERE username = '$username'";
@@ -28,6 +31,35 @@ class UserModel extends DB {
             $result = true;
         }
         return json_encode($result);
+    }
+    //Kiểm tra User đã tồn tại
+    public function checkEmail($email) {
+        $qr = "SELECT id FROM users
+        WHERE email = '$email'";
+        $rows = mysqli_query($this->con, $qr);
+
+        $result = false;
+        if(mysqli_num_rows($rows) > 0) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
+    public function loginPageModel($username, $password) {
+        $query = "SELECT * FROM users WHERE username = '$username' AND 	verified = 1";
+        $result = mysqli_query($this->con, $query);
+        if(mysqli_num_rows($result) > 0) {
+            while($row = mysqli_fetch_array($result)){
+                if(password_verify($password, $row["password"])) {
+                    // $_SESSION["username"] = $username;
+                    // header("location:index.php");
+                    return json_encode(true);
+                } else {
+                    return json_encode(false);
+                    //echo '<script>alert("Không thành công")</script>';
+                }
+            }
+        }
+        return json_encode(false);
     }
 }
 ?>

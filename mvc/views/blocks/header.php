@@ -20,7 +20,7 @@
                                     <a href="index.html" class="mainmenu__link">
                                         <span class="mm-text">Home</span>
                                     </a>
-                                    <ul class="megamenu two-column">
+                                    <!-- <ul class="megamenu two-column">
                                         <li>
                                             <a class="megamenu-title" href="#">
                                                 <span class="mm-text">Group One</span>
@@ -85,13 +85,13 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                    </ul>
+                                    </ul> -->
                                 </li>
                                 <li class="mainmenu__item menu-item-has-children">
                                     <a href="shop.html" class="mainmenu__link">
                                         <span class="mm-text">Shop</span>
                                     </a>
-                                    <ul class="megamenu">
+                                    <!-- <ul class="megamenu">
                                         <li>
                                             <a class="megamenu-title" href="#">
                                                 <span class="mm-text">Shop Grid</span>
@@ -220,7 +220,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                    </ul>
+                                    </ul> -->
                                 </li>
                                 <li class="mainmenu__item">
                                     <a href="contact-us.html" class="mainmenu__link">
@@ -245,30 +245,27 @@
                             </a>
                         </li>
                         <li class="header-toolbar__item user-info">
-                            <a href="" class="header-toolbar__btn">
+                            <a href="my-account.html" class="header-toolbar__btn">
                                 <i class="flaticon flaticon-user"></i>
                             </a>
                             <ul class="user-info-menu">
+                                <?php if(!isset($_SESSION['loggedIN'])) { ?>
                                 <li>
-                                    <a href="./register">Đăng Ký</a>
+                                    <a href="./register">Đăng kí</a>
                                 </li>
                                 <li>
-                                    <a href="my-account.html">My Account</a>
+                                    <a href="./login">Đăng nhập</a>
+                                </li>
+                                <?php } else {?>
+                                <li>
+                                    <a href="./logout">Đăng xuất</a>
+                                </li>
+                                <?php } ?>
+                                <li>
+                                    <a href="checkout.html">Thanh toán</a>
                                 </li>
                                 <li>
-                                    <a href="cart.html">Shopping Cart</a>
-                                </li>
-                                <li>
-                                    <a href="checkout.html">Check Out</a>
-                                </li>
-                                <li>
-                                    <a href="wishlist.html">Wishlist</a>
-                                </li>
-                                <li>
-                                    <a href="order-tracking.html">Order tracking</a>
-                                </li>
-                                <li>
-                                    <a href="compare.html">compare</a>
+                                    <a href="order-tracking.html">Theo dõi đơn hàng</a>
                                 </li>
                             </ul>
                         </li>

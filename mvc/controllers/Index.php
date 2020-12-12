@@ -6,8 +6,8 @@ class Index extends Controller {
     }
     public function Action() {
         //$prod = $this->model("productModel");
-        $this->view("MasterLayout", [
-            "page"=>"Home",
+        $this->view("MiniLayout", [
+            "page"=>"Index",
             "itemProduct"=>$this->prod->Product()  
         ]);
     }

@@ -55,7 +55,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-sm-6 text-sm-left text-center mb-xs--10">
-                    <p class="copyright-text"><a href="index.html">Zakas</a> &copy; 2019 all rights reserved</p>
+                    <p class="copyright-text"><a href="./index">Notoli</a> &copy; 2019 all rights reserved</p>
                 </div>
                 <div class="col-sm-6 text-sm-right text-center">
                     <figure>

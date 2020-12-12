@@ -1,3 +1,11 @@
+function disableScreen() {
+  var screenLock = $("#screen_lock");
+  screenLock.addClass("overlay");
+}
+function enableScreen() {
+  var screenLock = $("#screen_lock");
+  screenLock.removeClass("overlay");
+}
 //Register Validation
 $(document).ready(function () {
   var rule_email = false;
@@ -9,11 +17,12 @@ $(document).ready(function () {
     var messageResult = $("#message_result");
     loadingElement.addClass("active");
     $.ajax({
-      url: "./Ajax/registerAccount",
+      url: "./Register/registerAccount",
       data: $(this).serialize(),
       type: "POST",
       success: function (res) {
-        if (jQuery.trim(res) == "success") {
+        console.log(res);
+        if (jQuery.trim(res) == "true") {
           messageResult.removeClass("text-danger");
           messageResult.addClass("text-success");
           messageResult
@@ -45,7 +54,7 @@ $(document).ready(function () {
   function ruleUsername() {
     var user = $("#register_username").val();
     var messageUsername = $("#message_username");
-    $.post("./Ajax/checkUsername", { username: user }, function (data) {
+    $.post("./Register/checkUsername", { username: user }, function (data) {
       if (data == "true") {
         messageUsername.html("Tài khoản đã tồn tại trong hệ thống");
         messageUsername.addClass("text-danger");
@@ -96,7 +105,7 @@ $(document).ready(function () {
   }
 
   $("#register_email").keyup(function () {
-    ruleEmail();
+    ruleEmail2();
   });
 
   function ruleEmail() {
@@ -115,18 +124,38 @@ $(document).ready(function () {
       rule_email = false;
     }
   }
-  function disableScreen() {
-    var screenLock = $("#screen_lock");
-    screenLock.addClass("overlay");
-  }
-  function enableScreen() {
-    var screenLock = $("#screen_lock");
-    screenLock.removeClass("overlay");
+  function ruleEmail2() {
+    var val = $("#register_email").val();
+    var messageEmail = $("#message_email");
+    $.post("./Register/checkEmail", { email: val }, function (data) {
+      if (data == "true") {
+        messageEmail.html("Email đã được đăng kí bởi 1 tài khoản khác");
+        messageEmail.addClass("text-danger");
+        messageEmail.removeClass("text-success");
+        messageEmail.removeClass("text-warning");
+        rule_username = false;
+      } else {
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if (regex.test(val)) {
+          messageEmail.html("Email hợp lệ");
+          messageEmail.addClass("text-success");
+          messageEmail.removeClass("text-warning");
+          messageEmail.removeClass("text-danger");
+          rule_username = true;
+        } else {
+          messageEmail.html("Email không hợp lệ");
+          messageEmail.addClass("text-warning");
+          messageEmail.removeClass("text-success");
+          messageEmail.removeClass("text-danger");
+          rule_username = false;
+        }
+      }
+    });
   }
   $("#btnRegister").click(function () {
     ruleUsername();
     rulePassword();
-    ruleEmail();
+    ruleEmail2();
 
     if (rule_username && rule_password && rule_email) {
       return true;
@@ -136,6 +165,47 @@ $(document).ready(function () {
     $("#btn-close").click(function () {
       $(".popup_box").css("display", "none");
       enableScreen();
+    });
+    return false;
+  });
+});
+/*Login*/
+$(document).ready(function () {
+  $("#btnLogin").on("click", function () {
+    var username = $("#login_username").val();
+    var password = $("#login_password").val();
+    if (username == "" || password == "") {
+      $(".popup_box").css("display", "block");
+      disableScreen();
+      $("#btn-close").click(function () {
+        $(".popup_box").css("display", "none");
+        enableScreen();
+      });
+      return false;
+    }
+    var loadingElement = $("div.zakas-preloader");
+    loadingElement.addClass("active");
+    $.ajax({
+      url: "./Login/loginPageController",
+      method: "POST",
+      data: {
+        login: 1,
+        usernamePHP: username,
+        passwordPHP: password,
+      },
+      success: function (response) {
+        var loginResponse = $("#login_response");
+        if (response == "true") {
+          window.location.href = "./";
+        } else {
+          loginResponse.html("Tên đăng nhập hoặc mật khẩu không chính xác!");
+          loginResponse.addClass("text-danger");
+        }
+        setTimeout(function () {
+          loadingElement.removeClass("active");
+        }, 1000);
+      },
+      dataType: "text",
     });
     return false;
   });
