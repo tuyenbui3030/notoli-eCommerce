@@ -49,7 +49,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <a class="forgot-pass" href="#">Quên mật khẩu?</a>
+                            <a class="forgot-pass" href="./login/reset">Quên mật khẩu?</a>
                         </form>
                     </div>
                 </div>

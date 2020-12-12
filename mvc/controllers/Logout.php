@@ -9,9 +9,11 @@ class Logout extends Controller {
         if(isset($_SESSION['loggedIN'])) {
             unset($_SESSION['loggedIN']);
         }
-        $this->view("MiniLayout", [
-            "page"=>"Login"
-        ]);
+        if(!isset($_SESSION['loggedIN'])) {
+            $location = "./login";
+            header("Location: " . $location);
+            exit();
+        }
     }
 }
 ?>

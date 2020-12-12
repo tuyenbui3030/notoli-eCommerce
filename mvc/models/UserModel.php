@@ -44,6 +44,7 @@ class UserModel extends DB {
         }
         return json_encode($result);
     }
+    //Đăng nhập
     public function loginPageModel($username, $password) {
         $query = "SELECT * FROM users WHERE username = '$username' AND 	verified = 1";
         $result = mysqli_query($this->con, $query);
@@ -60,6 +61,13 @@ class UserModel extends DB {
             }
         }
         return json_encode(false);
+    }
+    //Select token;
+    public function SelectToken($email) {
+        $query = "SELECT token FROM users WHERE email = '$email'";
+        $result = mysqli_query($this->con, $query);
+        $rows = mysqli_fetch_array($result);
+        return json_encode($rows["token"]);
     }
 }
 ?>

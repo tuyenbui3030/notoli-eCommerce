@@ -15,7 +15,8 @@ class Register extends Controller {
             "page"=>"Register"
         ]);
     }
-    public function Verify($token) {
+    public function Verify($token=NULL) {
+        if($token!=NULL) {
             $result = $this->UserModel->VerifyNewUser($token);
             if($result == 'true') {
                 $this->view("MiniLayout", [
@@ -27,7 +28,11 @@ class Register extends Controller {
                     "page"=>"404"
                 ]);
             }
-        
+        } else {
+            $this->view("MiniLayout", [
+                "page"=>"404"
+            ]);
+        }
     }
     ////////////    AJAX     //////////////
     //Kiểm tra tài khoản có tồn tại không

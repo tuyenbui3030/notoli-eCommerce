@@ -210,3 +210,37 @@ $(document).ready(function () {
     return false;
   });
 });
+//Send mail khôi phục mật khẩu
+
+$(document).ready(function () {
+  $("form#sendMail-form").on("submit", function (e) {
+    var loadingElement = $("div.zakas-preloader");
+    var messageResult = $("#message_recover_result");
+    loadingElement.addClass("active");
+    $.ajax({
+      url: "./Login/sendMail",
+      data: $(this).serialize(),
+      type: "POST",
+      success: function (res) {
+        console.log(res);
+        if (jQuery.trim(res) == "true") {
+          messageResult.removeClass("text-danger");
+          messageResult.addClass("text-success");
+          messageResult
+            .last()
+            .html(
+              "Mã xác minh đã được gửi đến địa chỉ email đăng kí. Vui lòng xác minh"
+            );
+        } else {
+          messageResult.removeClass("text-success");
+          messageResult.addClass("text-danger");
+          messageResult.last().html("Email không tồn tại");
+        }
+        setTimeout(function () {
+          loadingElement.removeClass("active");
+        }, 500);
+      },
+    });
+    return false;
+  });
+});

@@ -47,5 +47,48 @@ class Login extends Controller {
         //     }
         // }
         //}
+    public function reset($token=NULL) {
+        if($token == NULL) {
+            $this->view("MiniLayout", [
+                "page"=>"Reset",
+                "case"=>"true"
+            ]);
+        } else {
+            $this->view("MiniLayout", [
+                "page"=>"Reset",
+                "case"=>"false"
+            ]);
+        }
+    }
+
+
+
+    public function sendMail() {      
+        if(!empty($_POST)) {      
+            $recover_email = $this->UserModel->con->real_escape_string($_POST["recover_email"]);
+            //Lọc thông tin đăng kí
+            if(empty($recover_email)) {
+                exit("false");
+                //return;
+            }
+
+            //Kiểm tra email đã đăng kí chưa
+            $checkEmail = $this->UserModel->checkEmail($recover_email);
+            if($checkEmail == "true") {
+                $token = $this->UserModel->SelectToken($recover_email);
+                $token = json_decode($token);
+                $resultSendMail = forgotPassword($recover_email, $token);
+                if($resultSendMail) {
+                    exit("true");
+                } else {
+                    exit("false");
+                }
+            }
+        } else {
+            $this->view("MiniLayout", [
+                "page"=>"404"
+            ]);
+        }
+    }
 }
 ?>

@@ -45,4 +45,46 @@
         }
         return json_encode($result);
     }
+
+    function forgotPassword($register_email, $token){
+      $mail = new PHPMailer(true);
+      $mail->isSMTP();                                            // Send using SMTP
+      $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+      $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+      $mail->Username = EMAIL_USER;
+      $mail->Password = EMAIL_PASSWORD;                               // SMTP password
+
+      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+      $mail->Port       = 587;      
+  
+      //Recipients
+      $mail->setFrom('notolistore@gmail.com', 'Notoli Sneakers');
+      $mail->addAddress($register_email);                   // Name is optional
+      $mail->addReplyTo('notolistore@gmail.com', 'Notoli Sneakers');
+      $mail->isHTML(true);                                  // Set email format to HTML
+      $mail->Subject = 'Forgot Password NOTOLI';
+      $mail->Body    = '<!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Document</title>
+        </head>
+        <body>
+          <div class="wrapper">
+            <p>
+            Chúng tôi nhận được yêu cầu thiết lập lại mật khẩu cho tài khoản NOTOLI của bạn.</br>
+
+            Vui lòng thiết lập lại mật khẩu <a href="http://'. SERVER .'/notoli/login/reset/' . $token . '">Tại đây</a> hoặc copy và dán đường dẫn bên dưới lên trình duyệt
+            </p>
+            
+          </div>
+        </body>
+      </html>';
+      $result = false;
+      if($mail->send()) {
+          $result = true;
+      }
+      return json_encode($result);
+  }
 ?>
