@@ -22,6 +22,8 @@
                 <div class="col-md-6">
                     <div class="login-box">
                         <h4 class="heading__tertiary mb--30">Khôi phục mật khẩu</h4>
+                        <p>Quên mật khẩu? Vui lòng nhập địa chỉ email. Bạn sẽ nhận được một liên kết tạo mật khẩu mới
+                            qua email.</p>
                         <?php if($data["case"]=="true") { ?>
                         <form class="form form--login" id="sendMail-form" action="" method="POST">
                             <div class="form__group mb--20">
@@ -39,23 +41,26 @@
                             </div>
                         </form>
                         <?php } else { ?>
-                        <form class="form form--login" id="registration-form" action="" method="POST">
+                        <form class="form form--login" id="newPassword-form" action="" method="POST">
                             <div class="form__group mb--20">
                                 <label class="form__label form__label--2" for="recover_password">Mật khẩu mới <span
                                         class="required">*</span></label>
-                                <span class="message"><i id="message_password"></i></span>
+                                <div class="message"><i id="message_recover_password"></i></div>
 
                                 <input type="password" class="form__input form__input--2" id="recover_password"
                                     name="recover_password">
+                                <input type="text" class="form__input form__input--2 hidden-token" id="token_change"
+                                    name="token_change" value=<?php echo $data["token"] ?>>
                             </div>
 
                             <div class="form__group mb--20">
                                 <label class="form__label form__label--2" for="recover_password_2">Nhập lại mật khẩu mới
                                     <span class="required">*</span></label>
-                                <span class="message"><i id="message_password2"></i></span>
+                                <div class="message"><i id="message_recover_password_2"></i></div>
                                 <input type="password" class="form__input form__input--2" id="recover_password_2"
                                     name="recover_password_2">
                             </div>
+                            <p id="message_change_password"></p>
                             <div class="form__group">
                                 <input type="submit" id="btnRecover" name="btnRecover" value="Xác nhận"
                                     class="btn btn-submit btn-style-1">

@@ -1,3 +1,22 @@
+function rulePassword(val, messagePassword) {
+  // var val = $("#register_password").val();
+  // var messagePassword = $("#message_password");
+  var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
+  if (regex.test(val)) {
+    messagePassword.html("Mật khẩu hợp lệ");
+    messagePassword.addClass("text-success");
+    messagePassword.removeClass("text-warning");
+    rule_password = true;
+  } else {
+    messagePassword.html(
+      "Mật khẩu tối thiểu 8 kí tự và gồm cả chữ thường, chữ hoa, số và kí tự đặc biệt"
+    );
+    messagePassword.addClass("text-warning");
+    messagePassword.removeClass("text-success");
+    rule_password = false;
+  }
+  return rule_password;
+}
 function disableScreen() {
   var screenLock = $("#screen_lock");
   screenLock.addClass("overlay");
@@ -80,29 +99,13 @@ $(document).ready(function () {
         }
       }
     });
+    return rule_username;
   }
   $("#register_password").keyup(function () {
-    rulePassword();
-  });
-
-  function rulePassword() {
     var val = $("#register_password").val();
     var messagePassword = $("#message_password");
-    var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
-    if (regex.test(val)) {
-      messagePassword.html("Password hợp lệ");
-      messagePassword.addClass("text-success");
-      messagePassword.removeClass("text-warning");
-      rule_password = true;
-    } else {
-      messagePassword.html(
-        "Mật khẩu tối thiểu 8 kí tự và gồm cả chữ thường, chữ hoa, số và kí tự đặc biệt"
-      );
-      messagePassword.addClass("text-warning");
-      messagePassword.removeClass("text-success");
-      rule_password = false;
-    }
-  }
+    rulePassword(val, messagePassword);
+  });
 
   $("#register_email").keyup(function () {
     ruleEmail2();
@@ -133,7 +136,7 @@ $(document).ready(function () {
         messageEmail.addClass("text-danger");
         messageEmail.removeClass("text-success");
         messageEmail.removeClass("text-warning");
-        rule_username = false;
+        rule_email = false;
       } else {
         var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         if (regex.test(val)) {
@@ -141,22 +144,27 @@ $(document).ready(function () {
           messageEmail.addClass("text-success");
           messageEmail.removeClass("text-warning");
           messageEmail.removeClass("text-danger");
-          rule_username = true;
+          rule_email = true;
         } else {
           messageEmail.html("Email không hợp lệ");
           messageEmail.addClass("text-warning");
           messageEmail.removeClass("text-success");
           messageEmail.removeClass("text-danger");
-          rule_username = false;
+          rule_email = false;
         }
       }
     });
+    return rule_email;
   }
   $("#btnRegister").click(function () {
-    ruleUsername();
-    rulePassword();
-    ruleEmail2();
-
+    var val = $("#register_password").val();
+    var messagePassword = $("#message_password");
+    rule_username = ruleUsername();
+    rule_password = rulePassword(val, messagePassword);
+    rule_email = ruleEmail2();
+    console.log(rule_username);
+    console.log(rule_password);
+    console.log(rule_email);
     if (rule_username && rule_password && rule_email) {
       return true;
     }
@@ -235,6 +243,57 @@ $(document).ready(function () {
           messageResult.removeClass("text-success");
           messageResult.addClass("text-danger");
           messageResult.last().html("Email không tồn tại");
+        }
+        setTimeout(function () {
+          loadingElement.removeClass("active");
+        }, 500);
+      },
+    });
+    return false;
+  });
+});
+
+$(document).ready(function () {
+  $("#recover_password").keyup(function () {
+    var val = $("#recover_password").val();
+    var messagePassword = $("#message_recover_password");
+    rulePassword(val, messagePassword);
+  });
+  $("#recover_password_2").keyup(function () {
+    var newPass = $("#recover_password").val();
+    var rePass = $("#recover_password_2").val();
+    var messagePassword2 = $("#message_recover_password_2");
+    rulePassword(rePass, messagePassword2);
+    if (newPass === rePass) {
+      messagePassword2.html("Mật khẩu hợp lệ");
+      messagePassword2.addClass("text-success");
+      messagePassword2.removeClass("text-warning");
+    } else {
+      messagePassword2.html("Mật khẩu không giống nhau");
+      messagePassword2.removeClass("text-success");
+      messagePassword2.addClass("text-warning");
+    }
+  });
+});
+
+$(document).ready(function () {
+  $("form#newPassword-form").on("submit", function (e) {
+    var loadingElement = $("div.zakas-preloader");
+    var messageChange = $("#message_change_password");
+    loadingElement.addClass("active");
+    $.ajax({
+      url: "./Login/ChangePassword",
+      data: $(this).serialize(),
+      type: "POST",
+      success: function (res) {
+        if (jQuery.trim(res) == "true") {
+          messageChange.removeClass("text-danger");
+          messageChange.addClass("text-success");
+          messageChange.last().html("Đổi mật khẩu thành công");
+        } else {
+          messageChange.removeClass("text-success");
+          messageChange.addClass("text-danger");
+          messageChange.last().html("Đổi mật khẩu thất bại");
         }
         setTimeout(function () {
           loadingElement.removeClass("active");

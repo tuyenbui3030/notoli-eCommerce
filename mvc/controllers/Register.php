@@ -17,7 +17,8 @@ class Register extends Controller {
     }
     public function Verify($token=NULL) {
         if($token!=NULL) {
-            $result = $this->UserModel->VerifyNewUser($token);
+            $newToken = bin2hex(random_bytes(50));
+            $result = $this->UserModel->VerifyNewUser($token, $newToken);
             if($result == 'true') {
                 $this->view("MiniLayout", [
                     "page"=>"Verify",

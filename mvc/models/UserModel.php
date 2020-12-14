@@ -10,8 +10,8 @@ class UserModel extends DB {
         return json_encode($result);
     }
     //Xác minh User
-    public function VerifyNewUser($token) {
-        $qr = "UPDATE users SET verified = b'1' WHERE token = '$token'";
+    public function VerifyNewUser($token, $newToken) {
+        $qr = "UPDATE users SET verified = b'1', token = '$newToken' WHERE token = '$token'";
         mysqli_query($this->con, $qr);
         $affect =  $this->con->affected_rows;
         $result = false;
@@ -62,12 +62,35 @@ class UserModel extends DB {
         }
         return json_encode(false);
     }
+    //Kiểm tra Token có tồn tại
+    public function checkToken($token) {
+        $qr = "SELECT id FROM users
+        WHERE token = '$token'";
+        $rows = mysqli_query($this->con, $qr);
+
+        $result = false;
+        if(mysqli_num_rows($rows) > 0) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
     //Select token;
     public function SelectToken($email) {
         $query = "SELECT token FROM users WHERE email = '$email'";
         $result = mysqli_query($this->con, $query);
         $rows = mysqli_fetch_array($result);
         return json_encode($rows["token"]);
+    }
+    //Update password;
+    public function UpdatePassword($email, $newPassword, $token, $newToken) {
+        $qr = "UPDATE users SET password = '$newPassword', token = '$newToken' WHERE token = '$token' AND email ='$email'";
+        mysqli_query($this->con, $qr);
+        $affect =  $this->con->affected_rows;
+        $result = false;
+        if($affect > 0) {
+            $result = true;
+        }
+        return json_encode($result);
     }
 }
 ?>

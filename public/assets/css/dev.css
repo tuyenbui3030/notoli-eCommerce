@@ -96,3 +96,7 @@
   opacity: 0.5; /* in FireFox */
   filter: alpha(opacity=50); /* in IE */
 }
+
+.hidden-token {
+  display: none;
+}
