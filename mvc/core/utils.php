@@ -74,8 +74,7 @@
           <div class="wrapper">
             <p>
             Chúng tôi nhận được yêu cầu thiết lập lại mật khẩu cho tài khoản NOTOLI của bạn.</br>
-
-            Vui lòng thiết lập lại mật khẩu <a href="http://'. SERVER .'/notoli/login/reset/' . $token . '">Tại đây</a> hoặc copy và dán đường dẫn bên dưới lên trình duyệt
+            Vui lòng thiết lập lại mật khẩu <a href="http://'. SERVER .'/notoli/login/reset/' . $token . '">Tại đây</a>
             </p>
             
           </div>

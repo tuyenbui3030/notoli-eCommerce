@@ -5,10 +5,10 @@ class Index extends Controller {
         $this->prod = $this->model("productModel");
     }
     public function Action() {
-        //$prod = $this->model("productModel");
         $this->view("MiniLayout", [
             "page"=>"Index",
-            "itemProduct"=>$this->prod->Product()  
+            "itemProduct"=>$this->prod->Product(),
+            "itemQuick"=>$this->prod->Product()
         ]);
     }
 }

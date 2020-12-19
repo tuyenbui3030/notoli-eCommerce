@@ -87,7 +87,7 @@
         <!-- Global Overlay End -->
 
         <!-- Qicuk View Modal Start -->
-        <div class="modal fade product-modal" id="productModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <!-- <div class="modal fade product-modal" id="productModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -236,7 +236,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+        <?php require_once "./mvc/views/blocks/quickView.php" ?>
+
         <!-- Qicuk View Modal End -->
     </div>
     <!-- Main Wrapper End -->
