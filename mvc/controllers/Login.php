@@ -1,9 +1,12 @@
 <?php
 class Login extends Controller {
     public $UserModel;
+    public $CartModel;
     public function __construct() {
-        // Khởi tạo model
+        // Khởi tạo UserModel
         $this->UserModel = $this->model("UserModel");
+        // Khởi tạo CartModel
+        $this->CartModel = $this->model("CartModel");
     }
     public function Action() {
         if(isset($_SESSION['loggedIN'])) {
@@ -19,11 +22,13 @@ class Login extends Controller {
         if(isset($_POST['login'])) {
             $username = $this->UserModel->con->real_escape_string($_POST["usernamePHP"]);
             $password = $this->UserModel->con->real_escape_string($_POST["passwordPHP"]);
+            $userID = $this->CartModel->GetUserID($username);
             $result = $this->UserModel->loginPageModel($username, $password);
             //echo $result;
             if($result == "true") {
                 $_SESSION['loggedIN'] = '1';
                 $_SESSION['username'] = $username;
+                $_SESSION['userID'] = json_decode($userID);
                 echo $result;
             } else {
                 echo $result;
@@ -74,7 +79,7 @@ class Login extends Controller {
         }
     }
     public function sendMail() {      
-        if(!empty($_POST)) {      
+        if(!empty($_POST)) {
             $recover_email = $this->UserModel->con->real_escape_string($_POST["recover_email"]);
             //Lọc thông tin đăng kí
             if(empty($recover_email)) {

@@ -1,3 +1,12 @@
+function disableScreen() {
+  var screenLock = $("#screen_lock");
+  screenLock.addClass("overlay");
+}
+function enableScreen() {
+  var screenLock = $("#screen_lock");
+  screenLock.removeClass("overlay");
+}
+
 function rulePassword(val, messagePassword) {
   // var val = $("#register_password").val();
   // var messagePassword = $("#message_password");
@@ -17,14 +26,48 @@ function rulePassword(val, messagePassword) {
   }
   return rule_password;
 }
-function disableScreen() {
-  var screenLock = $("#screen_lock");
-  screenLock.addClass("overlay");
+
+// Bắt đầu đoạn code chức năng captcha
+// == Hàm sử dụng ajax gửi mã client nhập về server kiểm tra
+function ruleCaptcha() {
+  var messageCaptcha = $("#message_captcha");
+  var result;
+  $.ajax({
+    url: "./Captcha/checkCaptcha",
+    data: $("#registration-form").serialize(),
+    type: "POST",
+    async: false,
+    success: function (res) {
+      if (jQuery.trim(res) == "true") {
+        messageCaptcha.removeClass("text-danger");
+        messageCaptcha.addClass("text-success");
+        messageCaptcha.last().html("Captcha chính xác");
+        result = true;
+      } else {
+        messageCaptcha.removeClass("text-success");
+        messageCaptcha.addClass("text-danger");
+        messageCaptcha.last().html("Captcha không chính xác");
+        result = false;
+      }
+    },
+  });
+  return result;
 }
-function enableScreen() {
-  var screenLock = $("#screen_lock");
-  screenLock.removeClass("overlay");
-}
+// == Hàm thực hiện kiểm tra captcha mỗi khi bỏ focus khỏi input
+$(document).ready(function () {
+  $("#register_captcha").focusout(function () {
+    ruleCaptcha();
+  });
+});
+// == Hàm thực hiện kiểm tra captcha mỗi khi bấm button register
+$(document).ready(function () {
+  $("#img-captcha").click(function () {
+    $("#img-captcha").attr("src", "captcha");
+    return false;
+  });
+});
+// Kết thúc đoạn code chức năng captcha
+
 //Register Validation
 $(document).ready(function () {
   var rule_email = false;
@@ -50,24 +93,27 @@ $(document).ready(function () {
           $("#register_username").val("");
           $("#register_password").val("");
           $("#register_email").val("");
+          $("#register_captcha").val("");
           $("#message_username").html("");
           $("#message_password").html("");
           $("#message_email").html("");
+          $("#message_captcha").html("");
         } else {
           messageResult.removeClass("text-success");
           messageResult.addClass("text-danger");
-          messageResult.last().html("Đăng ký tài khoản thất bại");
+          messageResult
+            .last()
+            .html("Đăng ký tài khoản thất bại, vui lòng thử lại");
         }
         setTimeout(function () {
           loadingElement.removeClass("active");
         }, 500);
-        // loadingElement.removeClass("active");
       },
     });
     return false;
   });
   //Check username
-  $("#register_username").keyup(function () {
+  $("#register_username").focusout(function () {
     ruleUsername();
   });
   function ruleUsername() {
@@ -101,13 +147,29 @@ $(document).ready(function () {
     });
     return rule_username;
   }
-  $("#register_password").keyup(function () {
+  $("#register_password").focusout(function () {
     var val = $("#register_password").val();
     var messagePassword = $("#message_password");
     rulePassword(val, messagePassword);
   });
-
-  $("#register_email").keyup(function () {
+  $("#register_retypePassword").focusout(function () {
+    var password = $("#register_password").val();
+    var retypePassword = $("#register_retypePassword").val();
+    var messageRetypePassword = $("#message_retypePassword");
+    if (!retypePassword.trim()) {
+      return false;
+    } else if (password == retypePassword) {
+      messageRetypePassword.html("Mật khẩu nhập lại hợp lệ");
+      messageRetypePassword.addClass("text-success");
+      messageRetypePassword.removeClass("text-warning");
+      return true;
+    }
+    messageRetypePassword.html("Mật khẩu nhập lại không hợp lại");
+    messageRetypePassword.removeClass("text-success");
+    messageRetypePassword.addClass("text-warning");
+    return false;
+  });
+  $("#register_email").focusout(function () {
     ruleEmail2();
   });
 
@@ -162,10 +224,12 @@ $(document).ready(function () {
     rule_username = ruleUsername();
     rule_password = rulePassword(val, messagePassword);
     rule_email = ruleEmail2();
+    var rule_captcha = ruleCaptcha();
+    console.log(rule_captcha);
     console.log(rule_username);
     console.log(rule_password);
     console.log(rule_email);
-    if (rule_username && rule_password && rule_email) {
+    if (rule_username && rule_password && rule_email && ruleCaptcha) {
       return true;
     }
     $(".popup_box").css("display", "block");
@@ -254,12 +318,12 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  $("#recover_password").keyup(function () {
+  $("#recover_password").focusout(function () {
     var val = $("#recover_password").val();
     var messagePassword = $("#message_recover_password");
     rulePassword(val, messagePassword);
   });
-  $("#recover_password_2").keyup(function () {
+  $("#recover_password_2").focusout(function () {
     var newPass = $("#recover_password").val();
     var rePass = $("#recover_password_2").val();
     var messagePassword2 = $("#message_recover_password_2");

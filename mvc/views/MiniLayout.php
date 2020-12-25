@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <base href="http://localhost/notoli/" target="_blank">
+    <base href="http://localhost/notoli/">
     <title>Notoli Store</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -254,6 +254,10 @@
     <!-- Main JS -->
     <script src="./public/assets/js/main.js"></script>
     <script src="./public/assets/js/plugin.js"></script>
+    <script src="./public/assets/js/product.js"></script>
+
+    <!-- <script src="./public/assets/js/utils/register.js"></script> -->
+
     <div id="screen_lock"></div>
 </body>
 

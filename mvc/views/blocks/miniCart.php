@@ -2,56 +2,42 @@
     <div class="mini-cart-wrapper">
         <a href="" class="btn-close"><i class="flaticon flaticon-cross"></i></a>
         <div class="mini-cart-inner">
-            <h3 class="mini-cart__heading mb--40 mb-lg--30">Shopping Cart</h3>
-            <div class="mini-cart__content">
-                <ul class="mini-cart__list">
+            <h3 class="mini-cart__heading mb--40 mb-lg--30">Giỏ hàng</h3>
+            <div class="mini-cart__content" id="mini-cart-content">
+                <ul class="mini-cart__list dev-miniCart">
+                    <?php
+                    $totalPrice = 0;
+                    while($rows = mysqli_fetch_array($data["itemCart"])) {
+                        $itemCartTitle = $rows['cart_prodTitle'];
+                        $itemCartQuantity = $rows['cart_quantity'];
+                        $itemUnitPrice = $rows['cart_price'] / $itemCartQuantity;
+                        $itemImage = $rows['prod_image'];
+                        $totalPrice = $totalPrice + $rows['cart_price'];
+                ?>
                     <li class="mini-cart__product">
                         <a href="#" class="remove-from-cart remove">
                             <i class="flaticon flaticon-cross"></i>
                         </a>
                         <div class="mini-cart__product__image">
-                            <img src="./public/assets/img/products/prod-1-100x100.jpg" alt="products">
+                            <img src="./public/assets/img/products/<?php echo $itemImage ?>" alt="products">
                         </div>
                         <div class="mini-cart__product__content">
-                            <a class="mini-cart__product__title" href="product-details.html">Chain print bermuda shorts
+                            <a class="mini-cart__product__title dev-title-cart"
+                                href="product-details.html"><?php echo $rows['cart_prodTitle'] ?>
                             </a>
-                            <span class="mini-cart__product__quantity">1 x $49.00</span>
+                            <span
+                                class="mini-cart__product__quantity"><?php echo $itemCartQuantity . ' x ' . number_format($itemUnitPrice, 0, '', ',') . '₫' ?></span>
                         </div>
                     </li>
-                    <li class="mini-cart__product">
-                        <a href="#" class="remove-from-cart remove">
-                            <i class="flaticon flaticon-cross"></i>
-                        </a>
-                        <div class="mini-cart__product__image">
-                            <img src="./public/assets/img/products/prod-2-100x100.jpg" alt="products">
-                        </div>
-                        <div class="mini-cart__product__content">
-                            <a class="mini-cart__product__title" href="product-details.html">Waxed-effect pleated
-                                skirt</a>
-                            <span class="mini-cart__product__quantity">1 x $49.00</span>
-                        </div>
-                    </li>
-                    <li class="mini-cart__product">
-                        <a href="#" class="remove-from-cart remove">
-                            <i class="flaticon flaticon-cross"></i>
-                        </a>
-                        <div class="mini-cart__product__image">
-                            <img src="./public/assets/img/products/prod-5-100x100.jpg" alt="products">
-                        </div>
-                        <div class="mini-cart__product__content">
-                            <a class="mini-cart__product__title" href="product-details.html">Waxed-effect pleated
-                                skirt</a>
-                            <span class="mini-cart__product__quantity">1 x $49.00</span>
-                        </div>
-                    </li>
+                    <?php } ?>
                 </ul>
                 <div class="mini-cart__total">
-                    <span>Subtotal</span>
-                    <span class="ammount">$98.00</span>
+                    <span>Tổng tiền</span>
+                    <span class="ammount"><?php echo number_format($totalPrice, 0, '', ',') ?>₫</span>
                 </div>
                 <div class="mini-cart__buttons">
-                    <a href="cart.html" class="btn btn-fullwidth btn-bg-sand mb--20">View Cart</a>
-                    <a href="checkout.html" class="btn btn-fullwidth btn-bg-sand">Checkout</a>
+                    <a href="cart" class="btn btn-fullwidth btn-bg-sand mb--20">Xem giỏ hàng</a>
+                    <a href="checkout" class="btn btn-fullwidth btn-bg-sand">Thanh toán</a>
                 </div>
             </div>
         </div>

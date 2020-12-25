@@ -241,7 +241,17 @@
                         <li class="header-toolbar__item mini-cart-item">
                             <a href="#miniCart" class="header-toolbar__btn toolbar-btn mini-cart-btn">
                                 <i class="flaticon flaticon-shopping-cart"></i>
-                                <sup class="mini-cart-count">2</sup>
+                                <!-- <sup class="mini-cart-count">2</sup> -->
+                                <?php
+                                $result = $data["itemCart"];
+                                $rowcount=mysqli_num_rows($result);
+                                if($rowcount > 0) {
+                                ?>
+                                <sup class="mini-cart-count" id="mini-cart-count"><?php echo $rowcount ?></sup>
+                                <?php } else { ?>
+                                <sup class="mini-cart-count" id="mini-cart-count"
+                                    style="display:none"><?php echo $rowcount ?></sup>
+                                <?php } ?>
                             </a>
                         </li>
                         <li class="header-toolbar__item user-info">

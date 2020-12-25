@@ -92,24 +92,24 @@
                             role="tablist">
                             <a class="nav-item nav-link product-tab__link active" id="new-all-tab" data-toggle="tab"
                                 href="#new-all" role="tab" aria-controls="new-all" aria-selected="true">
-                                <span>All</span>
+                                <span>Mới nhất</span>
                             </a>
                             <a class="nav-item nav-link product-tab__link" id="new-men-tab" data-toggle="tab"
                                 href="#new-men" role="tab" aria-controls="new-men" aria-selected="false">
-                                <span>men</span>
+                                <span>Bán chạy nhất</span>
                             </a>
                             <a class="nav-item nav-link product-tab__link" id="new-women-tab" data-toggle="tab"
                                 href="#new-women" role="tab" aria-controls="new-women" aria-selected="false">
-                                <span>Women</span>
+                                <span>Sneaker</span>
                             </a>
                             <a class="nav-item nav-link product-tab__link" id="new-kidz-tab" data-toggle="tab"
                                 href="#new-kidz" role="tab" aria-controls="new-kidz" aria-selected="false">
-                                <span>kidz</span>
+                                <span>Nữ</span>
                             </a>
                             <a class="nav-item nav-link product-tab__link" id="new-accessories-tab" data-toggle="tab"
                                 href="#new-accessories" role="tab" aria-controls="new-accessories"
                                 aria-selected="false">
-                                <span>accessories</span>
+                                <span>Giày tây</span>
                             </a>
                         </div>
                         <div class="tab-content" id="new-arrival-tab-content">
@@ -117,8 +117,8 @@
                                 aria-labelledby="new-all-tab">
                                 <div class="row">
                                     <?php
-                                while($row = mysqli_fetch_array($data["itemProduct"])){
-                                                                                    
+                                // Hiển thị danh sách product
+                                while($row = mysqli_fetch_array($data["itemProduct"])){                      
                                 ?>
                                     <div class="col-xl-3 col-md-4 col-sm-6 mb--50">
                                         <div class="zakas-product">
@@ -128,69 +128,22 @@
                                                         <img src="public/assets/img/products/<?php echo $row["prod_image"] ?>"
                                                             alt="Products">
                                                     </a>
-                                                    <div class="zakas-product-action">
-                                                        <div class="product-action d-flex">
-                                                            <div class="product-size">
-                                                                <a href="" class="action-btn">
-                                                                    <span class="current">XL</span>
-                                                                </a>
-                                                                <div class="product-size-swatch">
-                                                                    <span class="product-size-swatch-btn variation-btn">
-                                                                        L
-                                                                    </span>
-                                                                    <span class="product-size-swatch-btn variation-btn">
-                                                                        M
-                                                                    </span>
-                                                                    <span class="product-size-swatch-btn variation-btn">
-                                                                        S
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-color">
-                                                                <a href="" class="action-btn">
-                                                                    <span class="current abbey">Abbey</span>
-                                                                </a>
-                                                                <div class="product-color-swatch">
-                                                                    <span
-                                                                        class="product-color-swatch-btn blue variation-btn">
-                                                                        Blue
-                                                                    </span>
-                                                                    <span
-                                                                        class="product-color-swatch-btn copper variation-btn">
-                                                                        Copper
-                                                                    </span>
-                                                                    <span
-                                                                        class="product-color-swatch-btn old-rose variation-btn">
-                                                                        Old Rose
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                            <a href="wishlist.html" class="action-btn">
-                                                                <i class="flaticon flaticon-like"></i>
-                                                            </a>
-                                                            <a data-toggle="modal"
-                                                                data-target="#productModal<?php echo $row["prod_id"] ?>"
-                                                                class="action-btn quick-view">
-                                                                <i class="flaticon flaticon-eye"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
                                                     <span class="product-badge">New</span>
                                                 </figure>
                                                 <div class="product-info">
                                                     <h3 class="product-title mb--15">
-                                                        <a
-                                                            href="product-details.html"><?php echo $row["prod_title"] ?></a>
+                                                        <a href="product-details.html"
+                                                            class="product_title"><?php echo $row["prod_title"] ?></a>
                                                     </h3>
                                                     <div class="product-price-wrapper mb--30">
                                                         <span
-                                                            class="money"><?php echo number_format($row["prod_price"], 0, '', ',')?>
-                                                            đ</span>
+                                                            class="money"><?php echo number_format($row["prod_price"], 0, '', ',')?>₫</span>
                                                         <!-- <span class="money-separator">-</span>
                                                         <span class="money">$200</span> -->
                                                     </div>
-                                                    <a href="cart.html"
-                                                        class="btn btn-small btn-bg-sand btn-color-dark">Add To Cart</a>
+                                                    <a href="#" id="<?php echo $row["prod_id"] ?>"
+                                                        class="btn btn-small btn-bg-sand btn-color-dark addCart">Thêm
+                                                        giỏ hàng</a>
                                                 </div>
                                             </div>
                                         </div>

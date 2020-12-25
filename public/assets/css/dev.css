@@ -1,5 +1,5 @@
 .message {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 100;
   font-family: "Poppins", sans-serif;
 }
@@ -99,4 +99,18 @@
 
 .hidden-token {
   display: none;
+}
+#img-captcha:hover {
+  cursor: pointer;
+}
+
+.dev-title-cart {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.dev-miniCart {
+  margin-bottom: 0px;
 }

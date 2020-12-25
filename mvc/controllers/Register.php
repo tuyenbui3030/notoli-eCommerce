@@ -12,7 +12,7 @@ class Register extends Controller {
             exit();
         }
         $this->view("MiniLayout", [
-            "page"=>"Register"
+            "page"=>"Register",
         ]);
     }
     public function Verify($token=NULL) {
@@ -52,14 +52,20 @@ class Register extends Controller {
     }
     //Đăng kí tài khoản
     public function registerAccount() {      
-        if(!empty($_POST)) {      
+        if(!empty($_POST)) {
+            if($_SESSION["CODE"] != $_POST["register_captcha"]) {
+                exit("false");
+            }
+            $register_fullname = $this->UserModel->con->real_escape_string($_POST["register_fullname"]);
+            $register_birthday = $this->UserModel->con->real_escape_string($_POST["register_birthday"]);
+            $register_city = $this->UserModel->con->real_escape_string($_POST["register_city"]);
             $register_username = $this->UserModel->con->real_escape_string($_POST["register_username"]);
             $register_password = $this->UserModel->con->real_escape_string($_POST["register_password"]);
             $register_email = $this->UserModel->con->real_escape_string($_POST["register_email"]);
+            //exit("false");
             //Lọc thông tin đăng kí
             if(empty($register_username) || empty($register_password) || empty($register_email)) {
                 exit("false");
-                //return;
             }
             //Kiểm tra username đã đăng kí chưa
             $checkUsername = $this->UserModel->checkUsername($register_username);
@@ -74,8 +80,9 @@ class Register extends Controller {
             //Đăng kí tài khoản
             $register_password = password_hash($register_password, PASSWORD_DEFAULT);
             $token = bin2hex(random_bytes(50));
-            $resultInsert = $this->UserModel->InsertNewUser($register_username, $register_password, $register_email, $token, 0);
+            $resultInsert = $this->UserModel->InsertNewUser($register_fullname, $register_birthday, $register_city, $register_username, $register_password, $register_email, $token, 0);
             if($resultInsert) {
+                //Gửi email xác nhận
                 $resultVerify = verification($register_email, $token);
                 if($resultVerify) {
                     exit("true");

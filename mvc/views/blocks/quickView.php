@@ -1,6 +1,6 @@
 <?php
-while($row = mysqli_fetch_array($data["itemQuick"])){
-    echo $row['prod_id'];        
+if(isset($data["itemQuick"])) {
+    while($row = mysqli_fetch_array($data["itemQuick"])){
 ?>
 <div class="modal fade product-modal" id="productModal<?php echo $row['prod_id']; ?>" tabindex="-1" role="dialog"
     aria-hidden="true">
@@ -152,5 +152,6 @@ while($row = mysqli_fetch_array($data["itemQuick"])){
     </div>
 </div>
 <?php
+    }
 }
 ?>
