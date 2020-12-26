@@ -7,7 +7,9 @@
                 <ul class="mini-cart__list dev-miniCart">
                     <?php
                     $totalPrice = 0;
+                    if(isset($_SESSION["loggedIN"])) {
                     while($rows = mysqli_fetch_array($data["itemCart"])) {
+                        $itemID = $rows['cart_id'];
                         $itemCartTitle = $rows['cart_prodTitle'];
                         $itemCartQuantity = $rows['cart_quantity'];
                         $itemUnitPrice = $rows['cart_price'] / $itemCartQuantity;
@@ -15,7 +17,7 @@
                         $totalPrice = $totalPrice + $rows['cart_price'];
                 ?>
                     <li class="mini-cart__product">
-                        <a href="#" class="remove-from-cart remove">
+                        <a href="" class="remove-from-cart remove" id="<?php echo $itemID ?>">
                             <i class="flaticon flaticon-cross"></i>
                         </a>
                         <div class="mini-cart__product__image">
@@ -29,7 +31,8 @@
                                 class="mini-cart__product__quantity"><?php echo $itemCartQuantity . ' x ' . number_format($itemUnitPrice, 0, '', ',') . '₫' ?></span>
                         </div>
                     </li>
-                    <?php } ?>
+                    <?php }
+                    } ?>
                 </ul>
                 <div class="mini-cart__total">
                     <span>Tổng tiền</span>

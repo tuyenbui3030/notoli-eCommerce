@@ -39,10 +39,66 @@ class Cart extends Controller {
         }
     }
     public function LoadCart() {
+        if(isset($_SESSION["loggedIN"])) {
+            $result = $this->cart->GetItemCart();
+            $rowcount=mysqli_num_rows($result);
+            print_r($rowcount);
+            exit();
+        }
+        exit('null');
+    }
+    public function LoadMiniCart() {
         $result = $this->cart->GetItemCart();
-        $rowcount=mysqli_num_rows($result);
-        print_r($rowcount);
-        exit();
+        if(!isset($_SESSION["loggedIN"])) {
+            exit("null");
+        }
+        $totalPrice = 0;
+        $output = '
+        <ul class="mini-cart__list dev-miniCart">';
+        while($rows = mysqli_fetch_array($result)) {   
+            $itemID = $rows['cart_id']; 
+            $itemCartTitle = $rows['cart_prodTitle'];
+            $itemCartQuantity = $rows['cart_quantity'];
+            $itemUnitPrice = $rows['cart_price'] / $itemCartQuantity;
+            $itemImage = $rows['prod_image'];
+            $totalPrice = $totalPrice + $rows['cart_price'];           
+            $output .= '
+            <li class="mini-cart__product">
+                <a href="" class="remove-from-cart remove" id="'.$itemID.'">
+                    <i class="flaticon flaticon-cross"></i>
+                </a>
+                <div class="mini-cart__product__image">
+                    <img src=./public/assets/img/products/'. $itemImage .' alt="products">
+                </div>
+                <div class="mini-cart__product__content">
+                    <a class="mini-cart__product__title dev-title-cart" href="product-details.html">'. $itemCartTitle .'</a>
+                    <span class="mini-cart__product__quantity">' . $itemCartQuantity . ' x ' . number_format($itemUnitPrice, 0, '', ',') . '₫ </span>
+                </div>
+            </li>';
+        }
+        $output .= '
+        </ul>';
+        $output .= '
+        <div class="mini-cart__total">
+            <span>Tổng tiền</span>
+            <span class="ammount">' . number_format($totalPrice, 0, '', ',') . '₫</span>
+        </div>';
+        $output .= '
+        <div class="mini-cart__buttons">
+            <a href="cart" class="btn btn-fullwidth btn-bg-sand mb--20">Xem giỏ hàng</a>
+            <a href="checkout" class="btn btn-fullwidth btn-bg-sand">Thanh toán</a>
+        </div>';
+        exit($output);
+    }
+
+    public function RemoveCart() {
+        //Kiểm tra người dùng có login hay không
+        $cart_id = $_POST["cart_id"];
+        $resultRemoveCart = $this->cart->RemoveCart($cart_id);
+        if($resultRemoveCart == "true") {
+            exit("true");
+        }
+        exit("false");
     }
 }
 ?>

@@ -2,11 +2,13 @@
 class CartModel extends DB {
     //Show dữ liệu giỏ hàng
     public function GetItemCart() {
+        if(isset($_SESSION["loggedIN"])){
         $userID = $_SESSION["userID"];
         $qr = "SELECT `cart`.*, `products`.`prod_image`";
         $qr .= "FROM `cart` JOIN `products` ON `cart`.`cart_prodID` = `products`.`prod_id`";
         $qr .= "WHERE `cart`.`cart_user`=$userID";
         return mysqli_query($this->con, $qr);
+        }
     }
     //Thêm vào giỏ hàng
     public function InsertCart($prod_id, $userID, $prod_title, $prod_price) {
@@ -50,6 +52,16 @@ class CartModel extends DB {
         $qr = "UPDATE `cart`
         SET `cart_quantity` = '$cart_quantity', `cart_price` = '$cart_price'
         WHERE `cart`.`cart_id` = $cart_id";
+        mysqli_query($this->con, $qr);
+        $affect =  $this->con->affected_rows;
+        $result = false;
+        if($affect > 0) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
+    public function RemoveCart($cart_id) {
+        $qr = "DELETE FROM `cart` WHERE `cart`.`cart_id` = $cart_id";
         mysqli_query($this->con, $qr);
         $affect =  $this->con->affected_rows;
         $result = false;

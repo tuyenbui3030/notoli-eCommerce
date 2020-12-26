@@ -8,6 +8,7 @@ class Logout extends Controller {
     public function Action() {
         if(isset($_SESSION['loggedIN'])) {
             unset($_SESSION['loggedIN']);
+            unset($_SESSION['userID']);
         }
         if(!isset($_SESSION['loggedIN'])) {
             $location = "./login";

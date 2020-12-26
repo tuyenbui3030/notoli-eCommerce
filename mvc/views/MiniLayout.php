@@ -28,7 +28,7 @@
     <!-- Custom alert Start -->
     <div class="popup_box">
         <i class="fa fa-exclamation"></i>
-        <h1>Vui lòng nhập thông tin chính đầy đủ và chính xác</h1>
+        <h1 class="popup_box--h1">Vui lòng nhập thông tin chính đầy đủ và chính xác</h1>
         <label>Bạn muốn tiếp tục?</label>
         <div class="btns">
             <!-- <a class="btn1">Đóng</a> -->

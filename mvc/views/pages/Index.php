@@ -133,7 +133,7 @@
                                                 <div class="product-info">
                                                     <h3 class="product-title mb--15">
                                                         <a href="product-details.html"
-                                                            class="product_title"><?php echo $row["prod_title"] ?></a>
+                                                            class="product_title dev-title-cart"><?php echo $row["prod_title"] ?></a>
                                                     </h3>
                                                     <div class="product-price-wrapper mb--30">
                                                         <span
@@ -141,7 +141,7 @@
                                                         <!-- <span class="money-separator">-</span>
                                                         <span class="money">$200</span> -->
                                                     </div>
-                                                    <a href="#" id="<?php echo $row["prod_id"] ?>"
+                                                    <a href="" id="<?php echo $row["prod_id"] ?>"
                                                         class="btn btn-small btn-bg-sand btn-color-dark addCart">Thêm
                                                         giỏ hàng</a>
                                                 </div>

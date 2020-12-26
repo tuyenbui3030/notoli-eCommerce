@@ -243,14 +243,17 @@
                                 <i class="flaticon flaticon-shopping-cart"></i>
                                 <!-- <sup class="mini-cart-count">2</sup> -->
                                 <?php
-                                $result = $data["itemCart"];
-                                $rowcount=mysqli_num_rows($result);
-                                if($rowcount > 0) {
+                                $rowcount = 0;
+                                if(isset($_SESSION["loggedIN"])){
+                                    $result = $data["itemCart"];
+                                    $rowcount=mysqli_num_rows($result);
+                                    if($rowcount > 0) {
+                                        echo '<sup class="mini-cart-count" id="mini-cart-count">' . $rowcount . '</sup>';
+                                    } else {
+                                        echo '<sup class="mini-cart-count" id="mini-cart-count" style="display:none">' . $rowcount . '</sup>';
+                                    }
                                 ?>
-                                <sup class="mini-cart-count" id="mini-cart-count"><?php echo $rowcount ?></sup>
-                                <?php } else { ?>
-                                <sup class="mini-cart-count" id="mini-cart-count"
-                                    style="display:none"><?php echo $rowcount ?></sup>
+                                <!-- <sup class="mini-cart-count" id="mini-cart-count"><?php// echo $rowcount ?></sup> -->
                                 <?php } ?>
                             </a>
                         </li>
