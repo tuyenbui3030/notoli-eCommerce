@@ -6,7 +6,19 @@ class Cart extends Controller {
         $this->cart = $this->model("CartModel");
         $this->prod = $this->model("productModel");
     }
-
+    public function Action() {
+        if(isset($_SESSION["loggedIN"])) {
+            $this->view("MiniLayout", [
+                "page"=>"Cart",
+                "itemProduct"=>$this->prod->Product(),
+                "itemCart"=>$this->cart->GetItemCart(),
+                "itemListCart"=>$this->cart->GetItemCart()
+            ]);
+        } else {
+            $location = "./";
+            header("Location: " . $location);
+        }
+    }
     //Thêm vào giỏ hàng
     public function InsertCart() {
         //Kiểm tra người dùng có login hay không

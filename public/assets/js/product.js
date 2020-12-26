@@ -76,15 +76,15 @@ $(document).ready(function () {
   });
 });
 
-$(document).ready(function () {
-  $(".remove").click(function () {
-    let id = $(this).attr("id");
-    RemoveCart(id);
-    loadQuantityCart();
-    loadMiniCart();
-    return false;
-  });
-});
+// $(document).ready(function () {
+//   $(".remove").click(function () {
+//     let id = $(this).attr("id");
+//     RemoveCart(id);
+//     loadQuantityCart();
+//     loadMiniCart();
+//     return false;
+//   });
+// });
 
 $(document).ready(function () {
   $(document).on("click", ".remove", function () {

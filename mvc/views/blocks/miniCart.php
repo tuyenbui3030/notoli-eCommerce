@@ -8,7 +8,7 @@
                     <?php
                     $totalPrice = 0;
                     if(isset($_SESSION["loggedIN"])) {
-                    while($rows = mysqli_fetch_array($data["itemCart"])) {
+                    while($rows = mysqli_fetch_array($data["itemListCart"])) {
                         $itemID = $rows['cart_id'];
                         $itemCartTitle = $rows['cart_prodTitle'];
                         $itemCartQuantity = $rows['cart_quantity'];

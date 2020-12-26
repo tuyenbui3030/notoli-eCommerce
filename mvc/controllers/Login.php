@@ -56,6 +56,10 @@ class Login extends Controller {
         
     //================================== Start quên mật khẩu ==========================================
     public function reset($token=NULL) {
+        if(isset($_SESSION['loggedIN'])) {
+            $location = "../";
+            header("Location: " . $location);
+        }
         if($token == NULL) {
             $this->view("MiniLayout", [
                 "page"=>"Reset",
