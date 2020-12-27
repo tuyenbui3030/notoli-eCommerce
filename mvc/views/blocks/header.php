@@ -245,7 +245,7 @@
                                 <?php
                                 $rowcount = 0;
                                 if(isset($_SESSION["loggedIN"])){
-                                    $result = $data["itemCart"];
+                                    $result = $data["itemListCart"];
                                     $rowcount=mysqli_num_rows($result);
                                     if($rowcount > 0) {
                                         echo '<sup class="mini-cart-count" id="mini-cart-count">' . $rowcount . '</sup>';

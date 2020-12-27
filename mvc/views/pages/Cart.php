@@ -1,4 +1,5 @@
 <!-- Breadcrumb area Start -->
+<?php $priceTotal = json_decode($data['itemTotalPrice']) ?>
 <div class="breadcrumb-area bg-color ptb--90" data-bg-color="#f6f6f6">
     <div class="container">
         <div class="row">
@@ -48,10 +49,13 @@
                                                 $itemUnitPrice = $itemPrice / $itemCartQuantity;
                                                 $itemImage = $rows['prod_image'];
                                                 $totalPrice = $totalPrice + $rows['cart_price'];
+                                                $itemMax = $rows['prod_quantity'];
                                             ?>
                                             <tr>
-                                                <td class="product-remove text-left"><a href=""><i
-                                                            class="flaticon flaticon-cross"></i></a></td>
+                                                <td class="product-remove text-left">
+                                                    <a id="<?php echo $itemID ?>" class="removeItem"><i
+                                                            class="flaticon flaticon-cross"></i></a>
+                                                </td>
                                                 <td class="product-thumbnail text-left">
                                                     <img src="./public/assets/img/products/<?php echo $itemImage ?>"
                                                         alt="Product Thumnail" style="max-width: 80%">
@@ -64,19 +68,23 @@
                                                 <td class="product-price">
                                                     <span class="product-price-wrapper">
                                                         <span
-                                                            class="money"><?php echo number_format($itemUnitPrice, 0, '', ',') ?>₫</span>
+                                                            class="money"><?php echo number_format($itemUnitPrice, 0, '', '.') ?>
+                                                            ₫</span>
                                                     </span>
                                                 </td>
                                                 <td class="product-quantity">
                                                     <div class="quantity">
                                                         <input type="number" class="quantity-input" name="qty"
-                                                            id="qty-1" value="<?php echo $itemCartQuantity ?>" min="1">
+                                                            id=<?php echo $itemID ?> id="qty-1"
+                                                            value="<?php echo $itemCartQuantity ?>" min="1"
+                                                            max="<?php echo $itemMax ?>">
                                                     </div>
                                                 </td>
                                                 <td class="product-total-price">
                                                     <span class="product-price-wrapper">
-                                                        <span
-                                                            class="money"><?php echo number_format($itemPrice, 0, '', ',') ?>₫</span>
+                                                        <span class="money"
+                                                            id="price-<?php echo $itemID ?>"><?php echo number_format($itemPrice, 0, '', '.') ?>
+                                                            ₫</span>
                                                     </span>
                                                 </td>
                                             </tr>
@@ -86,7 +94,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row no-gutters border-top pt--20 mt--20">
+                        <!-- <div class="row no-gutters border-top pt--20 mt--20">
                             <div class="col-sm-6">
                                 <div class="coupon">
                                     <input type="text" id="coupon" name="coupon" class="cart-form__input"
@@ -98,36 +106,37 @@
                                 <button type="submit" class="cart-form__btn">Clear Cart</button>
                                 <button type="submit" class="cart-form__btn">Update Cart</button>
                             </div>
-                        </div>
+                        </div> -->
                     </form>
                 </div>
                 <div class="col-lg-4">
                     <div class="cart-collaterals">
                         <div class="cart-totals">
-                            <h5 class="font-size-14 font-bold mb--15">Cart totals</h5>
+                            <h5 class="font-size-14 font-bold mb--15">Thanh toán</h5>
                             <div class="cart-calculator">
                                 <div class="cart-calculator__item">
                                     <div class="cart-calculator__item--head">
-                                        <span>Subtotal</span>
+                                        <span>Tạm tính</span>
                                     </div>
                                     <div class="cart-calculator__item--value">
-                                        <span>$196.00</span>
+                                        <span id="priceTotal"><?php echo number_format($priceTotal, 0, '', '.') ?>
+                                            ₫</span>
                                     </div>
                                 </div>
                                 <div class="cart-calculator__item">
                                     <div class="cart-calculator__item--head">
-                                        <span>Shipping</span>
+                                        <span>Giao hàng</span>
                                     </div>
                                     <div class="cart-calculator__item--value">
-                                        <span>Flat rate: $20.00</span>
+                                        <span>Phí ship: 20.000 ₫</span>
                                         <div class="shipping-calculator-wrap">
-                                            <a href="#shipping_calculator" class="expand-btn">Calculate Shipping</a>
+                                            <a href="#shipping_calculator" class="expand-btn">Địa chỉ giao hàng</a>
                                             <form id="shipping_calculator"
                                                 class="form shipping-calculator-form hide-in-default">
                                                 <div class="form__group">
                                                     <select id="calc_shipping_country" name="calc_shipping_country"
                                                         class="nice-select form__input--select form__input--2">
-                                                        <option value="">Select a country…</option>
+                                                        <option value="">Chọn tỉnh</option>
                                                         <option value="AF">Afghanistan</option>
                                                         <option value="AL">Albania</option>
                                                         <option value="DZ">Algeria</option>
@@ -233,18 +242,20 @@
                                 </div>
                                 <div class="cart-calculator__item order-total">
                                     <div class="cart-calculator__item--head">
-                                        <span>Total</span>
+                                        <span>Thành tiền</span>
                                     </div>
                                     <div class="cart-calculator__item--value">
                                         <span class="product-price-wrapper">
-                                            <span class="money">$226.00</span>
+                                            <span class="money"
+                                                id="lastPrice"><?php echo number_format($priceTotal + 20000, 0, '', '.') ?>
+                                                ₫</span>
                                         </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <a href="checkout.html" class="btn btn-fullwidth btn-bg-red btn-color-white btn-hover-2">
-                            Proceed To Checkout
+                            Tiến hành thanh toán
                         </a>
                     </div>
                 </div>

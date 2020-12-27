@@ -8,11 +8,13 @@ class Cart extends Controller {
     }
     public function Action() {
         if(isset($_SESSION["loggedIN"])) {
+            $cart_user = $_SESSION["userID"];
             $this->view("MiniLayout", [
                 "page"=>"Cart",
                 "itemProduct"=>$this->prod->Product(),
                 "itemCart"=>$this->cart->GetItemCart(),
-                "itemListCart"=>$this->cart->GetItemCart()
+                "itemListCart"=>$this->cart->GetItemCart(),
+                "itemTotalPrice"=>$this->cart->GetTotalPrice($cart_user),
             ]);
         } else {
             $location = "./";
@@ -111,6 +113,30 @@ class Cart extends Controller {
             exit("true");
         }
         exit("false");
+    }
+
+    public function UpdateCart() {
+        $cart_id = $_POST["cart_id"];
+        $cart_quantity = $_POST["cart_quantity"];
+        $cart_user = $_SESSION["userID"];
+        //Lấy đơn giá
+        $cart_unitPrice = $this->cart->GetUnitPrice($cart_id);
+        //Cập nhật giỏ hàng
+        $cart_price = $cart_quantity * json_decode($cart_unitPrice);
+        $resultUpdateCart = $this->cart->UpdateCart($cart_id, $cart_quantity, $cart_price);
+        $resultTotalPrice = $this->cart->GetTotalPrice($cart_user);
+        $result = array();
+        if($resultTotalPrice != "false" && $resultUpdateCart == "true") {
+            $result['price'] = $cart_price;
+            $result['priceTotal'] = json_decode($resultTotalPrice);
+            exit(json_encode($result));
+        }
+        exit("false");
+        // exit(json_encode($resultTotalPrice));
+        // if($resultUpdateCart == "true") {
+        //     exit(json_encode($cart_price));
+        // }
+        // exit("false");
     }
 }
 ?>

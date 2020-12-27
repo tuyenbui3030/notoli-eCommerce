@@ -10,7 +10,7 @@ class Index extends Controller {
         $this->view("MiniLayout", [
             "page"=>"Index",
             "itemProduct"=>$this->prod->Product(),
-            "itemCart"=>$this->cart->GetItemCart()
+            "itemListCart"=>$this->cart->GetItemCart()
         ]);
     }
     public function Test() {
