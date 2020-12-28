@@ -138,5 +138,57 @@ class Cart extends Controller {
         // }
         // exit("false");
     }
+    public function LoadPageCart() {
+        $itemResult = $this->cart->GetItemCart();
+        $totalPrice = 0;
+        $result = array();
+        $output='';
+        while($rows = mysqli_fetch_array($itemResult)) {
+            $itemID = $rows['cart_id'];
+            $itemCartTitle = $rows['cart_prodTitle'];
+            $itemCartQuantity = $rows['cart_quantity'];
+            $itemPrice = $rows['cart_price'];
+            $itemUnitPrice = $itemPrice / $itemCartQuantity;
+            $itemImage = $rows['prod_image'];
+            $totalPrice = $totalPrice + $rows['cart_price'];
+            $itemMax = $rows['prod_quantity'];
+        $output.='
+        <tr>
+            <td class="product-remove text-left">
+                <a id="'.$itemID.'" class="removeItem"><i class="flaticon flaticon-cross"></i></a>
+</td>
+<td class="product-thumbnail text-left">
+    <img src="./public/assets/img/products/'.$itemImage.'" alt="Product Thumnail" style="max-width: 80%">
+</td>
+<td class="product-name text-left wide-column">
+    <h3>
+        <a href="product-details.html">'. $itemCartTitle .'</a>
+    </h3>
+</td>
+<td class="product-price">
+    <span class="product-price-wrapper">
+        <span class="money">'.number_format($itemUnitPrice, 0, '', '.') .'
+            ₫</span>
+    </span>
+</td>
+<td class="product-quantity">
+    <div class="quantity">
+        <input type="number" class="quantity-input" name="qty" id='.$itemID.' id="qty-1" value="'.$itemCartQuantity.'"
+            min="1" max="'.$itemMax.'">
+    </div>
+</td>
+<td class="product-total-price">
+    <span class="product-price-wrapper">
+        <span class="money" id="price-'.$itemID.'">'.number_format($itemPrice, 0, '', '.').'
+₫</span>
+</span>
+</td>
+</tr>';
+}
+$result['textHTML'] = $output;
+$result['priceTotal'] = $totalPrice;
+exit(json_encode($result));
+}
+
 }
 ?>

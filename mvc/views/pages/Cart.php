@@ -38,7 +38,7 @@
                                                 <th>Tổng tiền</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="itemPageCart">
                                             <?php 
                                             $totalPrice = 0;
                                             while($rows = mysqli_fetch_array($data["itemCart"])) {

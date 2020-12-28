@@ -26,7 +26,6 @@ function loadMiniCart() {
     method: "POST",
     async: false,
     success: function (res) {
-      console.log(res);
       if (res != "null") {
         $("#mini-cart-content").last().html(res);
       }
@@ -58,7 +57,6 @@ function InsertCart(id) {
 }
 //== Xóa sản phẩm khỏi MiniCart
 function RemoveCart(id) {
-  console.log(id);
   $.ajax({
     url: "./Cart/RemoveCart",
     method: "POST",
@@ -155,5 +153,33 @@ $(document).ready(function () {
       $(this).siblings("input").val(max);
     }
     updateCart(id, quantity);
+  });
+});
+//== Load trang giỏ hàng
+function loadPageCart() {
+  $.ajax({
+    url: "./Cart/LoadPageCart",
+    method: "POST",
+    async: false,
+    success: function (res) {
+      if (res != "null") {
+        let obj = JSON.parse(res);
+        let priceTotal = formatter.format(parseInt(obj.priceTotal));
+        let lastPrice = formatter.format(parseInt(obj.priceTotal) + 20000);
+        $("#itemPageCart").last().html(obj.textHTML);
+        $("#priceTotal").html(priceTotal);
+        $("#lastPrice").html(lastPrice);
+      }
+    },
+  });
+}
+//== Bắt sự kiện khi click xóa sản phẩm trong giỏ hàng
+$(document).ready(function () {
+  $(document).on("click", ".removeItem", function () {
+    let id = $(this).attr("id");
+    RemoveCart(id);
+    loadMiniCart();
+    loadQuantityCart();
+    loadPageCart();
   });
 });
