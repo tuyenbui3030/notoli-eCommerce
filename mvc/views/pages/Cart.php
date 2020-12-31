@@ -38,7 +38,7 @@
                                                 <th>Tổng tiền</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="itemPageCart">
+                                        <tbody>
                                             <?php 
                                             $totalPrice = 0;
                                             while($rows = mysqli_fetch_array($data["itemCart"])) {
@@ -125,11 +125,11 @@
                                 </div>
                                 <div class="cart-calculator__item">
                                     <div class="cart-calculator__item--head">
-                                        <span>Giao hàng</span>
+                                        <span>Phụ phí</span>
                                     </div>
                                     <div class="cart-calculator__item--value">
-                                        <span>Phí ship: 20.000 ₫</span>
-                                        <div class="shipping-calculator-wrap">
+                                        <span>0 ₫</span>
+                                        <!-- <div class="shipping-calculator-wrap">
                                             <a href="#shipping_calculator" class="expand-btn">Địa chỉ giao hàng</a>
                                             <form id="shipping_calculator"
                                                 class="form shipping-calculator-form hide-in-default">
@@ -237,7 +237,7 @@
                                                         class="btn-submit btn-submit--small">
                                                 </div>
                                             </form>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                                 <div class="cart-calculator__item order-total">
@@ -247,7 +247,7 @@
                                     <div class="cart-calculator__item--value">
                                         <span class="product-price-wrapper">
                                             <span class="money"
-                                                id="lastPrice"><?php echo number_format($priceTotal + 20000, 0, '', '.') ?>
+                                                id="lastPrice"><?php echo number_format($priceTotal, 0, '', '.') ?>
                                                 ₫</span>
                                         </span>
                                     </div>

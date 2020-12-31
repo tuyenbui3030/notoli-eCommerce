@@ -107,7 +107,7 @@ function updateCart(id, quantity) {
       let test = "#price-" + id;
       let price = formatter.format(parseInt(obj.price));
       let priceTotal = formatter.format(parseInt(obj.priceTotal));
-      let lastPrice = formatter.format(parseInt(obj.priceTotal) + 20000);
+      let lastPrice = formatter.format(parseInt(obj.priceTotal));
       $(test).html(price);
       $("#priceTotal").html(priceTotal);
       $("#lastPrice").html(lastPrice);
@@ -160,13 +160,11 @@ function loadPageCart() {
   $.ajax({
     url: "./Cart/LoadPageCart",
     method: "POST",
-    async: false,
     success: function (res) {
       if (res != "null") {
         let obj = JSON.parse(res);
         let priceTotal = formatter.format(parseInt(obj.priceTotal));
-        let lastPrice = formatter.format(parseInt(obj.priceTotal) + 20000);
-        $("#itemPageCart").last().html(obj.textHTML);
+        let lastPrice = formatter.format(parseInt(obj.priceTotal));
         $("#priceTotal").html(priceTotal);
         $("#lastPrice").html(lastPrice);
       }
@@ -181,5 +179,12 @@ $(document).ready(function () {
     loadMiniCart();
     loadQuantityCart();
     loadPageCart();
+    $(this).closest("tr").remove();
+  });
+});
+// Submit checkout
+$(document).ready(function () {
+  $(document).on("click", "#submit-checkout", function () {
+    document.forms["form-checkout"].submit();
   });
 });

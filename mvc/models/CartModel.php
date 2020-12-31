@@ -10,6 +10,16 @@ class CartModel extends DB {
         return mysqli_query($this->con, $qr);
         }
     }
+    //Tỉnh tổng tiền giỏ hàng
+    public function GetPriceTotalCart() {
+        if(isset($_SESSION["loggedIN"])){
+            $userID = $_SESSION["userID"];
+            $qr = "SELECT SUM(cart_price) FROM cart WHERE cart_user = $userID";
+            $result = mysqli_query($this->con, $qr);
+            $rows = mysqli_fetch_array($result);
+            return json_encode($rows[0]);
+        }
+    }
     //Thêm vào giỏ hàng
     public function InsertCart($prod_id, $userID, $prod_title, $prod_price) {
         $qr = "INSERT INTO `cart` VALUES (NULL, '$userID', '$prod_id', '$prod_title', '1', '$prod_price')";
