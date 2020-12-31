@@ -185,6 +185,34 @@ $(document).ready(function () {
 // Submit checkout
 $(document).ready(function () {
   $(document).on("click", "#submit-checkout", function () {
-    document.forms["form-checkout"].submit();
+    let billing_name = $("#billing_name").val();
+    let billing_city = $("#billing_city").val();
+    let billing_state = $("#billing_state").val();
+    let billing_streetAddress = $("#billing_streetAddress").val();
+    let billing_phone = $("#billing_phone").val();
+    let billing_email = $("#billing_email").val();
+    if (billing_name.trim() === "") {
+      if (billing_city.trim() === "") {
+        if (billing_state.trim() === "") {
+          if (billing_streetAddress.trim() === "") {
+            if (billing_phone.trim() === "") {
+              if (billing_email.trim() === "") {
+                $(".popup_box--h1").html(
+                  "Vui lòng nhập đầy đủ thông tin giao hàng"
+                );
+                $(".popup_box").css("display", "block");
+                disableScreen();
+                $("#btn-close").click(function () {
+                  $(".popup_box").css("display", "none");
+                  enableScreen();
+                });
+              }
+            }
+          }
+        }
+      }
+    } else {
+      document.forms["form-checkout"].submit();
+    }
   });
 });

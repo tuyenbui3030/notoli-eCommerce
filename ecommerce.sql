@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2020 at 04:28 AM
+-- Generation Time: Dec 31, 2020 at 10:50 AM
 -- Server version: 10.4.16-MariaDB
 -- PHP Version: 7.4.12
 
@@ -64,9 +64,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cart_id`, `cart_user`, `cart_prodID`, `cart_prodTitle`, `cart_quantity`, `cart_price`) VALUES
-(232, '1', 5, 'Đồng hồ Nam Citizen BI5000-87A\r\n', 3, 6192000),
-(233, '1', 0, '', 1, 0),
-(234, '1', 3, 'Đồng hồ Nam Citizen AW1211-12A ', 1, 3290000);
+(248, '1', 1, 'Đồng hồ Nam Citizen BI5000-87L\r\n', 1, 2064000),
+(249, '1', 2, 'Đồng hồ Nam Citizen AN3610-55L\r\n', 1, 4032000);
 
 -- --------------------------------------------------------
 
@@ -101,6 +100,32 @@ CREATE TABLE `orderdetails` (
   `unitPrice` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `orderdetails`
+--
+
+INSERT INTO `orderdetails` (`orderDetail_id`, `order_id`, `product_id`, `quantity`, `unitPrice`) VALUES
+(1, 1, 1, 3, 100000),
+(4, 8, 3, 1, 3290000),
+(2, 8, 5, 3, 2064000),
+(6, 9, 3, 1, 3290000),
+(5, 9, 5, 3, 2064000),
+(8, 10, 3, 1, 3290000),
+(7, 10, 5, 3, 2064000),
+(9, 11, 1, 1, 2064000),
+(10, 11, 2, 1, 4032000),
+(11, 11, 3, 1, 3290000),
+(12, 11, 4, 1, 3760000),
+(13, 11, 5, 1, 2064000),
+(17, 12, 1, 2, 2064000),
+(14, 12, 2, 1, 4032000),
+(15, 12, 3, 1, 3290000),
+(16, 12, 4, 1, 3760000),
+(18, 12, 5, 1, 2064000),
+(19, 13, 2, 1, 4032000),
+(20, 14, 3, 8, 3290000),
+(21, 14, 4, 1, 3760000);
+
 -- --------------------------------------------------------
 
 --
@@ -129,7 +154,18 @@ INSERT INTO `orders` (`order_id`, `order_user_id`, `order_name`, `order_date`, `
 (3, 1, 'Bùi Quang Tuyến', '2020-12-30', 'kasumin147@gmail.com', '0836988085', 'Tp. Hồ Chí Minh', 100000, ''),
 (4, 1, 'Bùi Quang Tuyến', '2020-12-30', 'tuyenbui3030@gmail.com', '0836988085', 'Pleiku', 100000, ''),
 (5, 1, 'Bùi Quang Tuyến', '2020-12-30', 'tuyenbui3030@gmail.com', '6608329428', 'FOSTER', 100000, ''),
-(6, 1, 'Bùi Quang Tuyến', '2020-12-30', 'tuyenbui3030@gmail.com', '0836988085', 'Gia Lai', 100000, NULL);
+(6, 1, 'Bùi Quang Tuyến', '2020-12-30', 'tuyenbui3030@gmail.com', '0836988085', 'Gia Lai', 100000, NULL),
+(7, 1, 'Bùi Quang Tuyến', '2020-12-31', 'tuyenbui3030@gmail.com', '0836988085', 'Pleiku', 100000, 'dsadsd'),
+(8, 1, 'Bùi Quang Tuyến', '2020-12-31', 'tuyenbui3030@gmail.com', '+846608329428', 'FOSTER', 100000, ''),
+(9, 1, 'Bùi Quang Tuyến', '2020-12-31', 'tuyenbui3030@gmail.com', '0836988085', 'Gia Lai', 100000, 'sdsdsd'),
+(10, 1, 'Bùi Quang Tuyến', '2020-12-31', 'tuyenbui3030@gmail.com', '+842156612986', 'Philadelphia', 100000, ''),
+(11, 1, 'Bùi Quang Tuyến', '2020-12-31', 'tuyenbui3030@gmail.com', '0836988085', 'Gia Lai', 100000, 'eq'),
+(12, 1, 'Bùi Quang Tuyến', '2020-12-31', 'kasumin147@gmail.com', '0836988085', 'Tp. Hồ Chí Minh', 0, 'Giao hàng giờ hành chính'),
+(13, 1, 'Bùi Quang Tuyến', '2020-12-31', 'tuyenbui3030@gmail.com', '+846608329428', 'FOSTER', 4032000, ''),
+(14, 1, 'Bùi Quang Tuyến', '2020-12-31', 'tuyenbui3030@gmail.com', '0836988085', 'Gia Lai', 30080000, 'Giao giờ hành chính'),
+(15, 1, 'Bùi Quang Tuyến', '2020-12-31', 'tuyenbui3030@gmail.com', '+846608329428', 'FOSTER', 0, ''),
+(16, 1, '', '2020-12-31', '', '', '', 0, ''),
+(17, 1, '', '2020-12-31', '', '', '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -208,10 +244,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_fullname`, `user_username`, `user_password`, `user_email`, `user_token`, `user_verified`, `user_address`, `user_birthday`) VALUES
-(1, 'Bùi Quang Tuyến', 'tuyenbui3030', '$2y$10$oRfhplNHusJ3evktuB0usebqVFpHDtUM62g1KMrD5YWxqv6C9AHMK', 'tuyenbui3030@gmail.com', '33b1e0185b7f53ec3811b8b0706504ef72cdfeb8d614bce7497635e7c16def43a3d26a1b3a5b8165604ae0dbf84f2be80d0b', b'1', 'TP.HCM', '0000-00-00'),
-(2, 'Tuyến Bùi', 'tuyenbui1999', '$2y$10$KNP2rasT9fsBWSxTpRDIE.ksh7ojHlrqXuYe8pVemEf1MNDp3.1tm', 'tuyenbui1999@gmail.com', 'e1cc2b4d24431eb1756b578da5eb8b6ad9f020841f7032722a6beb665759ab9eb900efeea331668bbcdb8923104f508cbb06', b'1', 'TP.HCM', '0000-00-00'),
+(1, 'Bùi Quang Tuyến', 'tuyenbui3030', '$2y$10$oRfhplNHusJ3evktuB0usebqVFpHDtUM62g1KMrD5YWxqv6C9AHMK', 'tuyenbui30300@gmail.com', '33b1e0185b7f53ec3811b8b0706504ef72cdfeb8d614bce7497635e7c16def43a3d26a1b3a5b8165604ae0dbf84f2be80d0b', b'1', 'TP.HCM', '0000-00-00'),
+(2, 'Tít sún răng', 'tuyenbui1999', '$2y$10$KNP2rasT9fsBWSxTpRDIE.ksh7ojHlrqXuYe8pVemEf1MNDp3.1tm', 'tuyenbui1999@gmail.com', 'e1cc2b4d24431eb1756b578da5eb8b6ad9f020841f7032722a6beb665759ab9eb900efeea331668bbcdb8923104f508cbb06', b'1', 'TP.HCM', '0000-00-00'),
 (4, '', 'kasumin147', '$2y$10$kcySZVOhARn.wKUjg7x7J.rvBXDJ6vz5aiko3Ev1NF0lGcKUVtNvu', 'kasumin147@gmail.com', 'ec185595b05821e0b9ed70afec5b4ea226bf55d8f5597031c657630ecd1eebe759de9ce2af7995e5c2882585d2d10899e88d', b'0', '', '0000-00-00'),
-(5, '', 'tuyenbui2608', '$2y$10$dBUFbHTZz/X9kncAIPdgb.D9loG5oLK19KhWakfyoCwQ4KS.QLLJi', 'tuyenbui2608@gmail.com', '0ec18de812fe366b146eb3943aab050eda878f734ce36af3a2c30a9eb5b2255af8c998563f1c1bb52d96ce81fbed7657dfe7', b'0', '', '1999-08-26');
+(5, '', 'tuyenbui2608', '$2y$10$dBUFbHTZz/X9kncAIPdgb.D9loG5oLK19KhWakfyoCwQ4KS.QLLJi', 'tuyenbui2608@gmail.com', '0ec18de812fe366b146eb3943aab050eda878f734ce36af3a2c30a9eb5b2255af8c998563f1c1bb52d96ce81fbed7657dfe7', b'0', '', '1999-08-26'),
+(6, 'Admin', 'administration', '$2y$10$3AJgSYKOcT8uxe97QlNSOeHjHJ/PYDUV2Nwd0.TEAeU8CGB5hVYgW', 'tuyenbui3030@gmail.com', '7dc0b7c75a02044d50d262c6a5ee363e34f40a65aa4675a7ebd39b659bcab3c4b675033672f897a06f76a003a86537fa6795', b'1', '1', '2020-12-24');
 
 --
 -- Indexes for dumped tables
@@ -240,7 +277,8 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `orderdetails`
   ADD PRIMARY KEY (`order_id`,`product_id`),
-  ADD UNIQUE KEY `orderDetail_id` (`orderDetail_id`);
+  ADD UNIQUE KEY `orderDetail_id` (`orderDetail_id`),
+  ADD KEY `FK_ORDERDETAILS_PRODUCT` (`product_id`);
 
 --
 -- Indexes for table `orders`
@@ -284,7 +322,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=235;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=250;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -296,13 +334,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `orderdetails`
 --
 ALTER TABLE `orderdetails`
-  MODIFY `orderDetail_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderDetail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -320,11 +358,18 @@ ALTER TABLE `size`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `orderdetails`
+--
+ALTER TABLE `orderdetails`
+  ADD CONSTRAINT `FK_ORDERDETAILS_ORDERS` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`),
+  ADD CONSTRAINT `FK_ORDERDETAILS_PRODUCT` FOREIGN KEY (`product_id`) REFERENCES `products` (`prod_id`);
 
 --
 -- Constraints for table `orders`
