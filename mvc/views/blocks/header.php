@@ -17,214 +17,35 @@
                         <div class="mainmenu-nav d-none d-lg-block">
                             <ul class="mainmenu">
                                 <li class="mainmenu__item menu-item-has-children active">
-                                    <a href="index.html" class="mainmenu__link">
-                                        <span class="mm-text">Home</span>
+                                    <a href="index" class="mainmenu__link">
+                                        <span class="mm-text">Trang chủ</span>
                                     </a>
-                                    <!-- <ul class="megamenu two-column">
-                                        <li>
-                                            <a class="megamenu-title" href="#">
-                                                <span class="mm-text">Group One</span>
-                                            </a>
-                                            <ul>
-                                                <li>
-                                                    <a href="index.html">
-                                                        <span class="mm-text">Home One</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="index-02.html">
-                                                        <span class="mm-text">Home Two</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="index-03.html">
-                                                        <span class="mm-text">Home Three</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="index-04.html">
-                                                        <span class="mm-text">Home Four</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="index-05.html">
-                                                        <span class="mm-text">Home Five</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a class="megamenu-title" href="#">
-                                                <span class="mm-text">Group Two</span>
-                                            </a>
-                                            <ul>
-                                                <li>
-                                                    <a href="index-06.html">
-                                                        <span class="mm-text">Home Six</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="index-07.html">
-                                                        <span class="mm-text">Home Seven</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="index-08.html">
-                                                        <span class="mm-text">Home Eight</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="index-09.html">
-                                                        <span class="mm-text">Home Nine </span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="index-10.html">
-                                                        <span class="mm-text">Home Ten</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul> -->
                                 </li>
                                 <li class="mainmenu__item menu-item-has-children">
-                                    <a href="shop.html" class="mainmenu__link">
-                                        <span class="mm-text">Shop</span>
+                                    <a href="product" class="mainmenu__link">
+                                        <span class="mm-text">Sản phẩm</span>
                                     </a>
-                                    <!-- <ul class="megamenu">
+                                </li>
+                                <li class="mainmenu__item menu-item-has-children">
+                                    <a class="mainmenu__link">
+                                        <span class="mm-text">Danh mục</span>
+                                    </a>
+                                    <ul class="sub-menu">
                                         <li>
-                                            <a class="megamenu-title" href="#">
-                                                <span class="mm-text">Shop Grid</span>
-                                            </a>
-                                            <ul>
-                                                <li>
-                                                    <a href="shop-fullwidth.html">
-                                                        <span class="mm-text">Full Width</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="shop.html">
-                                                        <span class="mm-text">Left Sidebar</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="shop-right-sidebar.html">
-                                                        <span class="mm-text">Right Sidebar</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="shop-three-columns.html">
-                                                        <span class="mm-text">Three Columns</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="shop-four-columns.html">
-                                                        <span class="mm-text">Four Columns</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
+                                            <a href="my-account.html">
+                                                <span class="mm-text">Loại sản phẩm</span>
+                                           </a>
                                         </li>
                                         <li>
-                                            <a class="megamenu-title" href="#">
-                                                <span class="mm-text">Shop List</span>
+                                            <a href="checkout.html">
+                                                <span class="mm-text">Nhà sản xuất</span>
                                             </a>
-                                            <ul>
-                                                <li>
-                                                    <a href="shop-list.html">
-                                                        <span class="mm-text">Full Width</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="shop-list-sidebar.html">
-                                                        <span class="mm-text">Left Sidebar</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="shop-list-right-sidebar.html">
-                                                        <span class="mm-text">Right Sidebar</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a class="megamenu-title" href="#">
-                                                <span class="mm-text">Product Details</span>
-                                            </a>
-                                            <ul>
-                                                <li>
-                                                    <a href="product-details.html">
-                                                        <span class="mm-text">Tab Style 1</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="product-details-tab-style-2.html">
-                                                        <span class="mm-text">Tab Style 2</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="product-details-tab-style-3.html">
-                                                        <span class="mm-text">Tab Style 3</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="product-details-gallery-left.html">
-                                                        <span class="mm-text">Gallery Left</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="product-details-gallery-right.html">
-                                                        <span class="mm-text">Gallery Right</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="product-details-sticky-left.html">
-                                                        <span class="mm-text">Sticky Left</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a class="megamenu-title" href="#">
-                                                <span class="mm-text">Product Details</span>
-                                            </a>
-                                            <ul>
-                                                <li>
-                                                    <a href="product-details-sticky-right.html">
-                                                        <span class="mm-text">Sticky Right</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="product-details-slider-box.html">
-                                                        <span class="mm-text">Slider Box</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="product-details-slider-full-width.html">
-                                                        <span class="mm-text">Slider Box Full Width</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="product-details-affiliate.html">
-                                                        <span class="mm-text">Affiliate Proudct</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="product-details-variable.html">
-                                                        <span class="mm-text">Variable Proudct</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="product-details-group.html">
-                                                        <span class="mm-text">Group Product</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul> -->
+                                        </li>                
+                                    </ul>                         
                                 </li>
                                 <li class="mainmenu__item">
                                     <a href="contact-us.html" class="mainmenu__link">
-                                        <span class="mm-text">Contact Us</span>
+                                        <span class="mm-text">Liên hệ</span>
                                     </a>
                                 </li>
                             </ul>
@@ -253,7 +74,6 @@
                                         echo '<sup class="mini-cart-count" id="mini-cart-count" style="display:none">' . $rowcount . '</sup>';
                                     }
                                 ?>
-                                <!-- <sup class="mini-cart-count" id="mini-cart-count"><?php// echo $rowcount ?></sup> -->
                                 <?php } ?>
                             </a>
                         </li>
@@ -275,10 +95,10 @@
                                 </li>
                                 <?php } ?>
                                 <li>
-                                    <a href="checkout.html">Thanh toán</a>
+                                    <a href="./cart">Giỏ hàng</a>
                                 </li>
                                 <li>
-                                    <a href="order-tracking.html">Theo dõi đơn hàng</a>
+                                    <a href="./checkout">Thanh toán</a>
                                 </li>
                             </ul>
                         </li>

@@ -51,12 +51,9 @@ class UserModel extends DB {
         if(mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_array($result)){
                 if(password_verify($password, $row["user_password"])) {
-                    // $_SESSION["username"] = $username;
-                    // header("location:index.php");
                     return json_encode(true);
                 } else {
                     return json_encode(false);
-                    //echo '<script>alert("Không thành công")</script>';
                 }
             }
         }

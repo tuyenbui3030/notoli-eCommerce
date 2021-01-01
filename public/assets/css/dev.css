@@ -114,3 +114,16 @@
 .dev-miniCart {
   margin-bottom: 0px;
 }
+.dev-searchform__input {
+  width: auto;
+}
+.dev-searchform__select {
+  background-color: transparent;
+  border: none;
+  height: 50px;
+  font-size: 24px;
+  width: auto;
+}
+.dev-searchform__option {
+  background-color: transparent;
+}

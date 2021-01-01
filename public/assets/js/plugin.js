@@ -33,7 +33,7 @@ function ruleCaptcha() {
   var messageCaptcha = $("#message_captcha");
   var result;
   $.ajax({
-    url: "./Captcha/checkCaptcha",
+    url: "./captcha/checkCaptcha",
     data: $("#registration-form").serialize(),
     type: "POST",
     async: false,
@@ -79,7 +79,7 @@ $(document).ready(function () {
     var messageResult = $("#message_result");
     loadingElement.addClass("active");
     $.ajax({
-      url: "./Register/registerAccount",
+      url: "./register/registerAccount",
       data: $(this).serialize(),
       type: "POST",
       success: function (res) {
@@ -119,7 +119,7 @@ $(document).ready(function () {
   function ruleUsername() {
     var user = $("#register_username").val();
     var messageUsername = $("#message_username");
-    $.post("./Register/checkUsername", { username: user }, function (data) {
+    $.post("./register/checkUsername", { username: user }, function (data) {
       if (data == "true") {
         messageUsername.html("Tài khoản đã tồn tại trong hệ thống");
         messageUsername.addClass("text-danger");
@@ -192,7 +192,7 @@ $(document).ready(function () {
   function ruleEmail2() {
     var val = $("#register_email").val();
     var messageEmail = $("#message_email");
-    $.post("./Register/checkEmail", { email: val }, function (data) {
+    $.post("./register/checkEmail", { email: val }, function (data) {
       if (data == "true") {
         messageEmail.html("Email đã được đăng kí bởi 1 tài khoản khác");
         messageEmail.addClass("text-danger");
@@ -258,7 +258,7 @@ $(document).ready(function () {
     var loadingElement = $("div.zakas-preloader");
     loadingElement.addClass("active");
     $.ajax({
-      url: "./Login/loginPageController",
+      url: "./login/loginPageController",
       method: "POST",
       data: {
         login: 1,
@@ -290,7 +290,7 @@ $(document).ready(function () {
     var messageResult = $("#message_recover_result");
     loadingElement.addClass("active");
     $.ajax({
-      url: "./Login/sendMail",
+      url: "./login/sendMail",
       data: $(this).serialize(),
       type: "POST",
       success: function (res) {
@@ -346,7 +346,7 @@ $(document).ready(function () {
     var messageChange = $("#message_change_password");
     loadingElement.addClass("active");
     $.ajax({
-      url: "./Login/ChangePassword",
+      url: "./login/ChangePassword",
       data: $(this).serialize(),
       type: "POST",
       success: function (res) {

@@ -1,13 +1,13 @@
 <?php
 class Route {
-    protected $controller = "Index";
+    protected $controller = "home";
     protected $method = "Action";
     protected $params = [];
     
     function __construct() {
         $request = $this->getRoute(); 
         if(empty($request)){
-            $request[0] = "Index";
+            $request[0] = "home";
         }
 
         if( file_exists(APPLICATION_PATH . "/mvc/controllers/".$request[0].".php") ){

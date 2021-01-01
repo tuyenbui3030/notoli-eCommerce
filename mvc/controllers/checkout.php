@@ -9,7 +9,7 @@ class Checkout extends Controller {
         if(isset($_SESSION["loggedIN"])) {
             $cart_user = $_SESSION["userID"];
             $this->view("MiniLayout", [
-                "page"=>"CheckOut",
+                "page"=>"Checkout",
                 //Item minicart
                 "itemListCart"=>$this->cart->GetItemCart(),
                 //Item đơn hàng
@@ -17,11 +17,25 @@ class Checkout extends Controller {
 
             ]);
         } else {
-            $location = "./";
+            $location = DOMAIN;
             header("Location: " . $location);
         }
     }
     public function ActionOrder() {
+        //Kiểm tra số lượng sản phẩm tron giỏ hàng, nếu không có thì xuất thông báo không có sản phẩm!
+        $quantity_cart = $this->check->GetTotalCart();
+        $quantity_cart = json_decode($quantity_cart);
+        if($quantity_cart < 1) {
+            $this->view("MiniLayout", [
+                "page"=>"success",
+                //Item minicart
+                "itemListCart"=>$this->cart->GetItemCart(),
+                //Thông báo kết quả
+                "result"=>"Thành toán thất bại!",
+    
+            ]);
+            exit();
+        }
         //Lấy dữ liệu để insert cho bảng Orders
         $billing_name = $_POST["billing_name"];
         $billing_date  = date("Y-m-d");
@@ -34,10 +48,20 @@ class Checkout extends Controller {
         $billing_amount = $this->check->GetPriceTotalCart();
         $billing_amount = json_decode($billing_amount);
         $billing_userID = $_SESSION["userID"];
+        if($billing_name == '' || $billing_city == '' || $billing_state == '' || $billing_streetAddress == '' || $billing_phone == '' || $billing_email == '') {
+            $this->view("MiniLayout", [
+                "page"=>"success",
+                //Item minicart
+                "itemListCart"=>$this->cart->GetItemCart(),
+                //Thông báo kết quả
+                "result"=>"Thành toán thất bại!",    
+            ]);
+            exit();
+        }
         //Thực hiện tạo đơn hàng mới trong bảng Orders
         $resultOrders = $this->check->InsertOrders($billing_userID, $billing_name, $billing_date, $billing_email, $billing_phone, $billing_city, $billing_amount, $billing_orderNotes);
         //Thực hiện chi tiết đơn hàng trong bảng orderDetails
-        if($resultIDOrder == 'true') { 
+        if($resultOrders == "true") { 
             $resultListOrder = $this->check->GetItemCart();
             $resultIDOrder = $this->check->GetLastRowOrder();
             while($rows = mysqli_fetch_array($resultListOrder)) {
@@ -49,5 +73,24 @@ class Checkout extends Controller {
             }
         }
         $resultTotal = $this->check->DeleteCart();
+        if($resultToral == "true") {
+            $this->view("MiniLayout", [
+                "page"=>"success",
+                //Item minicart
+                "itemListCart"=>$this->cart->GetItemCart(),
+                //Thông báo kết quả
+                "result"=>"Thành toán thành công đơn hàng!",
+    
+            ]);
+        } else {
+            $this->view("MiniLayout", [
+                "page"=>"success",
+                //Item minicart
+                "itemListCart"=>$this->cart->GetItemCart(),
+                //Thông báo kết quả
+                "result"=>"Thành toán thất bại!",
+    
+            ]);
+        }
     }
 }

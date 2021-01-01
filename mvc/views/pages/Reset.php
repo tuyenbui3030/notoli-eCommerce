@@ -5,7 +5,7 @@
                 <div class="d-flex justify-content-between align-items-center flex-sm-row flex-column">
                     <h1 class="page-title">Khôi phục mật khẩu</h1>
                     <ul class="breadcrumb">
-                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="home">Trang chủ</a></li>
                         <li class="current"><span>Khôi phục mật khẩu</span></li>
                     </ul>
                 </div>

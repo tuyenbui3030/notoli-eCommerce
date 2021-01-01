@@ -1,5 +1,5 @@
 <?php
-class Index extends Controller {
+class Home extends Controller {
     public $prod;
     public $cart;
     public function __construct() {
@@ -8,7 +8,7 @@ class Index extends Controller {
     }
     public function Action() {
         $this->view("MiniLayout", [
-            "page"=>"Index",
+            "page"=>"Home",
             "itemProduct"=>$this->prod->Product(),
             "itemListCart"=>$this->cart->GetItemCart()
         ]);

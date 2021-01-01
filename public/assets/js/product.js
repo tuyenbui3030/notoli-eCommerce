@@ -2,7 +2,7 @@
 // == Hàm load số sản phẩm (icon giỏ hàng ở header)
 function loadQuantityCart() {
   $.ajax({
-    url: "./Cart/LoadCart",
+    url: "./cart/LoadCart",
     method: "POST",
     async: false,
     success: function (res) {
@@ -22,7 +22,7 @@ function loadQuantityCart() {
 // == Hàm load sản phẩm cho vào miniCart
 function loadMiniCart() {
   $.ajax({
-    url: "./Cart/LoadMiniCart",
+    url: "./cart/LoadMiniCart",
     method: "POST",
     async: false,
     success: function (res) {
@@ -35,7 +35,7 @@ function loadMiniCart() {
 // == Khi thêm 1 sản phẩm vào trong giỏ hàng (Button thêm giỏ hàng)
 function InsertCart(id) {
   $.ajax({
-    url: "./Cart/InsertCart",
+    url: "./cart/InsertCart",
     method: "POST",
     data: {
       product_id: id,
@@ -58,7 +58,7 @@ function InsertCart(id) {
 //== Xóa sản phẩm khỏi MiniCart
 function RemoveCart(id) {
   $.ajax({
-    url: "./Cart/RemoveCart",
+    url: "./cart/RemoveCart",
     method: "POST",
     data: {
       cart_id: id,
@@ -96,7 +96,7 @@ const formatter = new Intl.NumberFormat("vi-VN", {
 });
 function updateCart(id, quantity) {
   $.ajax({
-    url: "./Cart/UpdateCart",
+    url: "./cart/UpdateCart",
     method: "POST",
     data: {
       cart_id: id,
@@ -158,7 +158,7 @@ $(document).ready(function () {
 //== Load trang giỏ hàng
 function loadPageCart() {
   $.ajax({
-    url: "./Cart/LoadPageCart",
+    url: "./cart/LoadPageCart",
     method: "POST",
     success: function (res) {
       if (res != "null") {

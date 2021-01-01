@@ -35,7 +35,7 @@
                 NOTOLI.COM. Vui lòng truy cập vào link bên dưới để xác
                 nhận tài khoản!
               </p>
-              <a href="http://'. SERVER .'/notoli/Register/verify/' . $token . '">Xác nhận tài khoản</a>
+              <a href="http://'. SERVER .'/notoli/register/verify/' . $token . '">Xác nhận tài khoản</a>
             </div>
           </body>
         </html>';

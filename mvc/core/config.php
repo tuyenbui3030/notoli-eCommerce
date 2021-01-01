@@ -1,4 +1,6 @@
 <?php
+    //WEBSITE
+    define("DOMAIN", "http://localhost/notoli");
     //SERVER
     define("SERVER", "localhost");
     define("USERNAME", "root");

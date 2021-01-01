@@ -7,7 +7,7 @@ class Register extends Controller {
     }
     public function Action() {
         if(isset($_SESSION['loggedIN'])) {
-            $location = "./";
+            $location = DOMAIN;
             header("Location: " . $location);
             exit();
         }
@@ -16,6 +16,11 @@ class Register extends Controller {
         ]);
     }
     public function Verify($token=NULL) {
+        if(isset($_SESSION['loggedIN'])) {
+            $location = DOMAIN;
+            header("Location: " . $location);
+            exit();
+        }
         if($token!=NULL) {
             $newToken = bin2hex(random_bytes(50));
             $result = $this->UserModel->VerifyNewUser($token, $newToken);
@@ -92,7 +97,7 @@ class Register extends Controller {
             }
         } else {
             $this->view("MiniLayout", [
-                "page"=>"404"
+                "page"=>"Home"
             ]);
         }
     }

@@ -5,7 +5,7 @@
                 <div class="d-flex justify-content-between align-items-center flex-sm-row flex-column">
                     <h1 class="page-title">Đăng nhập</h1>
                     <ul class="breadcrumb">
-                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="home">Trang chủ</a></li>
                         <li class="current"><span>Đăng nhập</span></li>
                     </ul>
                 </div>

@@ -53,5 +53,15 @@ class CheckoutModel extends DB {
             return json_encode($rows[0]);
         }
     }
+    //Kiểm tra số lượng giỏ hàng
+    public function GetTotalCart() {
+        if(isset($_SESSION["loggedIN"])){
+            $userID = $_SESSION["userID"];
+            $qr = "SELECT COUNT(cart_id) FROM cart WHERE cart_user = $userID";
+            $result = mysqli_query($this->con, $qr);
+            $rows = mysqli_fetch_array($result);
+            return json_encode($rows[0]);
+        }
+    }
 }
 ?>

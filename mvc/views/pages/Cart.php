@@ -7,7 +7,7 @@
                 <div class="d-flex justify-content-between align-items-center flex-sm-row flex-column">
                     <h1 class="page-title">Giỏ hàng</h1>
                     <ul class="breadcrumb">
-                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="home">Trang chủ</a></li>
                         <li class="current"><span>Giỏ hàng</span></li>
                     </ul>
                 </div>
@@ -254,7 +254,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="checkout.html" class="btn btn-fullwidth btn-bg-red btn-color-white btn-hover-2">
+                        <a href="checkout" class="btn btn-fullwidth btn-bg-red btn-color-white btn-hover-2">
                             Tiến hành thanh toán
                         </a>
                     </div>
