@@ -33,12 +33,13 @@ function loadMiniCart() {
   });
 }
 // == Khi thêm 1 sản phẩm vào trong giỏ hàng (Button thêm giỏ hàng)
-function InsertCart(id) {
+function InsertCart(id, quantity) {
   $.ajax({
     url: "./cart/InsertCart",
     method: "POST",
     data: {
       product_id: id,
+      cart_quantity: quantity,
     },
     async: false,
     success: function (res) {
@@ -55,6 +56,7 @@ function InsertCart(id) {
     },
   });
 }
+
 //== Xóa sản phẩm khỏi MiniCart
 function RemoveCart(id) {
   $.ajax({
@@ -71,9 +73,22 @@ function RemoveCart(id) {
 $(document).ready(function () {
   $(".addCart").click(function () {
     let id = $(this).attr("id");
-    InsertCart(id);
+    let quantity = 1; // Số lượng sản phẩm cần thêm
+    InsertCart(id, quantity);
     loadQuantityCart();
     loadMiniCart();
+    return false;
+  });
+});
+//== Bắt sự kiện click khi thêm vào giỏ hàng (Số lượng nhiều)
+$(document).ready(function () {
+  $(".addMultiCart").click(function () {
+    let id = $(this).attr("id");
+    let quantity = $('#qty').val();
+    console.log(quantity);
+    InsertCart(id, quantity);
+    // loadQuantityCart();
+    // loadMiniCart();
     return false;
   });
 });
@@ -118,7 +133,7 @@ function updateCart(id, quantity) {
 }
 //== Bắt sự kiện khi thay đổi số lượng sản phẩm
 $(document).ready(function () {
-  $(document).on("focusout", ".quantity-input", function () {
+  $(document).on("focusout", ".quantity-cart .quantity-load", function () {
     let id = $(this).attr("id");
     var quantity = parseInt($(this).val());
     var max = parseInt($(this).attr("max"));
@@ -136,7 +151,8 @@ $(document).ready(function () {
 });
 //== Bắt sự kiện khi giảm số lượng sản phẩm
 $(document).ready(function () {
-  $(document).on("click", ".dec", function () {
+  $(document).on("click", ".quantity-cart .dec", function () {
+    console.log("aaa");
     let id = $(this).siblings("input").attr("id");
     let quantity = parseInt($(this).siblings("input").val());
     updateCart(id, quantity);
@@ -144,7 +160,7 @@ $(document).ready(function () {
 });
 //== Bắt sự kiện khi tăng số lượng sản phẩm
 $(document).ready(function () {
-  $(document).on("click", ".inc", function () {
+  $(document).on("click", ".quantity-cart .inc", function () {
     let id = $(this).siblings("input").attr("id");
     var quantity = parseInt($(this).siblings("input").val());
     var max = parseInt($(this).siblings("input").attr("max"));

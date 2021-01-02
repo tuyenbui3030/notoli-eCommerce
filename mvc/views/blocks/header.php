@@ -43,22 +43,12 @@
                                         </li>                
                                     </ul>                         
                                 </li>
-                                <li class="mainmenu__item">
-                                    <a href="contact-us.html" class="mainmenu__link">
-                                        <span class="mm-text">Liên hệ</span>
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                     </nav>
                 </div>
                 <div class="col-xl-2 col-lg-3 col-9 text-right">
                     <ul class="header-toolbar">
-                        <li class="header-toolbar__item">
-                            <a href="wishlist.html" class="header-toolbar__btn">
-                                <i class="flaticon flaticon-like"></i>
-                            </a>
-                        </li>
                         <li class="header-toolbar__item mini-cart-item">
                             <a href="#miniCart" class="header-toolbar__btn toolbar-btn mini-cart-btn">
                                 <i class="flaticon flaticon-shopping-cart"></i>

@@ -118,13 +118,17 @@
                                 <div class="row">
                                     <?php
                                 // Hiển thị danh sách product
-                                while($row = mysqli_fetch_array($data["itemProduct"])){                      
+                                while($row = mysqli_fetch_array($data["itemProduct"])){
+                                    $product_id = $row["prod_id"]
+                                    //$product_image = $row["prod_image"];
+                                    // $product_title = $row["prod_title"];
+                                    // $product_price = number_format($row["prod_price"], 0, '', ',')              
                                 ?>
                                     <div class="col-xl-3 col-md-4 col-sm-6 mb--50">
                                         <div class="zakas-product">
                                             <div class="product-inner">
                                                 <figure class="product-image">
-                                                    <a href="product-details.html">
+                                                    <a href="<?php echo DOMAIN ?>/product/detail/<?php echo $product_id ?>">
                                                         <img src="public/assets/img/products/<?php echo $row["prod_image"] ?>"
                                                             alt="Products">
                                                     </a>
@@ -141,7 +145,7 @@
                                                         <!-- <span class="money-separator">-</span>
                                                         <span class="money">$200</span> -->
                                                     </div>
-                                                    <a href="" id="<?php echo $row["prod_id"] ?>"
+                                                    <a href="" id="<?php echo $product_id ?>"
                                                         class="btn btn-small btn-bg-sand btn-color-dark addCart">Thêm
                                                         giỏ hàng</a>
                                                 </div>

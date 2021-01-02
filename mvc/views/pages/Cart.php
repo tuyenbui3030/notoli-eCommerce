@@ -73,8 +73,8 @@
                                                     </span>
                                                 </td>
                                                 <td class="product-quantity">
-                                                    <div class="quantity">
-                                                        <input type="number" class="quantity-input" name="qty"
+                                                    <div class="quantity quantity-cart">
+                                                        <input type="number" class="quantity-input quantity-load" name="qty"
                                                             id=<?php echo $itemID ?> id="qty-1"
                                                             value="<?php echo $itemCartQuantity ?>" min="1"
                                                             max="<?php echo $itemMax ?>">

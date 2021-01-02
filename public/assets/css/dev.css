@@ -3,19 +3,19 @@
   font-weight: 100;
   font-family: "Poppins", sans-serif;
 }
-.ptb--90 {
+/* .ptb--90 {
   padding-top: 2rem !important;
   padding-bottom: 2rem !important;
-}
-.logo--normal img {
+} */
+/* .logo--normal img {
   height: 48px;
-}
-.textwidget img {
+} */
+/* .textwidget img {
   height: 48px;
-}
-.header-inner {
+} */
+/* .header-inner {
   padding: 20px 0;
-}
+} */
 .div-verify {
   background-color: #f6f6f6;
   height: 200px;
@@ -114,7 +114,7 @@
 .dev-miniCart {
   margin-bottom: 0px;
 }
-.dev-searchform__input {
+/* .dev-searchform__input {
   width: auto;
 }
 .dev-searchform__select {
@@ -126,4 +126,20 @@
 }
 .dev-searchform__option {
   background-color: transparent;
+} */
+
+/* .dev-gallery {
+  height: 465px;
 }
+.product-slide-nav.slick-vertical .slick-btn {
+  top: 15px;
+  left: 50%;
+  z-index: 2;
+}
+
+.product-slide-nav.slick-vertical .slick-next {
+  left: 5%;
+}
+.product-slide-nav.slick-vertical .slick-prev {
+  left: 110%;
+} */

@@ -63,5 +63,14 @@ class CheckoutModel extends DB {
             return json_encode($rows[0]);
         }
     }
+    //Giảm số lượng tồn kho sau khi bán
+    public function PickQuantityProduct($prod_id, $quantity) {
+        $qr = "UPDATE products SET prod_quantity = prod_quantity - $quantity WHERE prod_id = $prod_id";
+        $result = false;
+        if(mysqli_query($this->con, $qr)) {
+            $result = true;
+        }
+        return json_encode($result);
+    }    
 }
 ?>

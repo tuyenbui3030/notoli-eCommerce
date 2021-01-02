@@ -10,6 +10,15 @@ class CartModel extends DB {
         return mysqli_query($this->con, $qr);
         }
     }
+    public function InCartUser($pro_id) {
+        if(isset($_SESSION["loggedIN"])){
+            $userID = $_SESSION["userID"];
+            $qr = "SELECT cart_quantity FROM cart WHERE cart_user = $userID AND cart_prodID = $pro_id";
+            $result = mysqli_query($this->con, $qr);
+            $rows = mysqli_fetch_array($result);
+            return json_encode($rows["cart_quantity"]);
+        }
+    }
     //Tỉnh tổng tiền giỏ hàng
     public function GetPriceTotalCart() {
         if(isset($_SESSION["loggedIN"])){
@@ -21,8 +30,9 @@ class CartModel extends DB {
         }
     }
     //Thêm vào giỏ hàng
-    public function InsertCart($prod_id, $userID, $prod_title, $prod_price) {
-        $qr = "INSERT INTO `cart` VALUES (NULL, '$userID', '$prod_id', '$prod_title', '1', '$prod_price')";
+    public function InsertCart($prod_id, $userID, $prod_title, $cart_quantity, $prod_price) {
+        $prod_price = $prod_price * $cart_quantity;
+        $qr = "INSERT INTO `cart` VALUES (NULL, '$userID', '$prod_id', '$prod_title', '$cart_quantity', '$prod_price')";
         mysqli_query($this->con, $qr);
         $affect =  $this->con->affected_rows;
         $result = false;

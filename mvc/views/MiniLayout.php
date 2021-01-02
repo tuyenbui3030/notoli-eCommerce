@@ -11,7 +11,6 @@
     <!-- Favicons -->
     <link rel="shortcut icon" href="./public/assets/img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="./public/assets/img/icon.png">
-
     <!-- ************************* CSS Files ************************* -->
 
     <!-- Vendor CSS -->

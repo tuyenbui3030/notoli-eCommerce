@@ -24,7 +24,8 @@ class Cart extends Controller {
     //Thêm vào giỏ hàng
     public function InsertCart() {
         //Kiểm tra người dùng có login hay không
-        if(isset($_SESSION['loggedIN'])) { 
+        if(isset($_SESSION['loggedIN'])) {
+
             //Lấy thông tin của product muốn thêm vào giỏ hàng
             $prod_id = $_POST["product_id"];
             $data = $this->prod->SelectProduct($prod_id);
@@ -32,17 +33,26 @@ class Cart extends Controller {
             $prod_title = $row["prod_title"];
             $prod_price = $row["prod_price"];
             $userID = $_SESSION["userID"];
+            //Số lượng sản phẩm cần thêm
+            $cart_quantity = $_POST["cart_quantity"];
+            //Số lượng sản phẩm hiện tại trong giỏ của khách hàng
+            $inCartUser = json_decode($this->cart->InCartUser($prod_id));
+            //Số  sản phẩm hiện tại trong kho
+            $inStock = json_decode($this->prod->InStock($prod_id));
+            if($cart_quantity >= $inStock) {
+                $cart_quantity = $inStock - $inCartUser;
+            }
             //Lấy ID giỏ hàng, nếu sản phẩm đã tồn tại
             $cartID = $this->cart->GetCartID($userID, $prod_id);
             if($cartID != "false") {
-                $resultUpdateQuantityCart = $this->cart->UpdateQuantityCart($cartID, $cart_quantity = 1, $prod_price);
+                $resultUpdateQuantityCart = $this->cart->UpdateQuantityCart($cartID, $cart_quantity, $prod_price);
                 if($resultUpdateQuantityCart == "true") {
                     exit("true");
                 }
                 exit("false");
             }
             //Thêm thông tin vào giỏ hàng
-            $resultInsertCart = $this->cart->InsertCart($prod_id, $userID, $prod_title, $prod_price);
+            $resultInsertCart = $this->cart->InsertCart($prod_id, $userID, $prod_title, $cart_quantity, $prod_price);
             if($resultInsertCart == "true") {
                 exit("true");
             }

@@ -31,7 +31,7 @@ class Checkout extends Controller {
                 //Item minicart
                 "itemListCart"=>$this->cart->GetItemCart(),
                 //Thông báo kết quả
-                "result"=>"Thành toán thất bại!",
+                "result"=>"Thành toán thất bại!1",
     
             ]);
             exit();
@@ -54,7 +54,7 @@ class Checkout extends Controller {
                 //Item minicart
                 "itemListCart"=>$this->cart->GetItemCart(),
                 //Thông báo kết quả
-                "result"=>"Thành toán thất bại!",    
+                "result"=>"Thành toán thất bại!2",    
             ]);
             exit();
         }
@@ -70,10 +70,11 @@ class Checkout extends Controller {
                 $quantity = $rows["cart_quantity"];
                 $unitPrice = $rows["cart_price"] / $quantity;
                 $resultOrderDetails = $this->check->InsertOrderDetails($order_id, $product_id, $quantity, $unitPrice);
+                $resultOrderDetails = $this->check->PickQuantityProduct($product_id, $quantity);
             }
         }
         $resultTotal = $this->check->DeleteCart();
-        if($resultToral == "true") {
+        if($resultTotal == "true") {
             $this->view("MiniLayout", [
                 "page"=>"success",
                 //Item minicart
@@ -88,7 +89,7 @@ class Checkout extends Controller {
                 //Item minicart
                 "itemListCart"=>$this->cart->GetItemCart(),
                 //Thông báo kết quả
-                "result"=>"Thành toán thất bại!",
+                "result"=>"Thành toán thất bại!3",
     
             ]);
         }
