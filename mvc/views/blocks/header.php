@@ -25,23 +25,36 @@
                                     <a href="product" class="mainmenu__link">
                                         <span class="mm-text">Sản phẩm</span>
                                     </a>
-                                </li>
-                                <li class="mainmenu__item menu-item-has-children">
-                                    <a class="mainmenu__link">
-                                        <span class="mm-text">Danh mục</span>
-                                    </a>
-                                    <ul class="sub-menu">
+                                    <ul class="megamenu two-column">                                       
                                         <li>
-                                            <a href="my-account.html">
-                                                <span class="mm-text">Loại sản phẩm</span>
-                                           </a>
-                                        </li>
-                                        <li>
-                                            <a href="checkout.html">
+                                            <a class="megamenu-title">
                                                 <span class="mm-text">Nhà sản xuất</span>
                                             </a>
-                                        </li>                
-                                    </ul>                         
+                                            <ul>
+                                                <?php while($rows = mysqli_fetch_array($data["listBrands"])){ ?>
+                                                <li>
+                                                    <a href="product/brands/<?php echo $rows["brand_id"] ?>">
+                                                        <span class="mm-text"><?php echo $rows["brand_title"] ?></span>
+                                                    </a>
+                                                </li>
+                                                <?php } ?>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a class="megamenu-title">
+                                                <span class="mm-text">Loại sản phẩm</span>
+                                            </a>
+                                            <ul>
+                                                <?php while($rows = mysqli_fetch_array($data["listCategories"])){ ?>
+                                                <li>
+                                                    <a href="product/categories/<?php echo $rows["cat_id"] ?>">
+                                                        <span class="mm-text"><?php echo $rows["cat_title"] ?></span>
+                                                    </a>
+                                                </li>
+                                                <?php } ?>
+                                            </ul>
+                                        </li>
+                                    </ul> 
                                 </li>
                             </ul>
                         </div>

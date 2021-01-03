@@ -5,6 +5,20 @@ class productModel extends DB {
         $qr = "SELECT * FROM products";
         return mysqli_query($this->con, $qr);
     }
+    //Show top 12 sản phẩm mới nhất
+    public function TopNew() {
+        $qr = "SELECT * FROM products ORDER BY prod_date DESC LIMIT 12";
+        return mysqli_query($this->con, $qr);
+    }
+    //Show top 12 sản phẩm bán chạy nhất
+    public function TopHot() {
+        $qr = "SELECT *, SUM(o.quantity) q FROM products p JOIN orderdetails o 
+        ON p.prod_id = o.product_id 
+        GROUP BY p.prod_id 
+        ORDER BY q DESC 
+        LIMIT 12";
+        return mysqli_query($this->con, $qr);
+    }
     //Tồn kho
     public function InStock($prod_id) {
         $qr = "SELECT prod_quantity FROM products WHERE prod_id = $prod_id";
@@ -63,6 +77,28 @@ class productModel extends DB {
         $qr = "SELECT prod_id, prod_title, prod_price, prod_image FROM `products` WHERE prod_cat = $cat_id ORDER BY RAND() LIMIT 5";
         $result = mysqli_query($this->con, $qr);
         return $result;
+    }
+    //Lấy danh sách loại sản phẩm
+    public function ShowListCategories() {
+        $qr = "SELECT * FROM `categories`";
+        $result = mysqli_query($this->con, $qr);
+        return $result;
+    }
+    //Lấy danh sách nhà sản xuất
+    public function ShowListBrand() {
+        $qr = "SELECT * FROM `brands`";
+        $result = mysqli_query($this->con, $qr);
+        return $result;
+    }
+    //Lấy toàn bộ sản phẩm theo 1 loại sản phẩm (VD: toàn bộ sản phẩm của đồng hồ thời trang)
+    public function ProductOfCategories($cat_id) {
+        $qr = "SELECT * FROM products WHERE prod_cat = $cat_id ORDER BY RAND()";
+        return mysqli_query($this->con, $qr);
+    }
+    //Lấy toàn bộ sản phẩm theo 1 nhà sản xuất (VD: toàn bộ sản phẩm của rolex)
+    public function ProductOfBrands($brand_id) {
+        $qr = "SELECT * FROM products WHERE prod_brand = $brand_id ORDER BY RAND()";
+        return mysqli_query($this->con, $qr);
     }
 }
 ?>

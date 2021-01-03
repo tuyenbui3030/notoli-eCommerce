@@ -14,6 +14,10 @@ class Checkout extends Controller {
                 "itemListCart"=>$this->cart->GetItemCart(),
                 //Item đơn hàng
                 "itemListOrder"=>$this->cart->GetItemCart(),
+                //Lấy danh sách loại sản phẩm (Đồng hồ thời trang, đồng hồ thông minh)
+                "listCategories"=>$this->prod->ShowListCategories(),
+                //Lấy danh sách nhà sản xuất (Rolex, Apple)
+                "listBrands"=>$this->prod->ShowListBrand(),
 
             ]);
         } else {
@@ -31,8 +35,11 @@ class Checkout extends Controller {
                 //Item minicart
                 "itemListCart"=>$this->cart->GetItemCart(),
                 //Thông báo kết quả
-                "result"=>"Thành toán thất bại!1",
-    
+                "result"=>"Thanh toán thất bại!",
+                //Lấy danh sách loại sản phẩm (Đồng hồ thời trang, đồng hồ thông minh)
+                "listCategories"=>$this->prod->ShowListCategories(),
+                //Lấy danh sách nhà sản xuất (Rolex, Apple)
+                "listBrands"=>$this->prod->ShowListBrand(),
             ]);
             exit();
         }
@@ -54,7 +61,11 @@ class Checkout extends Controller {
                 //Item minicart
                 "itemListCart"=>$this->cart->GetItemCart(),
                 //Thông báo kết quả
-                "result"=>"Thành toán thất bại!2",    
+                "result"=>"Thanh toán thất bại!",
+                //Lấy danh sách loại sản phẩm (Đồng hồ thời trang, đồng hồ thông minh)
+                "listCategories"=>$this->prod->ShowListCategories(),
+                //Lấy danh sách nhà sản xuất (Rolex, Apple)
+                "listBrands"=>$this->prod->ShowListBrand(),
             ]);
             exit();
         }
@@ -80,7 +91,11 @@ class Checkout extends Controller {
                 //Item minicart
                 "itemListCart"=>$this->cart->GetItemCart(),
                 //Thông báo kết quả
-                "result"=>"Thành toán thành công đơn hàng!",
+                "result"=>"Thanh toán đơn hàng thành công!",
+                //Lấy danh sách loại sản phẩm (Đồng hồ thời trang, đồng hồ thông minh)
+                "listCategories"=>$this->prod->ShowListCategories(),
+                //Lấy danh sách nhà sản xuất (Rolex, Apple)
+                "listBrands"=>$this->prod->ShowListBrand(),
     
             ]);
         } else {
@@ -89,8 +104,11 @@ class Checkout extends Controller {
                 //Item minicart
                 "itemListCart"=>$this->cart->GetItemCart(),
                 //Thông báo kết quả
-                "result"=>"Thành toán thất bại!3",
-    
+                "result"=>"Thành toán thất bại!",
+                //Lấy danh sách loại sản phẩm (Đồng hồ thời trang, đồng hồ thông minh)
+                "listCategories"=>$this->prod->ShowListCategories(),
+                //Lấy danh sách nhà sản xuất (Rolex, Apple)
+                "listBrands"=>$this->prod->ShowListBrand(),
             ]);
         }
     }

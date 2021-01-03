@@ -15,6 +15,10 @@ class Cart extends Controller {
                 "itemCart"=>$this->cart->GetItemCart(),
                 "itemListCart"=>$this->cart->GetItemCart(),
                 "itemTotalPrice"=>$this->cart->GetTotalPrice($cart_user),
+                //Lấy danh sách loại sản phẩm (Đồng hồ thời trang, đồng hồ thông minh)
+                "listCategories"=>$this->prod->ShowListCategories(),
+                //Lấy danh sách nhà sản xuất (Rolex, Apple)
+                "listBrands"=>$this->prod->ShowListBrand(),
             ]);
         } else {
             $location = "./";

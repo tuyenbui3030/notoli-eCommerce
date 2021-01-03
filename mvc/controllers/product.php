@@ -15,6 +15,10 @@ class Product extends Controller{
             "allProduct"=>$this->prod->SelectAllProduct(),
             //Show danh sách hãng sản phẩm
             "listBrand"=>$this->prod->SelectBrand(),
+            //Lấy danh sách loại sản phẩm (Đồng hồ thời trang, đồng hồ thông minh)
+            "listCategories"=>$this->prod->ShowListCategories(),
+            //Lấy danh sách nhà sản xuất (Rolex, Apple)
+            "listBrands"=>$this->prod->ShowListBrand(),
 
         ]);
     }
@@ -26,6 +30,10 @@ class Product extends Controller{
                 "itemListCart"=>$this->cart->GetItemCart(),
                 //Item đơn hàng
                 "itemListOrder"=>$this->cart->GetItemCart(),
+                //Lấy danh sách loại sản phẩm (Đồng hồ thời trang, đồng hồ thông minh)
+                "listCategories"=>$this->prod->ShowListCategories(),
+                //Lấy danh sách nhà sản xuất (Rolex, Apple)
+                "listBrands"=>$this->prod->ShowListBrand(),
             ]);
             exit();
         }
@@ -45,7 +53,47 @@ class Product extends Controller{
             //Lấy tên hãng sản phẩm
             "titleBrand"=>$this->prod->GetTitleBrand($id),
             //Hiển thị 5 sản phẩm
-            "showFiveProduct"=>$this->prod->ShowFiveProduct($id)
+            "showFiveProduct"=>$this->prod->ShowFiveProduct($id),
+            //Lấy danh sách loại sản phẩm (Đồng hồ thời trang, đồng hồ thông minh)
+            "listCategories"=>$this->prod->ShowListCategories(),
+            //Lấy danh sách nhà sản xuất (Rolex, Apple)
+            "listBrands"=>$this->prod->ShowListBrand(),
+        ]);
+    }
+    public function categories($cat_id) {
+        $this->view("MiniLayout", [
+            "page"=>"Product",
+            //Item minicart
+            "itemListCart"=>$this->cart->GetItemCart(),
+            //Item đơn hàng
+            "itemListOrder"=>$this->cart->GetItemCart(),
+            //Show toàn bộ sản phẩm ra trang sản phẩm
+            "allProduct"=>$this->prod->ProductOfCategories($cat_id),
+            //Show danh sách hãng sản phẩm
+            "listBrand"=>$this->prod->SelectBrand(),
+            //Lấy danh sách loại sản phẩm (Đồng hồ thời trang, đồng hồ thông minh)
+            "listCategories"=>$this->prod->ShowListCategories(),
+            //Lấy danh sách nhà sản xuất (Rolex, Apple)
+            "listBrands"=>$this->prod->ShowListBrand(),
+
+        ]);
+    }
+    public function brands($brand_id) {
+        $this->view("MiniLayout", [
+            "page"=>"Product",
+            //Item minicart
+            "itemListCart"=>$this->cart->GetItemCart(),
+            //Item đơn hàng
+            "itemListOrder"=>$this->cart->GetItemCart(),
+            //Show toàn bộ sản phẩm ra trang sản phẩm
+            "allProduct"=>$this->prod->ProductOfBrands($brand_id),
+            //Show danh sách hãng sản phẩm
+            "listBrand"=>$this->prod->SelectBrand(),
+            //Lấy danh sách loại sản phẩm (Đồng hồ thời trang, đồng hồ thông minh)
+            "listCategories"=>$this->prod->ShowListCategories(),
+            //Lấy danh sách nhà sản xuất (Rolex, Apple)
+            "listBrands"=>$this->prod->ShowListBrand(),
+
         ]);
     }
 }

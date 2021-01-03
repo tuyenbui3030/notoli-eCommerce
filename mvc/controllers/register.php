@@ -4,6 +4,8 @@ class Register extends Controller {
     public function __construct() {
         // Khởi tạo model
         $this->UserModel = $this->model("UserModel");
+
+        $this->prod = $this->model("productModel");
     }
     public function Action() {
         if(isset($_SESSION['loggedIN'])) {
@@ -13,6 +15,10 @@ class Register extends Controller {
         }
         $this->view("MiniLayout", [
             "page"=>"Register",
+            //Lấy danh sách loại sản phẩm (Đồng hồ thời trang, đồng hồ thông minh)
+            "listCategories"=>$this->prod->ShowListCategories(),
+            //Lấy danh sách nhà sản xuất (Rolex, Apple)
+            "listBrands"=>$this->prod->ShowListBrand(),
         ]);
     }
     public function Verify($token=NULL) {
@@ -27,16 +33,28 @@ class Register extends Controller {
             if($result == 'true') {
                 $this->view("MiniLayout", [
                     "page"=>"Verify",
-                    "result"=>$result
+                    "result"=>$result,
+                    //Lấy danh sách loại sản phẩm (Đồng hồ thời trang, đồng hồ thông minh)
+                    "listCategories"=>$this->prod->ShowListCategories(),
+                    //Lấy danh sách nhà sản xuất (Rolex, Apple)
+                    "listBrands"=>$this->prod->ShowListBrand(),
                 ]);
             } else {
                 $this->view("MiniLayout", [
-                    "page"=>"404"
+                    "page"=>"404",
+                    //Lấy danh sách loại sản phẩm (Đồng hồ thời trang, đồng hồ thông minh)
+                    "listCategories"=>$this->prod->ShowListCategories(),
+                    //Lấy danh sách nhà sản xuất (Rolex, Apple)
+                    "listBrands"=>$this->prod->ShowListBrand(),
                 ]);
             }
         } else {
             $this->view("MiniLayout", [
-                "page"=>"404"
+                "page"=>"404",
+                //Lấy danh sách loại sản phẩm (Đồng hồ thời trang, đồng hồ thông minh)
+                "listCategories"=>$this->prod->ShowListCategories(),
+                //Lấy danh sách nhà sản xuất (Rolex, Apple)
+                "listBrands"=>$this->prod->ShowListBrand(),
             ]);
         }
     }
@@ -97,7 +115,11 @@ class Register extends Controller {
             }
         } else {
             $this->view("MiniLayout", [
-                "page"=>"Home"
+                "page"=>"Home",
+                //Lấy danh sách loại sản phẩm (Đồng hồ thời trang, đồng hồ thông minh)
+                "listCategories"=>$this->prod->ShowListCategories(),
+                //Lấy danh sách nhà sản xuất (Rolex, Apple)
+                "listBrands"=>$this->prod->ShowListBrand(),
             ]);
         }
     }
