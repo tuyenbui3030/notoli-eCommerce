@@ -60,7 +60,7 @@ class productModel extends DB {
         $result = mysqli_query($this->con, $qr);
         $cat_id = mysqli_fetch_array($result);
         $cat_id = $cat_id[0];
-        $qr = "SELECT prod_id, prod_title, prod_price, prod_image FROM `products` WHERE prod_cat = $cat_id LIMIT 5";
+        $qr = "SELECT prod_id, prod_title, prod_price, prod_image FROM `products` WHERE prod_cat = $cat_id ORDER BY RAND() LIMIT 5";
         $result = mysqli_query($this->con, $qr);
         return $result;
     }
