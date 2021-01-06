@@ -17,7 +17,7 @@
                         <div class="mainmenu-nav d-none d-lg-block">
                             <ul class="mainmenu">
                                 <li class="mainmenu__item menu-item-has-children active">
-                                    <a href="index" class="mainmenu__link">
+                                    <a href="home" class="mainmenu__link">
                                         <span class="mm-text">Trang chủ</span>
                                     </a>
                                 </li>

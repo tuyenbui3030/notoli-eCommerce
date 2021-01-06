@@ -60,7 +60,7 @@
         <!-- Main Content Wrapper Start -->
 
         <!-- register -->
-        <?php require_once "./mvc/views/pages/". $data["page"] . ".php" ?>
+        <?php require_once "./mvc/views/pages/" . $data["page"] . ".php" ?>
 
 
 
@@ -254,6 +254,8 @@
     <script src="./public/assets/js/main.js"></script>
     <script src="./public/assets/js/plugin.js"></script>
     <script src="./public/assets/js/product.js"></script>
+    <script src="./public/assets/js/dev.js"></script>
+
 
     <!-- <script src="./public/assets/js/utils/register.js"></script> -->
 

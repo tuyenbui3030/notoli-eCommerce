@@ -1,11 +1,21 @@
 <?php
-    class Controller {
-        public function model($model) {
-            require_once("./mvc/models/". $model .".php");
-            return new $model;
-        }
-        public function view($view, $data=[]) {
-            require_once("./mvc/views/". $view . ".php");
-        }
+class Controller
+{
+
+    protected $request = null;
+
+    public function __construct()
+    {
+        $this->request = new Request();
     }
-?>
+
+    public function model($model)
+    {
+        require_once("./mvc/models/" . $model . ".php");
+        return new $model;
+    }
+    public function view($view, $data = [])
+    {
+        require_once("./mvc/views/" . $view . ".php");
+    }
+}

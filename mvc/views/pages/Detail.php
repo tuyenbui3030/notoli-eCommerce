@@ -142,8 +142,8 @@
                                             <input type="number" class="quantity-input" name="qty" id="qty" value="1" min="1">
                                         </div>
                                     </div>
-                                    <button type="button" id="<?php echo $prod_id ?>" class="btn btn-small btn-bg-red btn-color-white btn-hover-2 addMultiCart">
-                                    <!-- <button type="button" id="<?php //echo $prod_id ?>" class="btn btn-small btn-bg-red btn-color-white btn-hover-2 addMultiCart" onclick="window.location.href='cart'"> -->
+                                    <!-- <button type="button" id="<?php // echo $prod_id ?>" class="btn btn-small btn-bg-red btn-color-white btn-hover-2 addMultiCart"> -->
+                                    <button type="button" id="<?php echo $prod_id ?>" class="btn btn-small btn-bg-red btn-color-white btn-hover-2 addMultiCart" onclick="window.location.href='cart'">
                                         Thêm vào giỏ
                                     </button>
                                 </div>  

@@ -8,58 +8,46 @@
                     "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-double-right" },
                     "appendArrows": ".slick-btn-wrapper"
                 }'>
-            <div class="single-slide slider-height bg-style d-flex align-items-center"
-                style="background-image: url(public/assets/img/slider/slider-1.jpg);">
+            <div class="single-slide slider-height bg-style d-flex align-items-center" style="background-image: url(public/assets/img/slider/slider-1.jpg);">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6 col-md-7 col-sm-8">
                             <div class="slider-content bg-shape text-center ptb--100 ptb-xl--70">
                                 <h1 class="heading__primary mb--30 mb-xl--20">
-                                    <span class="heading__primary--sub" data-animation="fadeInUp" data-duration=".4s"
-                                        data-delay=".7s">Stay Warm</span>
-                                    <span class="heading__primary--main" data-animation="fadeInUp" data-duration=".4s"
-                                        data-delay="1s">Winter -2019</span>
+                                    <span class="heading__primary--sub" data-animation="fadeInUp" data-duration=".4s" data-delay=".7s">Stay Warm</span>
+                                    <span class="heading__primary--main" data-animation="fadeInUp" data-duration=".4s" data-delay="1s">Winter -2019</span>
                                 </h1>
-                                <a href="shop.html" class="btn" data-animation="fadeInUp" data-duration=".4s"
-                                    data-delay="1.2s">Shop Now <i class="fa fa-angle-double-right"></i></a>
+                                <a href="shop.html" class="btn" data-animation="fadeInUp" data-duration=".4s" data-delay="1.2s">Shop Now <i class="fa fa-angle-double-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="single-slide slider-height bg-style d-flex align-items-center"
-                style="background-image: url(public/assets/img/slider/slider-2.jpg);">
+            <div class="single-slide slider-height bg-style d-flex align-items-center" style="background-image: url(public/assets/img/slider/slider-2.jpg);">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6 col-md-7 col-sm-8">
                             <div class="slider-content bg-shape text-center ptb--100 ptb-xl--70">
                                 <h1 class="heading__primary mb--30 mb-xl--20">
-                                    <span class="heading__primary--sub" data-animation="fadeInUp" data-duration=".4s"
-                                        data-delay=".7s">Stay Warm</span>
-                                    <span class="heading__primary--main" data-animation="fadeInUp" data-duration=".4s"
-                                        data-delay="1s">Winter -2019</span>
+                                    <span class="heading__primary--sub" data-animation="fadeInUp" data-duration=".4s" data-delay=".7s">Stay Warm</span>
+                                    <span class="heading__primary--main" data-animation="fadeInUp" data-duration=".4s" data-delay="1s">Winter -2019</span>
                                 </h1>
-                                <a href="shop.html" class="btn" data-animation="fadeInUp" data-duration=".4s"
-                                    data-delay="1.2s">Shop Now <i class="fa fa-angle-double-right"></i></a>
+                                <a href="shop.html" class="btn" data-animation="fadeInUp" data-duration=".4s" data-delay="1.2s">Shop Now <i class="fa fa-angle-double-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="single-slide slider-height bg-style d-flex align-items-center"
-                style="background-image: url(public/assets/img/slider/slider-3.jpg);">
+            <div class="single-slide slider-height bg-style d-flex align-items-center" style="background-image: url(public/assets/img/slider/slider-3.jpg);">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6 col-md-7 col-sm-8">
                             <div class="slider-content bg-shape text-center ptb--100  ptb-xl--80">
                                 <h1 class="heading__primary mb--30">
-                                    <span class="heading__primary--sub" data-animation="fadeInUp" data-duration=".4s"
-                                        data-delay=".7s">Stay Warm</span>
-                                    <span class="heading__primary--main" data-animation="fadeInUp" data-duration=".4s"
-                                        data-delay="1s">Winter -2019</span>
+                                    <span class="heading__primary--sub" data-animation="fadeInUp" data-duration=".4s" data-delay=".7s">Stay Warm</span>
+                                    <span class="heading__primary--main" data-animation="fadeInUp" data-duration=".4s" data-delay="1s">Winter -2019</span>
                                 </h1>
-                                <a href="shop.html" class="btn" data-animation="fadeInUp" data-duration=".4s"
-                                    data-delay="1.2s">Shop Now <i class="fa fa-angle-double-right"></i></a>
+                                <a href="shop.html" class="btn" data-animation="fadeInUp" data-duration=".4s" data-delay="1.2s">Shop Now <i class="fa fa-angle-double-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -88,98 +76,86 @@
             <div class="row">
                 <div class="col-12">
                     <div class="product-tab tab-style-1">
-                        <div class="nav nav-tabs product-tab__head justify-content-center mb--50" id="new-arrival-tab"
-                            role="tablist">
-                            <a class="nav-item nav-link product-tab__link active" id="new-all-tab" data-toggle="tab"
-                                href="#new-all" role="tab" aria-controls="new-all" aria-selected="true">
+                        <div class="nav nav-tabs product-tab__head justify-content-center mb--50" id="new-arrival-tab" role="tablist">
+                            <a class="nav-item nav-link product-tab__link active" id="new-all-tab" data-toggle="tab" href="#new-all" role="tab" aria-controls="new-all" aria-selected="true">
                                 <span>Mới nhất</span>
                             </a>
-                            <a class="nav-item nav-link product-tab__link" id="new-men-tab" data-toggle="tab"
-                                href="#new-men" role="tab" aria-controls="new-men" aria-selected="false">
+                            <a class="nav-item nav-link product-tab__link" id="new-men-tab" data-toggle="tab" href="#new-men" role="tab" aria-controls="new-men" aria-selected="false">
                                 <span>Bán chạy nhất</span>
                             </a>
                         </div>
                         <div class="tab-content" id="new-arrival-tab-content">
-                            <div class="tab-pane fade show active" id="new-all" role="tabpanel"
-                                aria-labelledby="new-all-tab">
+                            <div class="tab-pane fade show active" id="new-all" role="tabpanel" aria-labelledby="new-all-tab">
                                 <div class="row">
                                     <?php
-                                // Hiển thị danh sách product
-                                while($row = mysqli_fetch_array($data["itemTopNew"])){
-                                    $product_id = $row["prod_id"]
-                                    //$product_image = $row["prod_image"];
-                                    // $product_title = $row["prod_title"];
-                                    // $product_price = number_format($row["prod_price"], 0, '', ',')              
-                                ?>
-                                    <div class="col-xl-3 col-md-4 col-sm-6 mb--50">
-                                        <div class="zakas-product">
-                                            <div class="product-inner">
-                                                <figure class="product-image">
-                                                    <a href="<?php echo DOMAIN ?>/product/detail/<?php echo $product_id ?>">
-                                                        <img src="public/assets/img/products/<?php echo $row["prod_image"] ?>"
-                                                            alt="Products">
-                                                    </a>
-                                                    <span class="product-badge">New</span>
-                                                </figure>
-                                                <div class="product-info">
-                                                    <h3 class="product-title mb--15">
-                                                        <a href="product-details.html"
-                                                            class="product_title dev-title-cart"><?php echo $row["prod_title"] ?></a>
-                                                    </h3>
-                                                    <div class="product-price-wrapper mb--30">
-                                                        <span
-                                                            class="money"><?php echo number_format($row["prod_price"], 0, '', ',')?>₫</span>
-                                                        <!-- <span class="money-separator">-</span>
+                                    // Hiển thị danh sách product
+                                    while ($row = mysqli_fetch_array($data["itemTopNew"])) {
+                                        $product_id = $row["prod_id"]
+                                        //$product_image = $row["prod_image"];
+                                        // $product_title = $row["prod_title"];
+                                        // $product_price = number_format($row["prod_price"], 0, '', ',')              
+                                    ?>
+                                        <div class="col-xl-3 col-md-4 col-sm-6 mb--50">
+                                            <div class="zakas-product">
+                                                <div class="product-inner">
+                                                    <figure class="product-image">
+                                                        <a href="<?php echo DOMAIN ?>/product/detail/<?php echo $product_id ?>">
+                                                            <img src="public/assets/img/products/<?php echo $row["prod_image"] ?>" alt="Products">
+                                                        </a>
+                                                        <span class="product-badge">New</span>
+                                                    </figure>
+                                                    <div class="product-info">
+                                                        <h3 class="product-title mb--15">
+                                                            <a href="<?php echo DOMAIN ?>/product/detail/<?php echo $product_id ?>" class="product_title dev-title-cart"><?php echo $row["prod_title"] ?></a>
+                                                        </h3>
+                                                        <div class="product-price-wrapper mb--30">
+                                                            <span class="money"><?php echo number_format($row["prod_price"], 0, '', '.') ?> ₫</span>
+                                                            <!-- <span class="money-separator">-</span>
                                                         <span class="money">$200</span> -->
+                                                        </div>
+                                                        <a href="" id="<?php echo $product_id ?>" class="btn btn-small btn-bg-sand btn-color-dark addCart">Thêm
+                                                            giỏ hàng</a>
                                                     </div>
-                                                    <a href="" id="<?php echo $product_id ?>"
-                                                        class="btn btn-small btn-bg-sand btn-color-dark addCart">Thêm
-                                                        giỏ hàng</a>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     <?php } ?>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="new-men" role="tabpanel" aria-labelledby="new-all-tab">
                                 <div class="row">
-                                <?php
-                                // Hiển thị danh sách product
-                                while($row = mysqli_fetch_array($data["itemTopHot"])){
-                                    $product_id = $row["prod_id"]
-                                    //$product_image = $row["prod_image"];
-                                    // $product_title = $row["prod_title"];
-                                    // $product_price = number_format($row["prod_price"], 0, '', ',')              
-                                ?>
-                                    <div class="col-xl-3 col-md-4 col-sm-6 mb--50">
-                                        <div class="zakas-product">
-                                            <div class="product-inner">
-                                                <figure class="product-image">
-                                                    <a href="<?php echo DOMAIN ?>/product/detail/<?php echo $product_id ?>">
-                                                        <img src="public/assets/img/products/<?php echo $row["prod_image"] ?>"
-                                                            alt="Products">
-                                                    </a>
-                                                    <span class="product-badge">Hot</span>
-                                                </figure>
-                                                <div class="product-info">
-                                                    <h3 class="product-title mb--15">
-                                                        <a href="product-details.html"
-                                                            class="product_title dev-title-cart"><?php echo $row["prod_title"] ?></a>
-                                                    </h3>
-                                                    <div class="product-price-wrapper mb--30">
-                                                        <span
-                                                            class="money"><?php echo number_format($row["prod_price"], 0, '', ',')?>₫</span>
-                                                        <!-- <span class="money-separator">-</span>
+                                    <?php
+                                    // Hiển thị danh sách product
+                                    while ($row = mysqli_fetch_array($data["itemTopHot"])) {
+                                        $product_id = $row["prod_id"]
+                                        //$product_image = $row["prod_image"];
+                                        // $product_title = $row["prod_title"];
+                                        // $product_price = number_format($row["prod_price"], 0, '', ',')              
+                                    ?>
+                                        <div class="col-xl-3 col-md-4 col-sm-6 mb--50">
+                                            <div class="zakas-product">
+                                                <div class="product-inner">
+                                                    <figure class="product-image">
+                                                        <a href="<?php echo DOMAIN ?>/product/detail/<?php echo $product_id ?>">
+                                                            <img src="public/assets/img/products/<?php echo $row["prod_image"] ?>" alt="Products">
+                                                        </a>
+                                                        <span class="product-badge">Hot</span>
+                                                    </figure>
+                                                    <div class="product-info">
+                                                        <h3 class="product-title mb--15">
+                                                            <a href="<?php echo DOMAIN ?>/product/detail/<?php echo $product_id ?>" class="product_title dev-title-cart"><?php echo $row["prod_title"] ?></a>
+                                                        </h3>
+                                                        <div class="product-price-wrapper mb--30">
+                                                            <span class="money"><?php echo number_format($row["prod_price"], 0, '', '.') ?> ₫</span>
+                                                            <!-- <span class="money-separator">-</span>
                                                         <span class="money">$200</span> -->
+                                                        </div>
+                                                        <a href="" id="<?php echo $product_id ?>" class="btn btn-small btn-bg-sand btn-color-dark addCart">Thêm
+                                                            giỏ hàng</a>
                                                     </div>
-                                                    <a href="" id="<?php echo $product_id ?>"
-                                                        class="btn btn-small btn-bg-sand btn-color-dark addCart">Thêm
-                                                        giỏ hàng</a>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     <?php } ?>
                                 </div>
                             </div>
@@ -205,8 +181,7 @@
                                 <div class="banner-info--inner text-center">
                                     <p class="banner-title-1 color--white">Up Coming Discount</p>
                                     <p class="banner-title-2 color--white mb--20 mb-lg--10">On Winter Clothing</p>
-                                    <a href="shop.html" class="btn banner-btn">Shop Now <i
-                                            class="fa fa-angle-double-right"></i></a>
+                                    <a href="shop.html" class="btn banner-btn">Shop Now <i class="fa fa-angle-double-right"></i></a>
                                 </div>
                             </div>
                             <a href="shop.html" class="banner-link"></a>
@@ -223,8 +198,7 @@
                                 <div class="banner-info--inner text-center">
                                     <p class="banner-title-1 color--white">Up Coming Discount</p>
                                     <p class="banner-title-2 color--white mb--20 mb-lg--10">On Winter Clothing</p>
-                                    <a href="shop.html" class="btn banner-btn">Shop Now <i
-                                            class="fa fa-angle-double-right"></i></a>
+                                    <a href="shop.html" class="btn banner-btn">Shop Now <i class="fa fa-angle-double-right"></i></a>
                                 </div>
                             </div>
                             <a href="shop.html" class="banner-link"></a>
@@ -264,7 +238,7 @@
                     <div class="method-box">
                         <i class="flaticon flaticon-support"></i>
                         <h4>Hỗ trợ chuyên nghiệp</h4>
-                        <p>notolisotore@gmail.com</p>
+                        <p>notolistore@gmail.com</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-5 col-9">
@@ -291,11 +265,8 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-10 text-center">
-                    <form class="newsletter-form mc-form"
-                        action="https://company.us19.list-manage.com/subscribe/post?u=2f2631cacbe4767192d339ef2&amp;id=24db23e68a"
-                        method="post" target="_blank">
-                        <input type="email" name="newsletter_email" id="newsletter_email" class="newsletter-form__input"
-                            placeholder="Enter Your E-mail Address">
+                    <form class="newsletter-form mc-form" action="https://company.us19.list-manage.com/subscribe/post?u=2f2631cacbe4767192d339ef2&amp;id=24db23e68a" method="post" target="_blank">
+                        <input type="email" name="newsletter_email" id="newsletter_email" class="newsletter-form__input" placeholder="Enter Your E-mail Address">
                         <input type="submit" value="Subscribe Now" class="newsletter-form__submit">
                     </form>
                     <!-- mailchimp-alerts Start -->

@@ -80,7 +80,7 @@ $(document).ready(function () {
     return false;
   });
 });
-//== Bắt sự kiện click khi thêm vào giỏ hàng (Số lượng nhiều)
+//== Bắt sự kiện click khi thêm vào giỏ hàng (Số lượng nhiều) // trang chi tiết sản phẩm
 $(document).ready(function () {
   $(".addMultiCart").click(function () {
     let id = $(this).attr("id");
@@ -232,3 +232,70 @@ $(document).ready(function () {
     }
   });
 });
+
+//== Load trang giỏ hàng
+function loadFilter() {
+  let cat = $('input[name="cat"]:checked').val();
+  let brand = $('input[name="brand"]:checked').val();
+  let min = $("#input-left").val();
+  let max = $("#input-right").val();
+
+  if(brand == 0) {
+    brand = 'prod_brand';
+  }
+  if(cat == 0) {
+    cat = 'prod_cat';
+  }
+  $.ajax({
+    url: "./ajaxfilter/Action",
+    method: "POST",
+    data: {
+      prod_brand: brand,
+      prod_cat: cat,
+      price_min: min,
+      price_max: max,
+      prod_title: '',
+    },
+    success: function (res) {
+      if (res != "null") {
+        $("#ajax_layout").html(res);
+      }
+    },
+  });
+}
+//Ajax filter
+$(document).ready(function () {
+  $(document).on("click", ".tickCat", function () {
+    loadFilter();
+  });
+});
+$(document).ready(function () {
+  $(document).on("click", ".tickBrand", function () {
+    loadFilter();
+  });
+});
+$(document).ready(function () {
+  $(document).on("change", "#input-left", function () {
+    let left = $("#input-left").val();
+    loadFilter();
+    console.log("Left", left);
+  });
+});
+$(document).ready(function () {
+  $(document).on("change", "#input-right", function () {
+    let right = $("#input-right").val();
+    loadFilter();
+    console.log("Right", right);
+  });
+});
+
+function trigerLeft() {
+  let valLeft = $("#input-left").val();
+  valLeft = formatter.format(parseInt(valLeft));
+  $('#minPrice').html(valLeft);
+}
+function trigerRight() {
+  let valRight = $("#input-right").val();
+  valRight = formatter.format(parseInt(valRight));
+  $('#maxPrice').html(valRight);
+}
