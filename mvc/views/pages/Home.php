@@ -8,21 +8,23 @@
                     "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-double-right" },
                     "appendArrows": ".slick-btn-wrapper"
                 }'>
-            <div class="single-slide slider-height bg-style d-flex align-items-center" style="background-image: url(public/assets/img/slider/slider-1.jpg);">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-6 col-md-7 col-sm-8">
-                            <div class="slider-content bg-shape text-center ptb--100 ptb-xl--70">
-                                <h1 class="heading__primary mb--30 mb-xl--20">
-                                    <span class="heading__primary--sub" data-animation="fadeInUp" data-duration=".4s" data-delay=".7s">Stay Warm</span>
-                                    <span class="heading__primary--main" data-animation="fadeInUp" data-duration=".4s" data-delay="1s">Winter -2019</span>
-                                </h1>
-                                <a href="shop.html" class="btn" data-animation="fadeInUp" data-duration=".4s" data-delay="1.2s">Shop Now <i class="fa fa-angle-double-right"></i></a>
+            <?php while ($rows = mysqli_fetch_array($data["listBanner"])) { ?>
+                <div class="single-slide slider-height bg-style d-flex align-items-center" style="background-image: url(public/assets/img/slider/<?php echo $rows["image"] ?>);">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-6 col-md-7 col-sm-8">
+                                <div class="slider-content bg-shape text-center ptb--100 ptb-xl--70">
+                                    <h1 class="heading__primary mb--30 mb-xl--20">
+                                        <span class="heading__primary--sub" data-animation="fadeInUp" data-duration=".4s" data-delay=".7s"><?php echo $rows["subTitle"] ?></span>
+                                        <span class="heading__primary--main" data-animation="fadeInUp" data-duration=".4s" data-delay="1s"><?php echo $rows["mainTitle"] ?></span>
+                                    </h1>
+                                    <a href="product/brands/<?php echo $rows["brands_id"]; ?>" class="btn" data-animation="fadeInUp" data-duration=".4s" data-delay="1.2s">Đến ngay<i class="fa fa-angle-double-right"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
             <div class="single-slide slider-height bg-style d-flex align-items-center" style="background-image: url(public/assets/img/slider/slider-2.jpg);">
                 <div class="container">
                     <div class="row">

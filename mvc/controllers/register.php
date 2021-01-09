@@ -22,6 +22,8 @@ class Register extends Controller
             "listCategories" => $this->prod->ShowListCategories(),
             //Lấy danh sách nhà sản xuất (Rolex, Apple)
             "listBrands" => $this->prod->ShowListBrand(),
+            //Lấy danh sách tỉnh thành
+            "listProvince" => $this->UserModel->ShowListProvince(),
         ]);
     }
     public function Verify($token = NULL)
@@ -92,6 +94,7 @@ class Register extends Controller
             $register_username = $this->UserModel->con->real_escape_string($_POST["register_username"]);
             $register_password = $this->UserModel->con->real_escape_string($_POST["register_password"]);
             $register_email = $this->UserModel->con->real_escape_string($_POST["register_email"]);
+            $register_role = "Customer";
             if ($register_birthday == '') {
                 $register_birthday = '00-00-0000';
             }
@@ -113,7 +116,7 @@ class Register extends Controller
             //Đăng kí tài khoản
             $register_password = password_hash($register_password, PASSWORD_DEFAULT);
             $token = bin2hex(random_bytes(50));
-            $resultInsert = $this->UserModel->InsertNewUser($register_fullname, $register_birthday, $register_city, $register_username, $register_password, $register_email, $token, 0);
+            $resultInsert = $this->UserModel->InsertNewUser($register_fullname, $register_birthday, $register_city, $register_username, $register_password, $register_role, $register_email, $token, 0);
             if ($resultInsert == "true") {
                 //Gửi email xác nhận
                 $resultVerify = verification($register_email, $token);
@@ -124,13 +127,8 @@ class Register extends Controller
                 }
             }
         } else {
-            $this->view("MiniLayout", [
-                "page" => "Home",
-                //Lấy danh sách loại sản phẩm (Đồng hồ thời trang, đồng hồ thông minh)
-                "listCategories" => $this->prod->ShowListCategories(),
-                //Lấy danh sách nhà sản xuất (Rolex, Apple)
-                "listBrands" => $this->prod->ShowListBrand(),
-            ]);
+            $location = DOMAIN . '/register';
+            header("Location: " . $location);
         }
     }
 }

@@ -12,11 +12,19 @@ class Route
             $request[0] = "home";
         }
 
-        if (file_exists(APPLICATION_PATH . "/mvc/controllers/" . $request[0] . ".php")) {
+        // Kiểm tra có phải admin => load controller tương ứng
+        $isAdminRequest = isAdminPath();
+        $controllerPath = APPLICATION_PATH . "/mvc/controllers/";
+        if ($isAdminRequest) {
+            $controllerPath = APPLICATION_PATH . "/admincp/controllers/";
+        }
+
+        if (file_exists($controllerPath . $request[0] . ".php")) {
             $this->controller = $request[0];
             unset($request[0]);
         }
-        require_once(APPLICATION_PATH . "/mvc/controllers/" . $this->controller . ".php");
+
+        require_once($controllerPath . $this->controller . ".php");
         $this->controller = new $this->controller;
 
         if (isset($request[1])) {

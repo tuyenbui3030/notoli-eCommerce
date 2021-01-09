@@ -17,7 +17,11 @@ class Request
 
     public function getPost($name = null)
     {
-        return $this->getValue($_POST, $name);
+        $rawValue = $this->getValue($_POST, $name);
+        $encodeValue = htmlspecialchars($rawValue);
+        // $decodeValue = htmlspecialchars_decode($encodeValue);
+
+        return $encodeValue;
     }
 
     public function isPost($name = null)
@@ -35,8 +39,7 @@ class Request
     public function getQuery($name = null)
     {
         $rawValue = $this->getValue($_GET, $name);
-        $encodeValue = htmlspecialchars($rawValue); // Chỉ can co dong nay, la fix dc lô hông t khai thac
-
+        $encodeValue = htmlspecialchars($rawValue);
         // $decodeValue = htmlspecialchars_decode($encodeValue);
 
         return $encodeValue;

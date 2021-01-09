@@ -114,23 +114,7 @@ class Product extends Controller
     }
     public function search()
     {
-        // $posts = $this->request->getQuery('aaaa');
-        // print_r($posts);
-        // exit;
-        // print_r($_GET);
-        // exit;
-        // $itemSearch = $_SERVER['REQUEST_URI'];
-        // // print_r($_REQUEST);
-        // // exit();
-        // $array = array();
-        // $array = explode('search?popup-search=', $itemSearch);
-        // $itemSearch =  $array[1];
-        // $itemSearch = $_GET["popup-search"];
         $itemSearch = $this->request->getQuery('popup-search');
-        // echo $itemSearch;
-        // exit;
-        // $itemSearch = urldecode($itemSearch);
-        // $itemSearch = str_replace('d', 'đ', $itemSearch);
         $this->view("MiniLayout", [
             "page" => "Product",
             //Item minicart

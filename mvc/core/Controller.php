@@ -11,11 +11,17 @@ class Controller
 
     public function model($model)
     {
-        require_once("./mvc/models/" . $model . ".php");
+        require_once(APPLICATION_PATH . "/mvc/models/" . $model . ".php");
         return new $model;
     }
     public function view($view, $data = [])
     {
-        require_once("./mvc/views/" . $view . ".php");
+        $isAdminRequest = isAdminPath();
+        $viewPath = APPLICATION_PATH . "/mvc/views/";
+        if ($isAdminRequest) {
+            $viewPath = APPLICATION_PATH . "/admincp/views/";
+        }
+
+        require_once($viewPath . $view . ".php");
     }
 }

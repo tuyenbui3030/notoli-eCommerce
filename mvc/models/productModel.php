@@ -145,4 +145,10 @@ class productModel extends DB
         $qr = "SELECT * FROM products WHERE prod_title LIKE N'%$itemSearch%'";
         return mysqli_query($this->con, $qr);
     }
+    //Danh sách banner
+    public function ShowListBanner()
+    {
+        $qr = "SELECT * FROM banner";
+        return mysqli_query($this->con, $qr);
+    }
 }

@@ -2,9 +2,9 @@
 class UserModel extends DB
 {
     //Insert User
-    public function InsertNewUser($register_fullname, $register_birthday, $register_city, $register_username, $register_password, $register_email, $token)
+    public function InsertNewUser($register_fullname, $register_birthday, $register_city, $register_username, $register_password, $register_role, $register_email, $token, $verify)
     {
-        $qr = "INSERT INTO users VALUES(null, '$register_fullname', '$register_username', '$register_password', '$register_email', '$token', 0, '$register_city', '$register_birthday')";
+        $qr = "INSERT INTO users VALUES(null, '$register_fullname', '$register_username', '$register_password', '$register_role', '$register_email', '$token', $verify, '$register_city', '$register_birthday')";
         $result = false;
         if (mysqli_query($this->con, $qr)) {
             $result = true;
@@ -48,6 +48,12 @@ class UserModel extends DB
             $result = true;
         }
         return json_encode($result);
+    }
+    //Lấy danh sách tỉnh thành
+    public function ShowListProvince()
+    {
+        $qr = "SELECT * FROM province";
+        return mysqli_query($this->con, $qr);
     }
     //Đăng nhập
     public function loginPageModel($username, $password)
@@ -97,5 +103,28 @@ class UserModel extends DB
             $result = true;
         }
         return json_encode($result);
+    }
+    ///////Đoạn code dành cho Admin////////
+    public function ShowUsers()
+    {
+        $qr = "SELECT * FROM users JOIN province ON user_address = province_id";
+        return mysqli_query($this->con, $qr);
+    }
+    //Kiểm tra UserID có trong hệ thống hay không
+    public function checkUserID($user_id)
+    {
+        $qr = "SELECT user_id FROM users WHERE user_id = $user_id";
+        $rows = mysqli_query($this->con, $qr);
+        $result = false;
+        if (mysqli_num_rows($rows) > 0) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
+    //Show thông tin của 1 user
+    public function detailUser($user_id)
+    {
+        $qr = "SELECT * FROM users JOIN province ON user_address = province_id WHERE user_id = $user_id";
+        return mysqli_query($this->con, $qr);
     }
 }

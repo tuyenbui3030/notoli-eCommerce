@@ -1,0 +1,4 @@
+.custom-control-label::after,
+.custom-control-label::before {
+  top: 0.15rem !important;
+}

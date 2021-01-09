@@ -1,6 +1,7 @@
 <?php
 require_once "config.php";
-class DB {
+class DB
+{
     public $con;
     protected $serverName = SERVER;
     protected $userName = USERNAME;
@@ -10,12 +11,12 @@ class DB {
 
     protected $emailUsername = EMAIL_USER;
     protected $emailPassword = EMAIL_PASSWORD;
-    
-    
-    function __construct() {
+
+
+    function __construct()
+    {
         $this->con = mysqli_connect(SERVER, USERNAME, PASSWORD);
         mysqli_select_db($this->con, DBNAME);
         mysqli_query($this->con, "SET NAMES 'utf8'");
     }
 }
-?>
