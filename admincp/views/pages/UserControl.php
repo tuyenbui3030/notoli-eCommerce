@@ -29,7 +29,7 @@
             <div class="row my-3">
                 <div class="col-md-7 offset-md-2">
                     <?php
-                    if (empty($data["detailUser"])) {
+                    if (empty($data["detailUser"]) || isset($_GET["userID"]) == false) {
                         $userID = $fullname = $password = $username = $birthday = $email = $address = $verified = $role = '';
                     } else {
                         $rows = mysqli_fetch_array($data["detailUser"]);
@@ -43,7 +43,7 @@
                         $role = $rows["user_role"];
                     }
                     ?>
-                    <form action="admincp/usercontrol" method="POST" name="form-user">
+                    <form method="POST" name="form-user">
                         <div class="card no-b  no-r">
                             <div class="card-body">
                                 <h5 class="card-title">Thông tin người dùng</h5>
@@ -51,7 +51,7 @@
                                     <div class="col-md-12">
                                         <div class="form-row">
                                             <div class="form-group col-2 m-0">
-                                                <input id="id" name="id" placeholder="USER ID" class="form-control r-0 light s-12" type="text" value="<?php echo $userID ?>" disabled>
+                                                <input id="id" name="id" placeholder="USER ID" class="form-control r-0 light s-12" type="text" value="<?php echo $userID ?>" readonly>
                                             </div>
                                         </div>
                                     </div>

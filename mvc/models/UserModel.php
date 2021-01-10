@@ -127,4 +127,39 @@ class UserModel extends DB
         $qr = "SELECT * FROM users JOIN province ON user_address = province_id WHERE user_id = $user_id";
         return mysqli_query($this->con, $qr);
     }
+    //Update User
+    public function UpdateUser($id, $fullname, $username, $password, $email, $city, $role, $dob, $status)
+    {
+        $qr = "UPDATE `users` SET `user_fullname` = '$fullname', `user_username` = '$username', `user_password` = '$password', `user_role` = '$role', `user_email` = '$email', `user_address` = '$city', `user_verified` = $status, `user_birthday` = '$dob' WHERE `user_id` = $id";
+        $result = false;
+        if (mysqli_query($this->con, $qr)) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
+    //Update User
+    public function UpdatePasswordAdmin($id, $fullname, $username, $email, $city, $role, $dob, $status)
+    {
+        $qr = "UPDATE `users` SET `user_fullname` = '$fullname', `user_username` = '$username', `user_role` = '$role', `user_email` = '$email', `user_address` = '$city', `user_verified` = $status, `user_birthday` = '$dob' WHERE `user_id` = $id";
+        $result = false;
+        if (mysqli_query($this->con, $qr)) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
+    //Delete User
+    public function DeleteUser($user_id)
+    {
+        $qr = "DELETE FROM `users` WHERE `users`.`user_id` = $user_id";
+        $result = false;
+        if (mysqli_query($this->con, $qr)) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
+    public function SearchUsers($valSearch)
+    {
+        $qr = "SELECT * FROM users JOIN province ON user_address = province_id WHERE user_username LIKE '%$valSearch%' OR user_fullname LIKE '%$valSearch%' OR user_email LIKE '%$valSearch%'";
+        return mysqli_query($this->con, $qr);
+    }
 }

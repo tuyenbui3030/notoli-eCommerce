@@ -51,3 +51,19 @@ $(document).ready(function () {
         return false;
     })
 });
+
+//Submit xóa 1 sản phẩm
+$(document).ready(function () {
+    $(".delUser").on("click", function () {
+        let obj = $(this).parent().attr('id');
+        $('#' + obj).submit();
+        return false;
+    })
+});
+//Submit tìm kiếm
+$(document).ready(function () {
+    $(".submitSearch").on("click", function () {
+        $('#formSearch').submit();
+        return false;
+    })
+});

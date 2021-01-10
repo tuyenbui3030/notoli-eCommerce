@@ -38,6 +38,31 @@ class UserControl extends Controller
         }
         return $message;
     }
+    private function UpdateUser($id)
+    {
+        $username = $this->request->getPost("username");
+        $password = $this->request->getPost("password");
+        $fullname = $this->request->getPost("fullname");
+        $dob = $this->request->getPost("dob");
+        $email = $this->request->getPost("email");
+        $city = $this->request->getPost("city");
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $token = bin2hex(random_bytes(50));
+        $role = $this->request->getPost("role");
+        $status = $this->request->getPost("status");
+        if (password_verify('', $password)) {
+            $resultUpdate = $this->user->UpdatePasswordAdmin($id, $fullname, $username, $email, $city, $role, $dob, $status);
+        } else {
+            $resultUpdate = $this->user->UpdateUser($id, $fullname, $username, $password, $email, $city, $role, $dob, $status);
+        }
+        if ($resultUpdate == "true") {
+            $message = "<p class='mt-2 text-success'><i class='icon-info2'></i> Cập nhật thông tin người dùng thành công</p>";
+        } else {
+            $message = "<p class='mt-2 text-danger'><i class='icon-info2'></i> Cập nhật thông tin người dùng thất bại</p>";
+        }
+
+        return $message;
+    }
     public function Action()
     {
         $resultMessage = "";
@@ -46,20 +71,16 @@ class UserControl extends Controller
             $valueID = $this->request->getQuery("userID");
             $result = $this->user->checkUserID($valueID);
             if ($result == 'false') {
-                exit("aaa");
                 header("Location:" . DOMAINADMIN . "/usercontrol");
             }
         }
+
         //Kiểm tra thông người dùng nhập vào
         if ($this->request->isPost("addUser")) {
-            if ($this->request->isPost("id")) {
-                $id = $this->request->getPost("id");
-                $result = $this->user->checkUserID($id);
-                if ($result == 'true') {
-                    exit("Update");
-                } else {
-                    exit("Insert");
-                }
+            $valueID = $this->request->getPost("id");
+            if ($this->request->isPost("id") && $valueID != '') {
+                $resultMessage = $this->UpdateUser($valueID);
+            } else {
                 $resultMessage = $this->AddUser();
             }
         }

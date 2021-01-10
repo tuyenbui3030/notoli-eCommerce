@@ -32,15 +32,15 @@
 
                         <div class="card r-0 shadow">
                             <div class="card-header white">
-                                <form method="GET" action="search">
+                                <form method="GET" action="" name="formSearch" id="formSearch">
                                     <div class="form-group has-right-icon m-0">
-                                        <input class="form-control light r-30" placeholder="Tìm kiếm tên người dùng" type="text">
-                                        <i type="submit" class="icon-search"></i>
+                                        <input class="form-control light r-30" name="search" placeholder="Tìm kiếm tên người dùng" type="text">
+                                        <i type="submit" class="icon-search submitSearch"></i>
                                     </div>
                                 </form>
                             </div>
                             <div class="table-responsive">
-                                <form>
+                                <div>
                                     <table class="table table-striped table-hover r-0">
                                         <thead>
                                             <tr class="no-b">
@@ -87,15 +87,18 @@
                                                         echo '<td><span class="r-3 badge badge-warning ">Customer</span></td>';
                                                     }
                                                     ?>
-                                                    <td>
-                                                        <a href="panel-page-profile.html"><i class="icon-trash-can4 mr-3"></i></a>
-                                                        <a href="panel-page-profile.html"><i class="icon-pencil"></i></a>
+                                                    <td class="a">
+                                                        <form action="" method="POST" id="submitDel<?php echo $user_id ?>" name="submitDel<?php echo $user_id ?>">
+                                                            <a href="./admincp/user" class="delUser"><i class="icon-trash-can4 mr-3"></i></a>
+                                                            <input type="text" name="idDel" value="<?php echo $user_id ?>" style="display: none;" />
+                                                            <a href="./admincp/usercontrol?userID=<?php echo $user_id ?>"><i class="icon-pencil"></i></a>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
                                     </table>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
