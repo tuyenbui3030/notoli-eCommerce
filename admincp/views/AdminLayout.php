@@ -13,6 +13,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./publicAdmin/assets/css/app.css">
     <link rel="stylesheet" href="./publicAdmin/assets/css/dev.css">
+    <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
     <style>
         .loader {
             position: fixed;
