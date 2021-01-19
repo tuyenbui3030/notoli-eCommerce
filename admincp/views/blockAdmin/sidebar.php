@@ -35,13 +35,10 @@
                     <i class="icon icon-sailing-boat-water purple-text s-18"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li class="treeview"><a href="#">
-                    <i class="icon icon icon-package blue-text s-18"></i>
-                    <span>Sản phẩm</span>
-                </a>
+            <li class="treeview"><a href="#"><i class="icon icon icon-package blue-text s-18"></i>Sản phẩm<i class="icon icon-angle-left s-18 pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="panel-page-products.html"><i class="icon icon-circle-o"></i>Tất sản phẩm</a></li>
-                    <li><a href="panel-page-products-create.html"><i class="icon icon-add"></i>Thêm sản phẩm mới</a></li>
+                    <li><a href="admincp/product"><i class="icon icon-circle-o"></i>Tất sản phẩm</a></li>
+                    <li><a href="admincp/productcontrol"><i class="icon icon-add"></i>Thêm sản phẩm mới</a></li>
                 </ul>
             </li>
             <li class="treeview"><a href="#"><i class="icon icon-account_box light-green-text s-18"></i>Người dùng<i class="icon icon-angle-left s-18 pull-right"></i></a>

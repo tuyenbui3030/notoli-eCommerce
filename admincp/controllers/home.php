@@ -9,7 +9,7 @@ class Home extends Controller
     public function Action()
     {
         $this->view("AdminLayout", [
-            "page" => "Home",
+            "page" => "User",
             "listUsers" => $this->user->ShowUsers(),
         ]);
     }

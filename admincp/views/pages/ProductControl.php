@@ -14,13 +14,10 @@
             <div class="row">
                 <ul class="nav responsive-tab nav-material nav-material-white">
                     <li>
-                        <a class="nav-link" href="panel-page-products.html"><i class="icon icon-list"></i>All Products</a>
+                        <a class="nav-link" href="admincp/product"><i class="icon icon-list"></i>All Products</a>
                     </li>
                     <li>
-                        <a class="nav-link active" href="panel-page-products-create.html"><i class="icon icon-plus-circle"></i> Add New Product</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="#"><i class="icon icon-trash-can"></i>Trash</a>
+                        <a class="nav-link active" href="admincp/productcontrol"><i class="icon icon-plus-circle"></i> Add New Product</a>
                     </li>
                 </ul>
             </div>
@@ -28,67 +25,104 @@
     </header>
     <div class="container-fluid animatedParent animateOnce my-3">
         <div class="animated fadeInUpShort">
-            <form id="needs-validation" novalidate>
+            <form id="needs-validation" method="POST" enctype="multipart/form-data" novalidate>
                 <div class="row">
-                    <div class="col-md-8 ">
+                    <div class="col-md-8">
                         <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="validationCustom01">Product Name</label>
-                                <input type="text" class="form-control" id="validationCustom01" placeholder="Product Name" value="Apple Iphone 8" required>
+                            <div class="col-md-3 mb-3">
+                                <label for="validationCustom01">Product ID</label>
+                                <input type="text" class="form-control" style="cursor: not-allowed;" id="validationCustom01" placeholder="Product ID" readonly>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="validationCustom02">Product Brand</label>
-                                <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="Apple" required>
+                            <div class="col-md-9 mb-3">
+                                <label for="validationCustom01">Tên sản phẩm</label>
+                                <input type="text" class="form-control" id="productTitle" name="productTitle" placeholder="Tên sản phẩm" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng cung cấp tên sản phẩm hợp lệ.
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="category">Category</label>
-                                <!--<input type="text" class="form-control"  placeholder="Mobile Phones" required>-->
-                                <select id="category" class="custom-select form-control" required>
-                                    <option value="">Select Product Category</option>
-                                    <option value="1">Mobile Phone</option>
-                                    <option value="2">Laptop & Computers</option>
-                                    <option value="3">Accessories</option>
+                                <label for="category">Loại</label>
+                                <select id="category" name="category" class="custom-select form-control" required>
+                                    <option value="">Chọn loại đồng hồ</option>
+                                    <?php while ($rows = mysqli_fetch_array($data["listCategory"])) { ?>
+                                        <option value="<?php echo $rows['cat_id'] ?>"><?php echo $rows['cat_title'] ?></option>
+                                    <?php } ?>
                                 </select>
                                 <div class="invalid-feedback">
-                                    Please provide a valid category.
+                                    Vui lòng cung cấp loại đồng hồ hợp lệ.
                                 </div>
                             </div>
-                            <div class="col-md-3 mb-3">
-                                <label for="validationCustom04">Price</label>
-                                <input type="text" class="form-control" id="validationCustom04" placeholder="$ 250" required>
+                            <div class="col-md-6 mb-3">
+                                <label for="brand">Nhà sản xuất</label>
+                                <select id="brand" name="brand" class="custom-select form-control" required>
+                                    <option value="">Chọn nhà sản xuất</option>
+                                    <?php while ($rows = mysqli_fetch_array($data["listBrand"])) { ?>
+                                        <option value="<?php echo $rows['brand_id'] ?>"><?php echo $rows['brand_title'] ?></option>
+                                    <?php } ?>
+                                </select>
                                 <div class="invalid-feedback">
-                                    Please provide a valid price.
+                                    Vui lòng cung cấp nhà sản xuất hợp lệ.
                                 </div>
                             </div>
-                            <div class="col-md-3 mb-3">
-                                <label for="sku">SKU</label>
-                                <input type="text" class="form-control" id="sku" placeholder="sku-1029-5998" required>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="validationCustom04">Giá</label>
+                                <input type="number" class="form-control" min=0 name="price" id="price" placeholder="Giá bán" required>
                                 <div class="invalid-feedback">
-                                    Please provide a valid sku.
+                                    Vui lòng cung cấp giá hợp lệ.
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="sku">Số lượng</label>
+                                <input type="number" class="form-control" min=0 name="qty" id="qty" placeholder="Số lượng sản phẩm" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng cung cấp số lượng hợp lệ.
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="origin">Xuất xứ</label>
+                                <input type="text" class="form-control" name="origin" id="origin" placeholder="Nơi xuất xứ" required>
+                                <div class="invalid-feedback">
+                                    Vui lòng cung cấp xuất xứ hợp lệ.
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="productDetails">Product Details</label>
-                            <!-- <textarea class="form-control p-t-40 editor" id="productDetails" placeholder="Write Something..." rows="17" required></textarea>
-                            <div class="invalid-feedback">
-                                Please provide a product details.
-                            </div> -->
-                            <div id="editor">
-                                <p>This is some sample content.</p>
-                            </div>
+                            <label for="productDetails">Mô tả rút gọn</label>
+                            <textarea id="editor" name="editor" placeholder="Mô tả chi tiết sản phẩm" rows="17" required></textarea>
                             <script>
                                 ClassicEditor
                                     .create(document.querySelector('#editor'))
+                                    .then(editor => {
+                                        console.log(editor);
+                                    })
+                                    .catch(error => {
+                                        console.error(error);
+                                    });
+                            </script>
+
+                            <div class="invalid-feedback">
+                                Vui lòng cung cấp loại đồng hồ hợp lệ.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="productDetails">Mô tả chi tiết</label>
+                            <textarea id="editorFull" name="editorFull" placeholder="Mô tả chi tiết sản phẩm" rows="17" required></textarea>
+                            <script>
+                                ClassicEditor
+                                    .create(document.querySelector('#editorFull'))
+                                    .then(editor => {
+                                        console.log(editor);
+                                    })
                                     .catch(error => {
                                         console.error(error);
                                     });
                             </script>
                         </div>
                         <script>
-                            // Example starter JavaScript for disabling form submissions if there are invalid fields
                             (function() {
                                 "use strict";
                                 window.addEventListener("load", function() {
@@ -113,22 +147,34 @@
                             }());
                         </script>
                     </div>
-                    <div class="col-md-3">
-                        <div class="card mt-4">
-                            <h6 class="card-header white">Publish Box</h6>
-                            <div class="card-body text-success">
+                    <div class="col-md-4">
+                        <label>Ảnh đại diện sản phẩm</label>
 
-                                <div class="custom-control custom-checkbox mb-3">
-                                    <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
-                                    <label class="custom-control-label" for="customControlValidation1">Check this custom checkbox</label>
-                                    <div class="invalid-feedback">Example invalid feedback text</div>
-                                </div>
+                        <div class="avatar-wrapper">
+                            <img class="profile-pic" />
+                            <div class="upload-button">
+                                <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                             </div>
-                            <div class="card-footer bg-transparent">
-                                <button class="btn btn-primary" type="submit">Publish</button>
-                            </div>
+                            <input class="file-upload" type="file" name="avatar" accept="image/*" required />
                         </div>
                     </div>
+                    <div class="col-md-8">
+                        <label>Thêm ảnh vào ablbum</label>
+                        <div class="user-image mb-3 text-center">
+                            <div class="imgGallery">
+                                <!-- Image preview -->
+                            </div>
+                        </div>
+
+                        <div class="custom-file">
+                            <input type="file" name="fileUpload[]" class="custom-file-input" id="chooseFile" multiple required>
+                            <label class="custom-file-label" for="chooseFile">Chọn hình ảnh</label>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="card-body">
+                    <button type="submit" name="addProduct" id="addProduct" class="btn btn-primary btn-lg"><i class="icon-save mr-2"></i>Lưu Thông Sản phẩm</button>
                 </div>
             </form>
         </div>
@@ -136,3 +182,29 @@
 </div>
 <!-- partial:partials/_foot.html -->
 <!-- partial -->
+<script>
+    $(function() {
+        // Multiple images preview with JavaScript
+        var multiImgPreview = function(input, imgPreviewPlaceholder) {
+
+            if (input.files) {
+                var filesAmount = input.files.length;
+
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(event) {
+                        $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+                    }
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+
+        };
+
+        $('#chooseFile').on('change', function() {
+            multiImgPreview(this, 'div.imgGallery');
+        });
+    });
+</script>

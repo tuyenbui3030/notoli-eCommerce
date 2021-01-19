@@ -14,13 +14,10 @@
             <div class="row">
                 <ul class="nav responsive-tab nav-material nav-material-white">
                     <li>
-                        <a class="nav-link active" href="panel-page-products.html"><i class="icon icon-list"></i>All Products</a>
+                        <a class="nav-link active" href="admincp/product"><i class="icon icon-list"></i>All Products</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="panel-page-products-create.html"><i class="icon icon-plus-circle"></i> Add New Product</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="#"><i class="icon icon-trash-can"></i>Trash</a>
+                        <a class="nav-link" href="admincp/productcontrol"><i class="icon icon-plus-circle"></i> Add New Product</a>
                     </li>
                 </ul>
             </div>
@@ -31,118 +28,48 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card no-b shadow">
+                        <div class="card-header white">
+                            <form method="GET" action="" name="formSearchProd" id="formSearchProd">
+                                <div class="form-group has-right-icon m-0">
+                                    <input class="form-control light r-30" name="search" placeholder="Tìm kiếm sản phẩm" type="text">
+                                    <i type="submit" class="icon-search submitSearch"></i>
+                                </div>
+                            </form>
+                        </div>
                         <div class="card-body p-0">
                             <div class="table-responsive">
                                 <table class="table table-hover ">
                                     <tbody>
-                                        <tr class="no-b">
-                                            <td class="w-10">
-                                                <img src="./publicAdmin/assets/img/demo/shop/s1.png" alt="">
-                                            </td>
-                                            <td>
-                                                <h6>Apple Product</h6>
-                                                <small class="text-muted">Mobile Phones</small>
-                                            </td>
-                                            <td>$250</td>
-                                            <td><span class="badge badge-success">Published</span></td>
-                                            <td>
-                                                <span><i class="icon icon-data_usage"></i> 5 days ago</span><br>
-                                                <span><i class="icon icon-timer"></i> 5 September, 2017</span>
-                                            </td>
-                                            <td>
-                                                <a class="btn-fab btn-fab-sm btn-primary shadow text-white"><i class="icon-pencil"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-10">
-                                                <img src="./publicAdmin/assets/img/demo/shop/s2.png" alt="">
-                                            </td>
-                                            <td>
-                                                <h6>Apple Product</h6>
-                                                <small class="text-muted">Mobile Phones</small>
-                                            </td>
-                                            <td>$250</td>
-                                            <td><span class="badge badge-success">Published</span></td>
-                                            <td>
-                                                <span><i class="icon icon-data_usage"></i> 5 days ago</span><br>
-                                                <span><i class="icon icon-timer"></i> 5 September, 2017</span>
-                                            </td>
-                                            <td>
-                                                <a class="btn-fab btn-fab-sm btn-primary shadow text-white"><i class="icon-pencil"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-10">
-                                                <img src="./publicAdmin/assets/img/demo/shop/s3.png" alt="">
-                                            </td>
-                                            <td>
-                                                <h6>Apple Product</h6>
-                                                <small class="text-muted">Mobile Phones</small>
-                                            </td>
-                                            <td>$250</td>
-                                            <td><span class="badge badge-danger">Pending</span></td>
-                                            <td>
-                                                <span><i class="icon icon-data_usage"></i> 5 days ago</span><br>
-                                                <span><i class="icon icon-timer"></i> 5 September, 2017</span>
-                                            </td>
-                                            <td>
-                                                <a class="btn-fab btn-fab-sm btn-primary shadow text-white"><i class="icon-pencil"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-10">
-                                                <img src="./publicAdmin/assets/img/demo/shop/s4.png" alt="">
-                                            </td>
-                                            <td>
-                                                <h6>Apple Product</h6>
-                                                <small class="text-muted">Mobile Phones</small>
-                                            </td>
-                                            <td>$250</td>
-                                            <td><span class="badge badge-success">Published</span></td>
-                                            <td>
-                                                <span><i class="icon icon-data_usage"></i> 5 days ago</span><br>
-                                                <span><i class="icon icon-timer"></i> 5 September, 2017</span>
-                                            </td>
-                                            <td>
-                                                <a class="btn-fab btn-fab-sm btn-primary shadow text-white"><i class="icon-pencil"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-10">
-                                                <img src="./publicAdmin/assets/img/demo/shop/s5.png" alt="">
-                                            </td>
-                                            <td>
-                                                <h6>Apple Product</h6>
-                                                <small class="text-muted">Mobile Phones</small>
-                                            </td>
-                                            <td>$250</td>
-                                            <td><span class="badge badge-primary">Sold Out</span></td>
-                                            <td>
-                                                <span><i class="icon icon-data_usage"></i> 5 days ago</span><br>
-                                                <span><i class="icon icon-timer"></i> 5 September, 2017</span>
-                                            </td>
-                                            <td>
-                                                <a class="btn-fab btn-fab-sm btn-primary shadow text-white"><i class="icon-pencil"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-10">
-                                                <img src="./publicAdmin/assets/img/demo/shop/s6.png" alt="">
-                                            </td>
-                                            <td>
-                                                <h6>Apple Product</h6>
-                                                <small class="text-muted">Mobile Phones</small>
-                                            </td>
-                                            <td>$250</td>
-                                            <td><span class="badge badge-warning">Low Stock</span></td>
-                                            <td>
-                                                <span><i class="icon icon-data_usage"></i> 5 days ago</span><br>
-                                                <span><i class="icon icon-timer"></i> 5 September, 2017</span>
-                                            </td>
-                                            <td>
-                                                <a class="btn-fab btn-fab-sm btn-primary shadow text-white"><i class="icon-pencil"></i></a>
-                                            </td>
-                                        </tr>
+                                        <?php
+                                        while ($rows = mysqli_fetch_array($data["itemProductBasic"])) {
+                                            $id = $rows["prod_id"];
+                                            $image = $rows["prod_image"];
+                                            $title = $rows["prod_title"];
+                                            $price = $rows["prod_price"];
+                                            $quantity = $rows["prod_quantity"];
+                                            $brand = $rows["brand_title"];
+                                            $categories = $rows["cat_title"];
+                                        ?>
+                                            <tr class="no-b">
+                                                <td class="w-10">
+                                                    <img src="public/assets/img/products/<?php echo $image ?>" alt="">
+                                                </td>
+                                                <td>
+                                                    <h6><?php echo $title ?></h6>
+                                                    <small class="text-muted">Còn <?php echo $quantity ?> cái</small>
+                                                </td>
+                                                <td><?php echo number_format($price, 0, '', '.') ?> ₫</td>
+                                                <td><span class="badge badge-success">Published</span></td>
+                                                <td>
+                                                    <span><?php echo $brand ?></span><br>
+                                                    <span><?php echo $categories ?> </span>
+                                                </td>
+                                                <td>
+                                                    <a href="admincp/productcontrol?product=<?php echo $id ?>" class="btn-fab btn-fab-sm btn-primary shadow text-white"><i class="icon-pencil"></i></a>
+                                                    <a class="btn-fab btn-fab-sm btn-danger shadow text-white"><i class="icon-trash-can4"></i></a>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

@@ -151,4 +151,38 @@ class productModel extends DB
         $qr = "SELECT * FROM banner";
         return mysqli_query($this->con, $qr);
     }
+    //====== Phần danh cho phân hệ admin
+    //Liệt kê sản phẩm cho trang quản lí sản phẩm
+    public function ShowProductBasic()
+    {
+        $qr = "SELECT * FROM `products` JOIN `brands` ON prod_brand = brand_id JOIN categories ON prod_cat = cat_id";
+        return mysqli_query($this->con, $qr);
+    }
+    //Thêm sản phẩm mới
+    public function InsertNewProduct($prod_cat, $prod_brand, $prod_title, $prod_price, $prod_quantity, $prod_view, $prod_tinydes, $prod_fulldes, $prod_image, $prod_date, $prod_origin)
+    {
+        $qr = "INSERT INTO `products` VALUES(NULL, '$prod_cat', '$prod_brand', '$prod_title', '$prod_price', '$prod_quantity', '$prod_view', '$prod_tinydes', '$prod_fulldes', '$prod_image', '$prod_date', '$prod_origin')";
+        $result = false;
+        if (mysqli_query($this->con, $qr)) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
+    //Lấy ID vừa được thêm vào
+    public function GetProdIDLatest()
+    {
+        $qr = "SELECT prod_id FROM products ORDER BY prod_id DESC LIMIT 1";
+        $result = mysqli_query($this->con, $qr);
+        $rows = mysqli_fetch_array($result);
+        return json_encode($rows["prod_id"]);
+    }
+    public function InsertAlbum($prod_id, $photoName)
+    {
+        $qr = "INSERT INTO `photos` VALUES(NULL, '$prod_id', '$photoName')";
+        $result = false;
+        if (mysqli_query($this->con, $qr)) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
 }

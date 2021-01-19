@@ -51,7 +51,7 @@
                                     <div class="col-md-12">
                                         <div class="form-row">
                                             <div class="form-group col-2 m-0">
-                                                <input id="id" name="id" placeholder="USER ID" class="form-control r-0 light s-12" type="text" value="<?php echo $userID ?>" readonly>
+                                                <input id="id" name="id" placeholder="USER ID" style="cursor: not-allowed;" class="form-control r-0 light s-12" type="text" value="<?php echo $userID ?>" readonly>
                                             </div>
                                         </div>
                                     </div>

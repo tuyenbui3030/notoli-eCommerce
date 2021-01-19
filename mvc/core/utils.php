@@ -93,7 +93,11 @@ function forgotPassword($register_email, $token)
 
 function isAdminPath()
 {
-  $params = explode('/', APPLICATION_PATH);
+  // $params = explode('/', APPLICATION_PATH);
+  // $params = array_reverse($params);
+
+  // Cách 2:
+  $params = explode('/', $_SERVER["REQUEST_URI"]);
   $params = array_reverse($params);
   if (isset($params[1]) && $params[1] == 'admincp') {
     return true;

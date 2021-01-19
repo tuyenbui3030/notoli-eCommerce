@@ -22,7 +22,7 @@ class User extends Controller
             $listUser = $this->user->ShowUsers();
         }
         $this->view("AdminLayout", [
-            "page" => "Home",
+            "page" => "User",
             "listUsers" => $listUser,
         ]);
     }

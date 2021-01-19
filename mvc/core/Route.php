@@ -18,7 +18,6 @@ class Route
         if ($isAdminRequest) {
             $controllerPath = APPLICATION_PATH . "/admincp/controllers/";
         }
-
         if (file_exists($controllerPath . $request[0] . ".php")) {
             $this->controller = $request[0];
             unset($request[0]);

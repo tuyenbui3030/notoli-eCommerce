@@ -129,10 +129,10 @@
                                     <?php
                                     // Hiển thị danh sách product
                                     while ($row = mysqli_fetch_array($data["itemTopHot"])) {
-                                        $product_id = $row["prod_id"]
-                                        //$product_image = $row["prod_image"];
+                                        // $product_id = $row["prod_id"];
+                                        // $product_image = $row["prod_image"];
                                         // $product_title = $row["prod_title"];
-                                        // $product_price = number_format($row["prod_price"], 0, '', ',')              
+                                        // $product_price = number_format($row["prod_price"], 0, '', ',')
                                     ?>
                                         <div class="col-xl-3 col-md-4 col-sm-6 mb--50">
                                             <div class="zakas-product">
@@ -149,8 +149,6 @@
                                                         </h3>
                                                         <div class="product-price-wrapper mb--30">
                                                             <span class="money"><?php echo number_format($row["prod_price"], 0, '', '.') ?> ₫</span>
-                                                            <!-- <span class="money-separator">-</span>
-                                                        <span class="money">$200</span> -->
                                                         </div>
                                                         <a href="" id="<?php echo $product_id ?>" class="btn btn-small btn-bg-sand btn-color-dark addCart">Thêm
                                                             giỏ hàng</a>

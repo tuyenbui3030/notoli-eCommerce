@@ -1,15 +1,16 @@
 <?php
 class Product extends Controller
 {
-    public $user;
+    public $prod;
     public function __construct()
     {
-        $this->user = $this->model("productModel");
+        $this->prod = $this->model("productModel");
     }
     public function Action()
     {
         $this->view("AdminLayout", [
             "page" => "Product",
+            "itemProductBasic" => $this->prod->ShowProductBasic(),
         ]);
     }
 }

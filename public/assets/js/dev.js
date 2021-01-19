@@ -1,3 +1,4 @@
+//Đoạn code lọc giá sản phẩm
 var inputLeft = document.getElementById("input-left");
 var inputRight = document.getElementById("input-right");
 

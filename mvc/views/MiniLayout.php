@@ -103,7 +103,7 @@
     <script src="./public/assets/js/main.js"></script>
     <script src="./public/assets/js/plugin.js"></script>
     <script src="./public/assets/js/product.js"></script>
-    <script src="./public/assets/js/dev.js"></script>
+    <!-- <script src="./public/assets/js/dev.js"></script> -->
 
 
     <!-- <script src="./public/assets/js/utils/register.js"></script> -->
