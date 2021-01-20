@@ -1,5 +1,5 @@
 <?php
-class Categories extends Controller
+class Order extends Controller
 {
     public $prod;
     public $request;
@@ -18,18 +18,18 @@ class Categories extends Controller
         $checkDelete = $this->request->isPost('idDelCat');
         if ($checkDelete) {
             $valID = $this->request->getPost('idDelCat');
-            $this->prod->DeleteCategories($valID);
+            $this->prod->DeleteOrder($valID);
         }
         $checkSearch = $this->request->isQuery("search");
         if ($checkSearch) {
             $valSearch = $this->request->getQuery("search");
-            $listCategoris = $this->prod->SearchCategories($valSearch);
+            $listOrder = $this->prod->SearchOrder($valSearch);
         } else {
-            $listCategoris = $this->prod->ShowListCategories();
+            $listOrder = $this->prod->ShowListOrder();
         }
         $this->view("AdminLayout", [
-            "page" => "Categories",
-            "listCategoris" => $listCategoris,
+            "page" => "Order",
+            "listOrder" => $listOrder,
         ]);
     }
 }

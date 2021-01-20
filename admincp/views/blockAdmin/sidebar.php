@@ -20,23 +20,14 @@
                 <div class="clearfix"></div>
                 <div class="collapse multi-collapse" id="userSettingsCollapse">
                     <div class="list-group mt-3 shadow">
-                        <a href="index.html" class="list-group-item list-group-item-action ">
-                            <i class="mr-2 icon-umbrella text-blue"></i>Profile
-                        </a>
                         <a href="#" class="list-group-item list-group-item-action"><i class="mr-2 icon-cogs text-yellow"></i>Settings</a>
-                        <a href="#" class="list-group-item list-group-item-action"><i class="mr-2 icon-security text-purple"></i>Change Password</a>
                         <a href="./admincp/logout" class="list-group-item list-group-item-action"><i class="mr-2 icon-security text-purple"></i>Logout</a>
-
                     </div>
                 </div>
             </div>
         </div>
         <ul class="sidebar-menu">
             <li class="header"><strong>MAIN NAVIGATION</strong></li>
-            <li class="treeview"><a href="#">
-                    <i class="icon icon-sailing-boat-water purple-text s-18"></i> <span>Dashboard</span>
-                </a>
-            </li>
             <li class="treeview"><a href="#"><i class="icon icon icon-package blue-text s-18"></i>Sản phẩm<i class="icon icon-angle-left s-18 pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="admincp/product"><i class="icon icon-circle-o"></i>Tất sản phẩm</a></li>
@@ -57,6 +48,15 @@
                     <li><a href="admincp/categories"><i class="icon icon-circle-o"></i>Tất cả danh mục</a>
                     </li>
                     <li><a href="admincp/categoruescontrol"><i class="icon icon-add"></i>Thêm người danh mục</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="treeview"><a href="#"><i class="icon icon-cogs text-yellow s-18"></i>Nhà sản xuất<i class="icon icon-angle-left s-18 pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="admincp/brand"><i class="icon icon-circle-o"></i>Tất cả nhà sản xuất</a>
+                    </li>
+                    <li><a href="admincp/brandcontrol"><i class="icon icon-add"></i>Thêm nhà sản xuất</a>
                     </li>
                 </ul>
             </li>

@@ -16,7 +16,7 @@
                         </div>
                         <div class="mainmenu-nav d-none d-lg-block">
                             <ul class="mainmenu">
-                                <li class="mainmenu__item menu-item-has-children active">
+                                <li class="mainmenu__item menu-item-has-children">
                                     <a href="home" class="mainmenu__link">
                                         <span class="mm-text">Trang chủ</span>
                                     </a>
@@ -25,18 +25,18 @@
                                     <a href="product" class="mainmenu__link">
                                         <span class="mm-text">Sản phẩm</span>
                                     </a>
-                                    <ul class="megamenu two-column">                                       
+                                    <ul class="megamenu two-column">
                                         <li>
                                             <a class="megamenu-title">
                                                 <span class="mm-text">Nhà sản xuất</span>
                                             </a>
                                             <ul>
-                                                <?php while($rows = mysqli_fetch_array($data["listBrands"])){ ?>
-                                                <li>
-                                                    <a href="product/brands/<?php echo $rows["brand_id"] ?>">
-                                                        <span class="mm-text"><?php echo $rows["brand_title"] ?></span>
-                                                    </a>
-                                                </li>
+                                                <?php while ($rows = mysqli_fetch_array($data["listBrands"])) { ?>
+                                                    <li>
+                                                        <a href="product/brands/<?php echo $rows["brand_id"] ?>">
+                                                            <span class="mm-text"><?php echo $rows["brand_title"] ?></span>
+                                                        </a>
+                                                    </li>
                                                 <?php } ?>
                                             </ul>
                                         </li>
@@ -45,16 +45,16 @@
                                                 <span class="mm-text">Loại sản phẩm</span>
                                             </a>
                                             <ul>
-                                                <?php while($rows = mysqli_fetch_array($data["listCategories"])){ ?>
-                                                <li>
-                                                    <a href="product/categories/<?php echo $rows["cat_id"] ?>">
-                                                        <span class="mm-text"><?php echo $rows["cat_title"] ?></span>
-                                                    </a>
-                                                </li>
+                                                <?php while ($rows = mysqli_fetch_array($data["listCategories"])) { ?>
+                                                    <li>
+                                                        <a href="product/categories/<?php echo $rows["cat_id"] ?>">
+                                                            <span class="mm-text"><?php echo $rows["cat_title"] ?></span>
+                                                        </a>
+                                                    </li>
                                                 <?php } ?>
                                             </ul>
                                         </li>
-                                    </ul> 
+                                    </ul>
                                 </li>
                             </ul>
                         </div>
@@ -68,10 +68,10 @@
                                 <!-- <sup class="mini-cart-count">2</sup> -->
                                 <?php
                                 $rowcount = 0;
-                                if(isset($_SESSION["loggedIN"])){
+                                if (isset($_SESSION["loggedIN"])) {
                                     $result = $data["itemListCart"];
-                                    $rowcount=mysqli_num_rows($result);
-                                    if($rowcount > 0) {
+                                    $rowcount = mysqli_num_rows($result);
+                                    if ($rowcount > 0) {
                                         echo '<sup class="mini-cart-count" id="mini-cart-count">' . $rowcount . '</sup>';
                                     } else {
                                         echo '<sup class="mini-cart-count" id="mini-cart-count" style="display:none">' . $rowcount . '</sup>';
@@ -85,17 +85,17 @@
                                 <i class="flaticon flaticon-user"></i>
                             </a>
                             <ul class="user-info-menu">
-                                <?php if(!isset($_SESSION['loggedIN'])) { ?>
-                                <li>
-                                    <a href="./register">Đăng kí</a>
-                                </li>
-                                <li>
-                                    <a href="./login">Đăng nhập</a>
-                                </li>
-                                <?php } else {?>
-                                <li>
-                                    <a href="./logout">Đăng xuất</a>
-                                </li>
+                                <?php if (!isset($_SESSION['loggedIN'])) { ?>
+                                    <li>
+                                        <a href="./register">Đăng kí</a>
+                                    </li>
+                                    <li>
+                                        <a href="./login">Đăng nhập</a>
+                                    </li>
+                                <?php } else { ?>
+                                    <li>
+                                        <a href="./logout">Đăng xuất</a>
+                                    </li>
                                 <?php } ?>
                                 <li>
                                     <a href="./cart">Giỏ hàng</a>

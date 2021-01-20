@@ -4,7 +4,7 @@ class CartModel extends DB {
     public function GetItemCart() {
         if(isset($_SESSION["loggedIN"])){
         $userID = $_SESSION["userID"];
-        $qr = "SELECT `cart`.*, `products`.`prod_image`, `products`.`prod_quantity`";
+        $qr = "SELECT `cart`.*, `products`.`prod_image`, `products`.`prod_quantity`, `products`.`prod_id`";
         $qr .= "FROM `cart` JOIN `products` ON `cart`.`cart_prodID` = `products`.`prod_id`";
         $qr .= "WHERE `cart`.`cart_user`=$userID";
         return mysqli_query($this->con, $qr);
@@ -113,4 +113,3 @@ class CartModel extends DB {
         return json_encode("false");
     }
 }
-?>

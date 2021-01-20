@@ -175,16 +175,15 @@
                     <div class="banner-box">
                         <div class="banner-inner banner-bg-shape banner-info-over-img banner-info-center">
                             <figure class="banner-image">
-                                <img src="public/assets/img/banner/banner-1.jpg" alt="Banner">
+                                <img src="public/assets/img/slider/luxury-banner.jpg" alt="Banner">
                             </figure>
                             <div class="banner-info">
                                 <div class="banner-info--inner text-center">
-                                    <p class="banner-title-1 color--white">Up Coming Discount</p>
-                                    <p class="banner-title-2 color--white mb--20 mb-lg--10">On Winter Clothing</p>
-                                    <a href="shop.html" class="btn banner-btn">Shop Now <i class="fa fa-angle-double-right"></i></a>
+                                    <p class="banner-title-1 color--white">Đồng hồ ngoại</p>
+                                    <p class="banner-title-2 color--white mb--20 mb-lg--10">100% Hàng chính hãng</p>
+                                    <a href="product" class="btn banner-btn">Đến ngay <i class="fa fa-angle-double-right"></i></a>
                                 </div>
                             </div>
-                            <a href="shop.html" class="banner-link"></a>
                         </div>
                     </div>
                 </div>
@@ -192,24 +191,17 @@
                     <div class="banner-box">
                         <div class="banner-inner banner-bg-shape banner-info-over-img banner-info-center">
                             <figure class="banner-image">
-                                <img src="public/assets/img/banner/banner-2.jpg" alt="Banner">
+                                <img src="public/assets/img/slider/tuyet-dinh-vat-lieu-tren-dong-ho-citizen-eco-drive-super-titanium-f.jpg" alt="Banner">
                             </figure>
                             <div class="banner-info">
                                 <div class="banner-info--inner text-center">
-                                    <p class="banner-title-1 color--white">Up Coming Discount</p>
-                                    <p class="banner-title-2 color--white mb--20 mb-lg--10">On Winter Clothing</p>
-                                    <a href="shop.html" class="btn banner-btn">Shop Now <i class="fa fa-angle-double-right"></i></a>
+                                    <p class="banner-title-1 color--white">Đồng hồ ngoại</p>
+                                    <p class="banner-title-2 color--white mb--20 mb-lg--10">100% Hàng chính hãng</p>
+                                    <a href="product" class="btn banner-btn">Đến ngay <i class="fa fa-angle-double-right"></i></a>
                                 </div>
                             </div>
-                            <a href="shop.html" class="banner-link"></a>
                         </div>
                     </div>
-                </div>
-                <div class="banner-badge-wrapper abs-center">
-                    <span class="banner-badge">
-                        <span>30%</span>
-                        Off
-                    </span>
                 </div>
             </div>
         </div>
@@ -253,32 +245,6 @@
     </section>
     <!-- Method area End -->
 
-    <!-- Newsletter Area Start -->
-    <section class="newsletter-area mb--100">
-        <div class="container">
-            <div class="row mb--40 pb--1">
-                <div class="col-12 text-center">
-                    <h2 class="heading__secondary mb--10">Subscribe To Our Newsletter</h2>
-                    <p class="max-w-60 max-w-sm-95 mx-auto">Lorem og elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim.</p>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-10 text-center">
-                    <form class="newsletter-form mc-form" action="https://company.us19.list-manage.com/subscribe/post?u=2f2631cacbe4767192d339ef2&amp;id=24db23e68a" method="post" target="_blank">
-                        <input type="email" name="newsletter_email" id="newsletter_email" class="newsletter-form__input" placeholder="Enter Your E-mail Address">
-                        <input type="submit" value="Subscribe Now" class="newsletter-form__submit">
-                    </form>
-                    <!-- mailchimp-alerts Start -->
-                    <div class="mailchimp-alerts">
-                        <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                        <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                        <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                    </div>
-                    <!-- mailchimp-alerts end -->
-                </div>
-            </div>
-        </div>
-    </section>
+
     <!-- Newsletter Area End -->
 </div>

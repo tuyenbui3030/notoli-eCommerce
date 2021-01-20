@@ -7,30 +7,29 @@
                 <ul class="mini-cart__list dev-miniCart">
                     <?php
                     $totalPrice = 0;
-                    if(isset($_SESSION["loggedIN"])) {
-                    while($rows = mysqli_fetch_array($data["itemListCart"])) {
-                        $itemID = $rows['cart_id'];
-                        $itemCartTitle = $rows['cart_prodTitle'];
-                        $itemCartQuantity = $rows['cart_quantity'];
-                        $itemUnitPrice = $rows['cart_price'] / $itemCartQuantity;
-                        $itemImage = $rows['prod_image'];
-                        $totalPrice = $totalPrice + $rows['cart_price'];
-                ?>
-                    <li class="mini-cart__product">
-                        <a href="" class="remove-from-cart remove" id="<?php echo $itemID ?>">
-                            <i class="flaticon flaticon-cross"></i>
-                        </a>
-                        <div class="mini-cart__product__image">
-                            <img src="./public/assets/img/products/<?php echo $itemImage ?>" alt="products">
-                        </div>
-                        <div class="mini-cart__product__content">
-                            <a class="mini-cart__product__title dev-title-cart"
-                                href="product-details.html"><?php echo $rows['cart_prodTitle'] ?>
-                            </a>
-                            <span
-                                class="mini-cart__product__quantity"><?php echo $itemCartQuantity . ' x ' . number_format($itemUnitPrice, 0, '', ',') . '₫' ?></span>
-                        </div>
-                    </li>
+                    if (isset($_SESSION["loggedIN"])) {
+                        while ($rows = mysqli_fetch_array($data["itemListCart"])) {
+                            $prod_id = $rows["prod_id"];
+                            $itemID = $rows['cart_id'];
+                            $itemCartTitle = $rows['cart_prodTitle'];
+                            $itemCartQuantity = $rows['cart_quantity'];
+                            $itemUnitPrice = $rows['cart_price'] / $itemCartQuantity;
+                            $itemImage = $rows['prod_image'];
+                            $totalPrice = $totalPrice + $rows['cart_price'];
+                    ?>
+                            <li class="mini-cart__product">
+                                <a href="" class="remove-from-cart remove" id="<?php echo $itemID ?>">
+                                    <i class="flaticon flaticon-cross"></i>
+                                </a>
+                                <div class="mini-cart__product__image">
+                                    <img src="./public/assets/img/products/<?php echo $itemImage ?>" alt="products">
+                                </div>
+                                <div class="mini-cart__product__content">
+                                    <a class="mini-cart__product__title dev-title-cart" href="product/detail/<?php echo $prod_id ?>"><?php echo $rows['cart_prodTitle'] ?>
+                                    </a>
+                                    <span class="mini-cart__product__quantity"><?php echo $itemCartQuantity . ' x ' . number_format($itemUnitPrice, 0, '', ',') . '₫' ?></span>
+                                </div>
+                            </li>
                     <?php }
                     } ?>
                 </ul>

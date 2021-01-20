@@ -114,7 +114,7 @@ class Product extends Controller
     }
     public function search()
     {
-        $itemSearch = $this->request->getQuery('popup-search');
+        $itemSearch = $this->request->getQuery('popup-search'); // $_GET['popup-search']
         $this->view("MiniLayout", [
             "page" => "Product",
             //Item minicart

@@ -1,5 +1,5 @@
 <?php
-class CategoriesControl extends Controller
+class BrandControl extends Controller
 {
     public $prod;
     public $request;
@@ -17,11 +17,11 @@ class CategoriesControl extends Controller
             exit();
         }
         $valueID = '';
-        if ($this->request->isQuery("catid")) {
-            $valueID = $this->request->getQuery("catid");
+        if ($this->request->isQuery("brandid")) {
+            $valueID = $this->request->getQuery("brandid");
             $result = $this->prod->checkProductID($valueID);
             if ($result == 'false') {
-                header("Location:" . DOMAINADMIN . "/categoriescontrol");
+                header("Location:" . DOMAINADMIN . "/brandcontrol");
             }
         }
         if ($this->request->isPost("addCategory")) {
@@ -29,15 +29,15 @@ class CategoriesControl extends Controller
             $resultTitle = $this->request->getPost("title");
             //cập nhật
             if ($valueID != '') {
-                $this->prod->UpdateCategories($valueID, $resultTitle);
+                $this->prod->UpdateBrand($valueID, $resultTitle);
             } else {
                 //thêm mới
-                $this->prod->InsertCategories($resultTitle);
+                $this->prod->InsertBrand($resultTitle);
             }
         }
         $this->view("AdminLayout", [
-            "page" => "CategoriesControl",
-            "detailCat" => $this->prod->GetDetailCat($valueID),
+            "page" => "BrandControl",
+            "detailCat" => $this->prod->GetDetailBrand($valueID),
         ]);
     }
 }

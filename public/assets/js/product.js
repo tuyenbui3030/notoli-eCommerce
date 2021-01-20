@@ -152,7 +152,6 @@ $(document).ready(function () {
 //== Bắt sự kiện khi giảm số lượng sản phẩm
 $(document).ready(function () {
   $(document).on("click", ".quantity-cart .dec", function () {
-    console.log("aaa");
     let id = $(this).siblings("input").attr("id");
     let quantity = parseInt($(this).siblings("input").val());
     updateCart(id, quantity);

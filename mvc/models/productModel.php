@@ -288,4 +288,76 @@ class productModel extends DB
         }
         return json_encode($result);
     }
+
+
+
+
+
+    //Tìm kiếm danh mục sản phẩm
+    public function SearchBrand($itemSearch)
+    {
+        $qr = "SELECT * FROM `brands` WHERE brand_title LIKE N'%$itemSearch%'";
+        return mysqli_query($this->con, $qr);
+    }
+    //Insert Danh mục sản phẩm
+    public function InsertBrand($title)
+    {
+        $qr = "INSERT INTO `brands` VALUES (NULL, '$title')";
+        $result = false;
+        if (mysqli_query($this->con, $qr)) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
+    //Xóa Danh danh mục sản phẩm
+    public function DeleteBrand($id)
+    {
+        $qr = "DELETE FROM `brands` WHERE brand_id='$id'";
+        $result = false;
+        if (mysqli_query($this->con, $qr)) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
+    //Lấy chi tiết của danh mục sản phẩm
+    public function GetDetailBrand($id)
+    {
+        $qr = "SELECT * FROM `brands` WHERE brand_id = '$id'";
+        return mysqli_query($this->con, $qr);
+    }
+    //Cập nhật chi tiết của danh mục sản phẩm
+    public function UpdateBrand($valueID, $resultTitle)
+    {
+        $qr = "UPDATE `brands` SET brand_title ='$resultTitle' WHERE brand_id='$valueID'";
+        $result = false;
+        if (mysqli_query($this->con, $qr)) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
+
+
+    public function ShowListOrder()
+    {
+        $qr = "SELECT * FROM `orders`";
+        $result = mysqli_query($this->con, $qr);
+        return $result;
+    }
+
+    public function SearchOrder($valSearch)
+    {
+        $qr = "SELECT * FROM `orders` WHERE order_name LIKE N'%$valSearch%'";
+        $result = mysqli_query($this->con, $qr);
+        return $result;
+    }
+
+    public function DeleteOrder($id)
+    {
+        $qr = "DELETE FROM `orders` WHERE order_id='$id'";
+        $result = false;
+        if (mysqli_query($this->con, $qr)) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
 }

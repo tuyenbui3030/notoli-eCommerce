@@ -1,5 +1,5 @@
 <?php
-class Categories extends Controller
+class Brand extends Controller
 {
     public $prod;
     public $request;
@@ -18,17 +18,17 @@ class Categories extends Controller
         $checkDelete = $this->request->isPost('idDelCat');
         if ($checkDelete) {
             $valID = $this->request->getPost('idDelCat');
-            $this->prod->DeleteCategories($valID);
+            $this->prod->DeleteBrand($valID);
         }
         $checkSearch = $this->request->isQuery("search");
         if ($checkSearch) {
             $valSearch = $this->request->getQuery("search");
-            $listCategoris = $this->prod->SearchCategories($valSearch);
+            $listCategoris = $this->prod->SearchBrand($valSearch);
         } else {
-            $listCategoris = $this->prod->ShowListCategories();
+            $listCategoris = $this->prod->ShowListBrand();
         }
         $this->view("AdminLayout", [
-            "page" => "Categories",
+            "page" => "Brand",
             "listCategoris" => $listCategoris,
         ]);
     }
