@@ -127,7 +127,7 @@
                                    <span><i class="fa fa-eye"></i> <?php echo $prod_view ?></span>
                                </div>
                                <h3 class="product-title mb--20"><?php echo $prod_title ?></h3>
-                               <p class="product-short-description mb--20"><?php echo $prod_tinydes ?></p>
+                               <p class="product-short-description mb--20"><?php echo htmlspecialchars_decode($prod_tinydes) ?></p>
                                <div class="product-price-wrapper mb--25">
                                    <span class="money"><?php echo $prod_price ?> ₫</span>
                                </div>
@@ -164,7 +164,7 @@
                                <div class="tab-content product-data-tab__content" id="product-tabContent">
                                    <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
                                        <div class="product-description">
-                                           <?php echo $prod_fulldes ?>
+                                           <?php echo htmlspecialchars_decode($prod_fulldes) ?>
                                        </div>
                                    </div>
                                    <div class="tab-pane" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">

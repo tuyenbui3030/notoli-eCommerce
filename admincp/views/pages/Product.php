@@ -29,7 +29,7 @@
                 <div class="col-md-12">
                     <div class="card no-b shadow">
                         <div class="card-header white">
-                            <form method="GET" action="" name="formSearchProd" id="formSearchProd">
+                            <form method="GET" action="" name="formSearch" id="formSearch">
                                 <div class="form-group has-right-icon m-0">
                                     <input class="form-control light r-30" name="search" placeholder="Tìm kiếm sản phẩm" type="text">
                                     <i type="submit" class="icon-search submitSearch"></i>
@@ -51,6 +51,9 @@
                                             $categories = $rows["cat_title"];
                                         ?>
                                             <tr class="no-b">
+                                                <td>
+                                                    <p class="ml-3 mb-0"><?php echo $id ?></p>
+                                                </td>
                                                 <td class="w-10">
                                                     <img src="public/assets/img/products/<?php echo $image ?>" alt="">
                                                 </td>
@@ -59,14 +62,26 @@
                                                     <small class="text-muted">Còn <?php echo $quantity ?> cái</small>
                                                 </td>
                                                 <td><?php echo number_format($price, 0, '', '.') ?> ₫</td>
-                                                <td><span class="badge badge-success">Published</span></td>
+                                                <td>
+                                                    <?php
+                                                    if ($quantity > 0) {
+                                                        echo '<span class="badge badge-success">Còn hàng</span>';
+                                                    } else {
+                                                        echo '<span class="badge badge-danger">Hết hàng</span>';
+                                                    }
+                                                    ?>
+
+                                                </td>
                                                 <td>
                                                     <span><?php echo $brand ?></span><br>
                                                     <span><?php echo $categories ?> </span>
                                                 </td>
                                                 <td>
-                                                    <a href="admincp/productcontrol?product=<?php echo $id ?>" class="btn-fab btn-fab-sm btn-primary shadow text-white"><i class="icon-pencil"></i></a>
-                                                    <a class="btn-fab btn-fab-sm btn-danger shadow text-white"><i class="icon-trash-can4"></i></a>
+                                                    <form action="" method="POST" id="submitDel<?php echo $id ?>" name="submitDel<?php echo $id ?>">
+                                                        <a class="delProduct btn-fab btn-fab-sm btn-danger shadow text-white"><i class="icon-trash-can4"></i></a>
+                                                        <input type="text" name="idDelProd" value="<?php echo $id ?>" style="display: none;" />
+                                                        <a href="admincp/productcontrol?product=<?php echo $id ?>" class="btn-fab btn-fab-sm btn-primary shadow text-white"><i class="icon-pencil"></i></a>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         <?php } ?>
@@ -76,7 +91,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                <!-- </div>
             <nav class="pt-3" aria-label="Page navigation">
                 <ul class="pagination">
                     <li class="page-item"><a class="page-link" href="#">Previous</a>
@@ -90,9 +105,9 @@
                     <li class="page-item"><a class="page-link" href="#">Next</a>
                     </li>
                 </ul>
-            </nav>
+            </nav> -->
+            </div>
         </div>
     </div>
-</div>
-<!-- partial:partials/_foot.html -->
-<!-- partial -->
+    <!-- partial:partials/_foot.html -->
+    <!-- partial -->

@@ -3,9 +3,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="d-flex justify-content-between align-items-center flex-sm-row flex-column">
-                    <h1 class="page-title">Xác minh</h1>
+                    <h1 class="page-title">Thanh Toán</h1>
                     <ul class="breadcrumb">
-                        <li><a href="home">Trang chủ</a></li>
+                        <li><a href="home">Thanh Toán</a></li>
                         <li class="current"><span>Xác minh</span></li>
                     </ul>
                 </div>

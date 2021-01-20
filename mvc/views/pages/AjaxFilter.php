@@ -42,7 +42,8 @@
                         </div>
                         <p class="product-short-description mb--20"><?php echo $product_tinydes ?> </p>
                         <div class="zakas-product-action-list d-flex">
-                            <a href="" id="<?php echo $product_id ?>" class="btn btn-small btn-bg-sand btn-color-dark addCart">Thêm giỏ hàng </a>
+                            <a href="" id="<?php echo $product_id ?>" class="btn btn-small btn-bg-sand btn-color-dark addCart">Thêm
+                                giỏ hàng</a>
                         </div>
                     </div>
                 </div>

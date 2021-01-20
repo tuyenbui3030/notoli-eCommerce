@@ -52,7 +52,7 @@ $(document).ready(function () {
     })
 });
 
-//Submit xóa 1 sản phẩm
+//Submit xóa 1 người dùng
 $(document).ready(function () {
     $(".delUser").on("click", function () {
         let obj = $(this).parent().attr('id');
@@ -99,4 +99,33 @@ $(document).ready(function() {
 var cw = $('.avatar-wrapper').width();
 $('.avatar-wrapper').css({
     'height': cw + 'px'
+});
+//Xóa album
+//--Bắt id
+$(document).ready(function() {
+    $(document).on("click", ".img_rmv", function () {
+        let imageID = $(this).attr("id");
+        $(this).parent().remove();
+        $('#deleted_images').append($('<option>', {
+            value: imageID,
+            text: imageID,
+        }));
+        selectAll();
+    });
+    function selectAll() 
+    { 
+        selectBox = document.getElementById("deleted_images");
+        for (var i = 0; i < selectBox.options.length; i++) 
+        { 
+             selectBox.options[i].selected = true; 
+        }
+    }
+});
+//Xóa 1 sảm phẩm
+$(document).ready(function () {
+    $(".delProduct").on("click", function () {
+        let obj = $(this).parent().attr('id');
+        $('#' + obj).submit();
+        return false;
+    })
 });

@@ -70,17 +70,76 @@ class ProductControl extends Controller
             echo "Failed to upload image";
         }
     }
+    private function UpdateProduct()
+    {
+        $prod_id = $this->request->getPost("productID");
+        $prod_title = $this->request->getPost("productTitle");
+        $prod_cat = $this->request->getPost("category");
+        $prod_brand = $this->request->getPost("brand");
+        $prod_price = $this->request->getPost("price");
+        $prod_quantity = $this->request->getPost("qty");
+        $prod_origin = $this->request->getPost("origin");
+        $prod_tinydes = htmlspecialchars_decode($this->request->getPost("editor"));
+        $prod_fulldes = htmlspecialchars_decode($this->request->getPost("editorFull"));
+        $prod_image = $_FILES['avatar']['name'];
+        //Tiến hành cập nhật sản phẩm mới vào database
+        $resultCreateProduct = '';
+        if (empty($prod_image)) {
+            $resultCreateProduct = $this->prod->UpdateProductNoAvatar($prod_id, $prod_cat, $prod_brand, $prod_title, $prod_price, $prod_quantity, $prod_tinydes, $prod_fulldes, $prod_origin);
+        } else {
+            $prod_image = uniqid() . basename($prod_image);
+            $target = SITE_ROOT . "public/assets/img/products/" . $prod_image;
+            if (move_uploaded_file($_FILES["avatar"]["tmp_name"], $target)) {
+                $resultCreateProduct = $this->prod->UpdateProduct($prod_id, $prod_cat, $prod_brand, $prod_title, $prod_price, $prod_quantity, $prod_tinydes, $prod_fulldes, $prod_image, $prod_origin);
+            } else {
+                echo "Failed to upload image";
+            }
+        }
+        $resultCreateProduct = json_encode($resultCreateProduct);
+        if ($resultCreateProduct) {
+            //Thực hiện add hình của sản phẩm vào database
+            $this->AddListPhoto($prod_id);
+        }
+        if (isset($_POST["deleted_images"])) {
+            $listPhoto = $_POST["deleted_images"];
+            foreach ($listPhoto as $value) {
+                $this->prod->DeleteAlbum($value);
+            }
+        }
+    }
     public function Action()
     {
-        if ($this->request->getPost("addProduct")) {
-            $this->AddProduct();
+        if (!isset($_SESSION['loggedINAdmin'])) {
+            $location = "./login";
+            header("Location: " . $location);
+            exit();
         }
-
+        $valueID = '';
+        if ($this->request->isQuery("product")) {
+            $valueID = $this->request->getQuery("product");
+            $result = $this->prod->checkProductID($valueID);
+            if ($result == 'false') {
+                header("Location:" . DOMAINADMIN . "/productcontrol");
+            }
+        }
+        if ($this->request->isPost("addProduct")) {
+            $valueID = $this->request->getPost("productID");
+            if ($valueID != '') {
+                $resultMessage = $this->UpdateProduct($valueID);
+            } else {
+                $resultMessage = $this->AddProduct();
+            }
+        }
         $this->view("AdminLayout", [
             "page" => "ProductControl",
+            //Danh sách loại sản phẩm
             "listCategory" => $this->prod->ShowListCategories(),
+            //Danh sách nhà sản xuất
             "listBrand" => $this->prod->ShowListBrand(),
-
+            //Chi tiết sản phẩm
+            "detailProduct" => $this->prod->ShowDetailsProduct($valueID),
+            //Danh sách hình ảnh của sản phẩm
+            "listAlbum" => $this->prod->GetAlbumOfProduct($valueID),
         ]);
     }
 }

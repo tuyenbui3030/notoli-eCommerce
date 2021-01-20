@@ -10,6 +10,11 @@ class User extends Controller
     }
     public function Action()
     {
+        if (!isset($_SESSION['loggedINAdmin'])) {
+            $location = "./login";
+            header("Location: " . $location);
+            exit();
+        }
         $listUser = '';
         if ($this->request->isPost('idDel')) {
             $idDel = $this->request->getPost('idDel');

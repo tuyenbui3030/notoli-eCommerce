@@ -1,21 +1,20 @@
 <?php
-class Home extends Controller
+class Logout extends Controller
 {
-    public $user;
     public function __construct()
     {
-        $this->user = $this->model("UserModel");
+        // Khởi tạo model;
     }
     public function Action()
     {
+        if (isset($_SESSION['loggedINAdmin'])) {
+            unset($_SESSION['loggedINAdmin']);
+            unset($_SESSION['username']);
+        }
         if (!isset($_SESSION['loggedINAdmin'])) {
             $location = "./login";
             header("Location: " . $location);
             exit();
         }
-        $this->view("AdminLayout", [
-            "page" => "User",
-            "listUsers" => $this->user->ShowUsers(),
-        ]);
     }
 }

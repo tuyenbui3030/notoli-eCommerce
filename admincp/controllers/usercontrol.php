@@ -65,8 +65,13 @@ class UserControl extends Controller
     }
     public function Action()
     {
+        if (!isset($_SESSION['loggedINAdmin'])) {
+            $location = "./login";
+            header("Location: " . $location);
+            exit();
+        }
         $resultMessage = "";
-        $valueID = '';
+        $valueID = "";
         if ($this->request->isQuery("userID")) {
             $valueID = $this->request->getQuery("userID");
             $result = $this->user->checkUserID($valueID);
@@ -86,7 +91,7 @@ class UserControl extends Controller
         }
         $this->view("AdminLayout", [
             "page" => "UserControl",
-            //Lấy danh dách người dùng
+            //Lấy thông tin người dùng
             "listUsers" => $this->user->ShowUsers(),
             //Lấy kết quả thêm mới người dùng
             "resultMessage" => $resultMessage,

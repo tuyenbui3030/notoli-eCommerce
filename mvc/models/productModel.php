@@ -158,10 +158,34 @@ class productModel extends DB
         $qr = "SELECT * FROM `products` JOIN `brands` ON prod_brand = brand_id JOIN categories ON prod_cat = cat_id";
         return mysqli_query($this->con, $qr);
     }
+    //Tìm kiếm sản phẩm
+    public function SearchProductAdmin($itemSearch)
+    {
+        $qr = "SELECT * FROM `products` JOIN `brands` ON prod_brand = brand_id JOIN categories ON prod_cat = cat_id WHERE prod_title LIKE N'%$itemSearch%'";
+        return mysqli_query($this->con, $qr);
+    }
     //Thêm sản phẩm mới
     public function InsertNewProduct($prod_cat, $prod_brand, $prod_title, $prod_price, $prod_quantity, $prod_view, $prod_tinydes, $prod_fulldes, $prod_image, $prod_date, $prod_origin)
     {
         $qr = "INSERT INTO `products` VALUES(NULL, '$prod_cat', '$prod_brand', '$prod_title', '$prod_price', '$prod_quantity', '$prod_view', '$prod_tinydes', '$prod_fulldes', '$prod_image', '$prod_date', '$prod_origin')";
+        $result = false;
+        if (mysqli_query($this->con, $qr)) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
+    public function UpdateProduct($prod_id, $prod_cat, $prod_brand, $prod_title, $prod_price, $prod_quantity, $prod_tinydes, $prod_fulldes, $prod_image, $prod_origin)
+    {
+        $qr = "UPDATE `products` SET prod_id='$prod_id', prod_cat='$prod_cat', prod_brand='$prod_brand', prod_title='$prod_title', prod_price='$prod_price', prod_quantity='$prod_quantity', prod_tinydes='$prod_tinydes', prod_fulldes='$prod_fulldes', prod_image='$prod_image', prod_origin='$prod_origin' WHERE prod_id='$prod_id'";
+        $result = false;
+        if (mysqli_query($this->con, $qr)) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
+    public function UpdateProductNoAvatar($prod_id, $prod_cat, $prod_brand, $prod_title, $prod_price, $prod_quantity, $prod_tinydes, $prod_fulldes, $prod_origin)
+    {
+        $qr = "UPDATE `products` SET prod_id='$prod_id', prod_cat='$prod_cat', prod_brand='$prod_brand', prod_title='$prod_title', prod_price='$prod_price', prod_quantity='$prod_quantity', prod_tinydes='$prod_tinydes', prod_fulldes='$prod_fulldes', prod_origin='$prod_origin' WHERE prod_id='$prod_id'";
         $result = false;
         if (mysqli_query($this->con, $qr)) {
             $result = true;
@@ -179,6 +203,85 @@ class productModel extends DB
     public function InsertAlbum($prod_id, $photoName)
     {
         $qr = "INSERT INTO `photos` VALUES(NULL, '$prod_id', '$photoName')";
+        $result = false;
+        if (mysqli_query($this->con, $qr)) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
+    //Lấy hình album hình ảnh của 1 sản phẩm bất kì 
+    public function GetAlbumOfProduct($prod_id)
+    {
+        $qr = "SELECT * FROM `photos` WHERE photo_prod_id = '$prod_id'";
+        return mysqli_query($this->con, $qr);
+    }
+    //Kiểm tra ProductID có trong hệ thống hay không
+    public function checkProductID($prod_id)
+    {
+        $qr = "SELECT prod_id FROM products WHERE prod_id = '$prod_id'";
+        $rows = mysqli_query($this->con, $qr);
+        $result = false;
+        if (mysqli_num_rows($rows) > 0) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
+    //Xóa album ảnh
+    public function DeleteAlbum($image_id)
+    {
+        $qr = "DELETE FROM photos WHERE photo_id='$image_id'";
+        $result = false;
+        if (mysqli_query($this->con, $qr)) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
+    //Xóa sản phẩm
+    public function DeleteProduct($prod_id)
+    {
+        $qr = "DELETE FROM `products` WHERE prod_id='$prod_id'";
+        $result = false;
+        if (mysqli_query($this->con, $qr)) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
+    //Tìm kiếm danh mục sản phẩm
+    public function SearchCategories($itemSearch)
+    {
+        $qr = "SELECT * FROM `categories` WHERE cat_title LIKE N'%$itemSearch%'";
+        return mysqli_query($this->con, $qr);
+    }
+    //Insert Danh mục sản phẩm
+    public function InsertCategories($title)
+    {
+        $qr = "INSERT INTO `categories` VALUES (NULL, '$title')";
+        $result = false;
+        if (mysqli_query($this->con, $qr)) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
+    //Xóa Danh danh mục sản phẩm
+    public function DeleteCategories($id)
+    {
+        $qr = "DELETE FROM `categories` WHERE cat_id='$id'";
+        $result = false;
+        if (mysqli_query($this->con, $qr)) {
+            $result = true;
+        }
+        return json_encode($result);
+    }
+    //Lấy chi tiết của danh mục sản phẩm
+    public function GetDetailCat($id)
+    {
+        $qr = "SELECT * FROM `categories` WHERE cat_id = '$id'";
+        return mysqli_query($this->con, $qr);
+    }
+    //Cập nhật chi tiết của danh mục sản phẩm
+    public function UpdateCategories($valueID, $resultTitle)
+    {
+        $qr = "UPDATE `categories` SET cat_title ='$resultTitle' WHERE cat_id='$valueID'";
         $result = false;
         if (mysqli_query($this->con, $qr)) {
             $result = true;

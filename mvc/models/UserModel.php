@@ -162,4 +162,20 @@ class UserModel extends DB
         $qr = "SELECT * FROM users JOIN province ON user_address = province_id WHERE user_username LIKE '%$valSearch%' OR user_fullname LIKE '%$valSearch%' OR user_email LIKE '%$valSearch%'";
         return mysqli_query($this->con, $qr);
     }
+    //Đăng nhập tài khoản admin
+    public function loginAdmin($username, $password)
+    {
+        $query = "SELECT * FROM users WHERE user_username = '$username' AND user_verified = 1 AND user_role = 'Administrator'";
+        $result = mysqli_query($this->con, $query);
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_array($result)) {
+                if (password_verify($password, $row["user_password"])) {
+                    return json_encode(true);
+                } else {
+                    return json_encode(false);
+                }
+            }
+        }
+        return json_encode(false);
+    }
 }

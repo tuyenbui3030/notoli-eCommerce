@@ -13,7 +13,7 @@
                         <img class="user_avatar" src="./publicAdmin/assets/img/dummy/u2.png" alt="User Image">
                     </div>
                     <div class="float-left info">
-                        <h6 class="font-weight-light mt-2 mb-1">Alexander Pierce</h6>
+                        <h6 class="font-weight-light mt-2 mb-1"><?php echo $_SESSION['username'] ?></h6>
                         <a href="#"><i class="icon-circle text-primary blink"></i> Online</a>
                     </div>
                 </div>
@@ -25,6 +25,8 @@
                         </a>
                         <a href="#" class="list-group-item list-group-item-action"><i class="mr-2 icon-cogs text-yellow"></i>Settings</a>
                         <a href="#" class="list-group-item list-group-item-action"><i class="mr-2 icon-security text-purple"></i>Change Password</a>
+                        <a href="./admincp/logout" class="list-group-item list-group-item-action"><i class="mr-2 icon-security text-purple"></i>Logout</a>
+
                     </div>
                 </div>
             </div>
@@ -46,6 +48,15 @@
                     <li><a href="admincp/user"><i class="icon icon-circle-o"></i>Tất cả người dùng</a>
                     </li>
                     <li><a href="admincp/usercontrol"><i class="icon icon-add"></i>Thêm người dùng mới</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="treeview"><a href="#"><i class="icon icon-sailing-boat-water purple-text s-18"></i>Danh mục sản phẩm<i class="icon icon-angle-left s-18 pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="admincp/categories"><i class="icon icon-circle-o"></i>Tất cả danh mục</a>
+                    </li>
+                    <li><a href="admincp/categoruescontrol"><i class="icon icon-add"></i>Thêm người danh mục</a>
                     </li>
                 </ul>
             </li>
