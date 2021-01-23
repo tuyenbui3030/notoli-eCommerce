@@ -104,7 +104,7 @@
                     </div>
                 </div>
 
-                <nav class="my-3" aria-label="Page navigation">
+                <!-- <nav class="my-3" aria-label="Page navigation">
                     <ul class="pagination">
                         <li class="page-item"><a class="page-link" href="#">Previous</a>
                         </li>
@@ -117,7 +117,7 @@
                         <li class="page-item"><a class="page-link" href="#">Next</a>
                         </li>
                     </ul>
-                </nav>
+                </nav> -->
             </div>
         </div>
     </div>

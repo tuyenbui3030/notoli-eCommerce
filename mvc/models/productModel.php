@@ -360,4 +360,10 @@ class productModel extends DB
         }
         return json_encode($result);
     }
+
+    public function ShowUser()
+    {
+        $qr = "SELECT * FROM `users`";
+        return mysqli_query($this->con, $qr);
+    }
 }
